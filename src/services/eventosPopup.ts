@@ -23,7 +23,7 @@ export async function getActiveEvent(): Promise<EventoPopup | null> {
   try {
     console.log('🎉 Buscando evento activo...')
     const response = await fetchFromStrapi<StrapiResponse>(
-      'evento-popups?filters[activo][$eq]=true&populate=imagen&sort=fecha:desc',
+      'eventos-popups?filters[activo][$eq]=true&populate=imagen&sort=fecha:desc',
       { cache: 'no-store' }
     )
 
