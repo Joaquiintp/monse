@@ -1,0 +1,18 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/carta-fundacional/page": "app/carta-fundacional/page.js",
+  "/comision-directiva/page": "app/comision-directiva/page.js",
+  "/contacto/page": "app/contacto/page.js",
+  "/mision-vision-valores/page": "app/mision-vision-valores/page.js",
+  "/carta-abierta-a-los-egresados/page": "app/carta-abierta-a-los-egresados/page.js",
+  "/monserratenses-por-el-mundo/page": "app/monserratenses-por-el-mundo/page.js",
+  "/icon.svg/route": "app/icon.svg/route.js",
+  "/exito/page": "app/exito/page.js",
+  "/libered/page": "app/libered/page.js",
+  "/noticias/page": "app/noticias/page.js",
+  "/servicios/page": "app/servicios/page.js",
+  "/test-noticia/page": "app/test-noticia/page.js",
+  "/tienda/page": "app/tienda/page.js",
+  "/page": "app/page.js",
+  "/noticias/[slug]/page": "app/noticias/[slug]/page.js"
+}

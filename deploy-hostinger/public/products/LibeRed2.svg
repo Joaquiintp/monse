@@ -1,0 +1,46 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo con gradiente -->
+  <defs>
+    <linearGradient id="bgGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9f1239;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#881337;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo principal -->
+  <rect width="400" height="300" fill="url(#bgGradient2)"/>
+  
+  <!-- Título -->
+  <text x="200" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">
+    Beneficios LibeRed
+  </text>
+  
+  <!-- Lista de beneficios -->
+  <g>
+    <!-- Íconos de check -->
+    <circle cx="60" cy="80" r="12" fill="white" opacity="0.2"/>
+    <text x="60" y="87" font-family="Arial" font-size="20" fill="white" text-anchor="middle">✓</text>
+    <text x="90" y="87" font-family="Arial, sans-serif" font-size="14" fill="white">Descuentos en comercios adheridos</text>
+    
+    <circle cx="60" cy="120" r="12" fill="white" opacity="0.2"/>
+    <text x="60" y="127" font-family="Arial" font-size="20" fill="white" text-anchor="middle">✓</text>
+    <text x="90" y="127" font-family="Arial, sans-serif" font-size="14" fill="white">Eventos exclusivos de la Asociación</text>
+    
+    <circle cx="60" cy="160" r="12" fill="white" opacity="0.2"/>
+    <text x="60" y="167" font-family="Arial" font-size="20" fill="white" text-anchor="middle">✓</text>
+    <text x="90" y="167" font-family="Arial, sans-serif" font-size="14" fill="white">Acceso a beneficios culturales</text>
+    
+    <circle cx="60" cy="200" r="12" fill="white" opacity="0.2"/>
+    <text x="60" y="207" font-family="Arial" font-size="20" fill="white" text-anchor="middle">✓</text>
+    <text x="90" y="207" font-family="Arial, sans-serif" font-size="14" fill="white">Red de contactos y networking</text>
+    
+    <circle cx="60" cy="240" r="12" fill="white" opacity="0.2"/>
+    <text x="60" y="247" font-family="Arial" font-size="20" fill="white" text-anchor="middle">✓</text>
+    <text x="90" y="247" font-family="Arial, sans-serif" font-size="14" fill="white">Promociones especiales mensuales</text>
+  </g>
+  
+  <!-- Pie de página -->
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.7">
+    Más de 50 comercios adheridos en Córdoba
+  </text>
+</svg>

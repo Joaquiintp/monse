@@ -1,0 +1,113 @@
+
+> monserratenses@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.33
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/17) ...
+🌐 Fetching from Strapi: http://168.231.99.125:1337/api/noticias?populate=*&sort=publishedAt:desc
+🌐 Fetching from Strapi: http://168.231.99.125:1337/api/noticias?populate=*&sort=publishedAt:desc
+📊 Response status: 200 
+📊 Response status: 200 
+✅ Data received: {"data":[{"id":18,"documentId":"vokcpaxc7240lw0u6ttrtej5","titulo":"Conferencia: La importancia de difundir el legado histórico de los jesuitas","parrafo1":"Conferencia y Concierto del 24 de agosto de...
+Noticias cargadas desde Strapi: 9
+✅ Data received: {"data":[{"id":18,"documentId":"vokcpaxc7240lw0u6ttrtej5","titulo":"Conferencia: La importancia de difundir el legado histórico de los jesuitas","parrafo1":"Conferencia y Concierto del 24 de agosto de...
+Noticias cargadas desde Strapi: 9
+🌐 Fetching from Strapi: http://168.231.99.125:1337/api/vinos?populate=*&sort=publishedAt:desc
+🌐 Fetching from Strapi: http://168.231.99.125:1337/api/productos?populate=*&sort=publishedAt:desc
+🌐 Fetching from Strapi: http://168.231.99.125:1337/api/vinos?populate=*&sort=publishedAt:desc
+🌐 Fetching from Strapi: http://168.231.99.125:1337/api/productos?populate=*&sort=publishedAt:desc
+📊 Response status: 200 
+📊 Response status: 200 
+✅ Data received: {"data":[{"id":3,"documentId":"d11we9cl92oxsm49pt7motej","producto":"Maqueta Colegio Nacional de Monserrat.","precio":null,"descripcion":"Réplica detallada del histórico edificio del Colegio Monserrat...
+✅ 1 productos cargados desde Strapi
+🖼️ Imagen producto: http://168.231.99.125:1337/uploads/Whats_App_Image_2025_05_28_at_21_32_50_9de65848dd.jpeg
+🖼️ Imagen producto: http://168.231.99.125:1337/uploads/Whats_App_Image_2025_05_30_at_21_57_03_8e53df16e8.jpeg
+✅ Data received: {"data":[{"id":3,"documentId":"d11we9cl92oxsm49pt7motej","producto":"Maqueta Colegio Nacional de Monserrat.","precio":null,"descripcion":"Réplica detallada del histórico edificio del Colegio Monserrat...
+✅ 1 productos cargados desde Strapi
+🖼️ Imagen producto: http://168.231.99.125:1337/uploads/Whats_App_Image_2025_05_28_at_21_32_50_9de65848dd.jpeg
+🖼️ Imagen producto: http://168.231.99.125:1337/uploads/Whats_App_Image_2025_05_30_at_21_57_03_8e53df16e8.jpeg
+📊 Response status: 200 
+📊 Response status: 200 
+✅ Data received: {"data":[{"id":6,"documentId":"rtbq5f8y8w7m08lbaf2bn1hu","producto":"Colección Duarte - Blend","drescripcion":"Primera edición de nuestra colección exclusiva. Blend de tintas seleccionadas con carácte...
+✅ 2 vinos cargados desde Strapi
+🖼️ Imagen vino: http://168.231.99.125:1337/uploads/Diseno_sin_titulo_190b275a68.jpg
+🖼️ Imagen vino: http://168.231.99.125:1337/uploads/Diseno_sin_titulo_2_b34a9b7bc4.jpg
+🖼️ Imagen vino: http://168.231.99.125:1337/uploads/Whats_App_Image_2025_05_20_at_13_00_33_69e4833ec0.jpeg
+🖼️ Imagen vino: http://168.231.99.125:1337/uploads/Diseno_sin_titulo_3_2ba9a2d553.jpg
+✅ Data received: {"data":[{"id":6,"documentId":"rtbq5f8y8w7m08lbaf2bn1hu","producto":"Colección Duarte - Blend","drescripcion":"Primera edición de nuestra colección exclusiva. Blend de tintas seleccionadas con carácte...
+✅ 2 vinos cargados desde Strapi
+🖼️ Imagen vino: http://168.231.99.125:1337/uploads/Diseno_sin_titulo_190b275a68.jpg
+🖼️ Imagen vino: http://168.231.99.125:1337/uploads/Diseno_sin_titulo_2_b34a9b7bc4.jpg
+🖼️ Imagen vino: http://168.231.99.125:1337/uploads/Whats_App_Image_2025_05_20_at_13_00_33_69e4833ec0.jpeg
+🖼️ Imagen vino: http://168.231.99.125:1337/uploads/Diseno_sin_titulo_3_2ba9a2d553.jpg
+🌐 Fetching from Strapi: http://168.231.99.125:1337/api/noticias?populate=*&sort=publishedAt:desc&pagination[limit]=6
+🌐 Fetching from Strapi: http://168.231.99.125:1337/api/noticias?populate=*&sort=publishedAt:desc&pagination[limit]=6
+📊 Response status: 200 
+📊 Response status: 200 
+✅ Data received: {"data":[{"id":18,"documentId":"vokcpaxc7240lw0u6ttrtej5","titulo":"Conferencia: La importancia de difundir el legado histórico de los jesuitas","parrafo1":"Conferencia y Concierto del 24 de agosto de...
+Noticias cargadas desde Strapi: 6
+   Generating static pages (4/17) 
+🌐 Fetching from Strapi: http://168.231.99.125:1337/api/noticias?filters[slug][$eq]=sede-virtual&populate=*
+🌐 Fetching from Strapi: http://168.231.99.125:1337/api/noticias?filters[slug][$eq]=sede-virtual&populate=*
+📊 Response status: 200 
+📊 Response status: 200 
+✅ Data received: {"data":[{"id":2,"documentId":"npohy6u9l0zywpqb0nwkgd7l","titulo":"Sede Virtual","parrafo1":"Hoy, damos el segundo paso en este nuevo camino que venimos abriendo. El primero, nos dio el soporte jurídi...
+✅ Data received: {"data":[{"id":2,"documentId":"npohy6u9l0zywpqb0nwkgd7l","titulo":"Sede Virtual","parrafo1":"Hoy, damos el segundo paso en este nuevo camino que venimos abriendo. El primero, nos dio el soporte jurídi...
+✅ Data received: {"data":[{"id":18,"documentId":"vokcpaxc7240lw0u6ttrtej5","titulo":"Conferencia: La importancia de difundir el legado histórico de los jesuitas","parrafo1":"Conferencia y Concierto del 24 de agosto de...
+Noticias cargadas desde Strapi: 6
+   Generating static pages (8/17) 
+   Generating static pages (12/17) 
+ ✓ Generating static pages (17/17)
+   Finalizing page optimization ...
+   Collecting build traces ...
+tX [Error]: Page with `dynamic = "force-dynamic"` couldn't be exported. `output: "export"` requires all pages be renderable statically because there is not runtime server to dynamic render routes in this output format. Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+    at rq (/Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:7455)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:549:9)
+    at process.processTimers (node:internal/timers:523:7)
+    at async /Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9536
+    at async Promise.all (index 0)
+    at async rq (/Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9373)
+    at async /Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9536
+    at async Promise.all (index 0)
+    at async rq (/Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9373) {
+  code: 'NEXT_STATIC_GEN_BAILOUT',
+  digest: '399019158'
+}
+tX [Error]: Page with `dynamic = "force-dynamic"` couldn't be exported. `output: "export"` requires all pages be renderable statically because there is not runtime server to dynamic render routes in this output format. Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+    at rq (/Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:7455)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:549:9)
+    at process.processTimers (node:internal/timers:523:7)
+    at async /Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9536
+    at async Promise.all (index 0)
+    at async rq (/Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9373)
+    at async /Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9536
+    at async Promise.all (index 0)
+    at async rq (/Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9373) {
+  code: 'NEXT_STATIC_GEN_BAILOUT',
+  digest: '399019158'
+}
+
+Error occurred prerendering page "/noticias/[slug]". Read more: https://nextjs.org/docs/messages/prerender-error
+
+Error: Page with `dynamic = "force-dynamic"` couldn't be exported. `output: "export"` requires all pages be renderable statically because there is not runtime server to dynamic render routes in this output format. Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+    at rq (/Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:7455)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:549:9)
+    at process.processTimers (node:internal/timers:523:7)
+    at async /Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9536
+    at async Promise.all (index 0)
+    at async rq (/Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9373)
+    at async /Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9536
+    at async Promise.all (index 0)
+    at async rq (/Users/joaquinrodriguez/Desktop/webmonse/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:16:9373)
+
+> Export encountered errors on following paths:
+	/noticias/[slug]/page: /noticias/[slug]

@@ -1,0 +1,62 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo con gradiente -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e11d48;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#be123c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fecaca;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo principal -->
+  <rect width="400" height="300" fill="url(#bgGradient)"/>
+  
+  <!-- Patrón de puntos decorativos -->
+  <circle cx="50" cy="50" r="3" fill="white" opacity="0.1"/>
+  <circle cx="350" cy="250" r="3" fill="white" opacity="0.1"/>
+  <circle cx="100" cy="250" r="3" fill="white" opacity="0.1"/>
+  <circle cx="350" cy="50" r="3" fill="white" opacity="0.1"/>
+  
+  <!-- Tarjeta -->
+  <rect x="50" y="80" width="300" height="180" rx="15" fill="url(#cardGradient)" stroke="white" stroke-width="2" opacity="0.9"/>
+  
+  <!-- Chip de tarjeta -->
+  <rect x="70" y="100" width="40" height="30" rx="5" fill="#FFD700" opacity="0.8"/>
+  <line x1="75" y1="110" x2="105" y2="110" stroke="#333" stroke-width="1"/>
+  <line x1="75" y1="115" x2="105" y2="115" stroke="#333" stroke-width="1"/>
+  <line x1="75" y1="120" x2="105" y2="120" stroke="#333" stroke-width="1"/>
+  
+  <!-- Logo LibeRed -->
+  <text x="200" y="140" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="white" text-anchor="middle">
+    LibeRed
+  </text>
+  
+  <!-- Subtítulo -->
+  <text x="200" y="165" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.9">
+    Tarjeta de Beneficios
+  </text>
+  
+  <!-- Beneficios -->
+  <text x="200" y="195" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle" opacity="0.8">
+    Descuentos Exclusivos
+  </text>
+  
+  <!-- Líneas decorativas -->
+  <line x1="70" y1="215" x2="330" y2="215" stroke="white" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Número de tarjeta simulado -->
+  <text x="90" y="240" font-family="monospace" font-size="14" fill="white" opacity="0.7">
+    •••• •••• •••• ••••
+  </text>
+  
+  <!-- Texto "Asociación Civil" -->
+  <text x="200" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">
+    Asociación Civil Ex Alumnos
+  </text>
+  <text x="200" y="55" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.9">
+    Colegio Monserrat
+  </text>
+</svg>

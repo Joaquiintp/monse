@@ -1,0 +1,128 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/app/_not-found/page-6d330d5392500137.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/css/20f91f62811f702b.css",
+      "static/chunks/878-1d7f67bb20b85cd0.js",
+      "static/chunks/972-6a2517f9568d485b.js",
+      "static/chunks/app/layout-79d822bf9424f3a9.js"
+    ],
+    "/carta-fundacional/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/app/carta-fundacional/page-640757a19735ac03.js"
+    ],
+    "/comision-directiva/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/app/comision-directiva/page-e52e0c09d7f073c7.js"
+    ],
+    "/contacto/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/app/contacto/page-1ad0c2040b7ad488.js"
+    ],
+    "/mision-vision-valores/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/app/mision-vision-valores/page-242a856705c5085e.js"
+    ],
+    "/carta-abierta-a-los-egresados/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/app/carta-abierta-a-los-egresados/page-2a25914b8723dffc.js"
+    ],
+    "/monserratenses-por-el-mundo/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/app/monserratenses-por-el-mundo/page-4e251283c86e0aef.js"
+    ],
+    "/exito/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/878-1d7f67bb20b85cd0.js",
+      "static/chunks/972-6a2517f9568d485b.js",
+      "static/chunks/app/exito/page-81c64ee016247e9a.js"
+    ],
+    "/libered/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/app/libered/page-a9fb65fbee47afeb.js"
+    ],
+    "/noticias/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/878-1d7f67bb20b85cd0.js",
+      "static/chunks/972-6a2517f9568d485b.js",
+      "static/chunks/app/noticias/page-b24d89dcbc6fe65e.js"
+    ],
+    "/servicios/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/app/servicios/page-f01722baa09260d1.js"
+    ],
+    "/test-noticia/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/app/test-noticia/page-fcf2fea118365093.js"
+    ],
+    "/tienda/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/878-1d7f67bb20b85cd0.js",
+      "static/chunks/app/tienda/page-cb4f6c04c35557f5.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/878-1d7f67bb20b85cd0.js",
+      "static/chunks/972-6a2517f9568d485b.js",
+      "static/chunks/app/page-f3eba800bc37cf26.js"
+    ],
+    "/noticias/[slug]/page": [
+      "static/chunks/webpack-619ee777b6c55147.js",
+      "static/chunks/fd9d1056-2f7f6751adfa32b8.js",
+      "static/chunks/117-dfa1af2b5175e029.js",
+      "static/chunks/main-app-dc9c51cbe96470db.js",
+      "static/chunks/878-1d7f67bb20b85cd0.js",
+      "static/chunks/972-6a2517f9568d485b.js",
+      "static/chunks/app/noticias/[slug]/page-238edca76d042cb0.js"
+    ]
+  }
+}

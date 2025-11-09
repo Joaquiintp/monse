@@ -1,0 +1,27 @@
+=== DEPLOYMENT RÁPIDO ===
+
+HOSTINGER TRADICIONAL NO SOPORTA NEXT.JS
+
+Usa una de estas alternativas:
+
+1. RAILWAY (Gratis, automático)
+   - Ve a railway.app
+   - Conecta tu repositorio de GitHub
+   - Deploy automático
+
+2. VERCEL (Gratis)
+   - npm install -g vercel
+   - vercel login
+   - vercel
+
+3. HOSTINGER VPS (Requiere VPS, no hosting compartido)
+   - npm install --production
+   - npm start
+   - Configurar PM2 para mantener activo
+
+El sitio incluye:
+✅ Integración con Strapi
+✅ WhatsApp redirect en tienda
+✅ Noticias dinámicas
+✅ Responsive design
+✅ Mobile menu con cartas

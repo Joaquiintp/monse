@@ -1,0 +1,61 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+
+# Production
+/build
+/dist
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env
+.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# Strapi
+webmonse-strapi/.tmp/
+webmonse-strapi/.cache/
+webmonse-strapi/build/
+webmonse-strapi/.strapi-updater.json
+webmonse-strapi/.env
+webmonse-strapi/data/
+webmonse-strapi/database/*.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+strapi.log
+nextjs.log
+
+# OS
+Thumbs.db
+webmonse-strapi.backup/
