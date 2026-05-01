@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archivo Histórico | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../Public/Favicon/favicon.svg" />
+  <style>
+
+    /* ════════════════════════════════
+       LAYOUT GENERAL
+    ════════════════════════════════ */
+    body { background: var(--ivory); }
+
+    .arch-wrap {
+      margin-top: var(--navbar-h);
+      min-height: calc(100svh - var(--navbar-h));
+    }
+
+    /* ════════════════════════════════
+       HEADER INTERNO
+    ════════════════════════════════ */
+    .arch-header {
+      background: var(--ivory);
+      border-bottom: 1px solid rgba(107,27,42,.12);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: var(--navbar-h);
+      z-index: 100;
+    }
+    .arch-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .arch-header__title {
+      font-family: var(--ff-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      line-height: 1.1;
+      letter-spacing: -.01em;
+    }
+    .arch-header__title span {
+      display: block;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-family: var(--ff-sans);
+    }
+    .arch-header__right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .arch-search {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      background: var(--white);
+      border: 1.5px solid rgba(107,27,42,.15);
+      border-radius: 6px;
+      padding: .55rem 1rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .arch-search:focus-within {
+      border-color: var(--burgundy);
+      box-shadow: 0 0 0 3px rgba(107,27,42,.07);
+    }
+    .arch-search svg { width: 16px; height: 16px; color: var(--text-muted); flex-shrink: 0; }
+    .arch-search input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: var(--ff-sans);
+      font-size: .88rem;
+      color: var(--text);
+      width: 220px;
+    }
+    .arch-search input::placeholder { color: var(--text-muted); }
+
+    /* ════════════════════════════════
+       TIMELINE
+    ════════════════════════════════ */
+    .arch-timeline {
+      background: var(--cream);
+      border-bottom: 1px solid rgba(107,27,42,.1);
+      padding: 1.5rem 0;
+      user-select: none;
+    }
+    .arch-timeline__inner {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .arch-tl-arrow {
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--white);
+      border: 1.5px solid rgba(107,27,42,.15);
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--burgundy);
+      flex-shrink: 0;
+      transition: all var(--transition);
+    }
+    .arch-tl-arrow:hover { background: var(--burgundy-dark); color: var(--ivory); border-color: var(--burgundy-dark); }
+    .arch-tl-arrow svg { width: 16px; height: 16px; }
+    .arch-tl-track {
+      flex: 1;
+      position: relative;
+      height: 48px;
+      overflow: hidden;
+    }
+    .arch-tl-line {
+      position: absolute;
+      top: 50%;
+      left: 0; right: 0;
+      height: 2px;
+      background: rgba(107,27,42,.18);
+      transform: translateY(-50%);
+      border-radius: 2px;
+    }
+    .arch-tl-decades {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .arch-tl-decade {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: transform var(--transition);
+    }
+    .arch-tl-decade:hover { transform: scale(1.05); }
+    .arch-tl-decade__dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(107,27,42,.3);
+      border: 2px solid var(--cream);
+      transition: all var(--transition);
+      position: relative;
+      z-index: 1;
+    }
+    .arch-tl-decade.active .arch-tl-decade__dot {
+      width: 14px; height: 14px;
+      background: var(--burgundy-dark);
+      border: 2px solid var(--ivory);
+      box-shadow: 0 0 0 3px rgba(78,19,32,.2);
+    }
+    .arch-tl-decade__label {
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+    .arch-tl-decade.active .arch-tl-decade__label {
+      color: var(--burgundy-dark);
+    }
+    .arch-tl-decade.active .arch-tl-bubble {
+      display: block;
+    }
+    .arch-tl-bubble {
+      display: none;
+      position: absolute;
+      top: -36px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--burgundy-dark);
+      color: var(--ivory);
+      font-size: .72rem;
+      font-weight: 700;
+      padding: .25rem .65rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .arch-tl-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -5px; left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--burgundy-dark);
+      border-bottom: none;
+    }
+
+    /* ════════════════════════════════
+       FILTROS
+    ════════════════════════════════ */
+    .arch-filters {
+      background: var(--ivory);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(107,27,42,.08);
+    }
+    .arch-filters__inner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .arch-filters__label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .arch-filters__cats {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .arch-filter-check {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      cursor: pointer;
+      font-size: .85rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .arch-filter-check input[type="checkbox"] { display: none; }
+    .arch-filter-check__box {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(107,27,42,.25);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--white);
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+    .arch-filter-check__box svg { width: 11px; height: 11px; color: var(--ivory); opacity: 0; transition: opacity var(--transition); }
+    .arch-filter-check input:checked ~ .arch-filter-check__box {
+      background: var(--burgundy-dark);
+      border-color: var(--burgundy-dark);
+    }
+    .arch-filter-check input:checked ~ .arch-filter-check__box svg { opacity: 1; }
+    .arch-filters__count {
+      margin-left: auto;
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+    .arch-filters__count strong { color: var(--burgundy); }
+
+    /* ════════════════════════════════
+       GRID MASONRY
+    ════════════════════════════════ */
+    .arch-main { padding: 2.5rem 0 5rem; }
+
+    .arch-grid {
+      columns: 3;
+      column-gap: 1.25rem;
+    }
+    .arch-item {
+      break-inside: avoid;
+      margin-bottom: 1.25rem;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.07);
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+    .arch-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.14);
+    }
+    .arch-item.hidden { display: none; }
+
+    .arch-item__img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .arch-item__img-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      filter: sepia(.15) contrast(1.02);
+      transition: transform .4s ease, filter .4s ease;
+    }
+    .arch-item:hover .arch-item__img-wrap img {
+      transform: scale(1.04);
+      filter: sepia(.08) contrast(1.04);
+    }
+
+    /* Tooltip al hover */
+    .arch-item__tooltip {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(30,10,5,.82);
+      backdrop-filter: blur(4px);
+      padding: .85rem 1rem;
+      transform: translateY(100%);
+      transition: transform .28s ease;
+    }
+    .arch-item:hover .arch-item__tooltip { transform: translateY(0); }
+    .arch-item__tooltip p {
+      font-size: .8rem;
+      color: rgba(245,240,232,.9);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .arch-item__footer {
+      padding: .85rem 1rem;
+      border-top: 1px solid rgba(0,0,0,.05);
+    }
+    .arch-item__cat {
+      display: inline-block;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      background: rgba(107,27,42,.07);
+      padding: .15rem .5rem;
+      border-radius: 99px;
+      margin-bottom: .35rem;
+    }
+    .arch-item__title {
+      font-family: var(--ff-serif);
+      font-size: .9rem;
+      color: var(--text);
+      line-height: 1.35;
+      font-weight: 600;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    /* ════════════════════════════════
+       LIGHTBOX
+    ════════════════════════════════ */
+    .arch-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(20,6,3,.88);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+    .arch-lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .arch-lb__panel {
+      background: var(--ivory);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 860px;
+      width: 100%;
+      max-height: 90svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: 0 40px 80px rgba(0,0,0,.4);
+      transform: scale(.94);
+      transition: transform .3s ease;
+    }
+    .arch-lightbox.open .arch-lb__panel { transform: scale(1); }
+    .arch-lb__img {
+      position: relative;
+      background: var(--cream);
+      overflow: hidden;
+    }
+    .arch-lb__img img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      filter: sepia(.1);
+      padding: 1.5rem;
+    }
+    .arch-lb__info {
+      padding: 2.5rem 2rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .arch-lb__cat {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+    }
+    .arch-lb__title {
+      font-family: var(--ff-serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      letter-spacing: -.01em;
+      line-height: 1.2;
+    }
+    .arch-lb__year {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: .08em;
+    }
+    .arch-lb__desc {
+      font-size: .9rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .arch-lb__meta {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+    .arch-lb__meta-row {
+      display: flex;
+      gap: .75rem;
+      font-size: .8rem;
+    }
+    .arch-lb__meta-row strong {
+      color: var(--text);
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+    .arch-lb__meta-row span { color: var(--text-muted); }
+    .arch-lb__close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.9);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text);
+      transition: all var(--transition);
+      z-index: 10;
+    }
+    .arch-lb__close:hover { background: var(--burgundy-dark); color: var(--ivory); }
+    .arch-lb__close svg { width: 16px; height: 16px; }
+
+    /* Nav arrows lightbox */
+    .arch-lb__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,.9);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text);
+      transition: all var(--transition);
+      z-index: 10;
+    }
+    .arch-lb__nav:hover { background: var(--burgundy-dark); color: var(--ivory); }
+    .arch-lb__nav svg { width: 18px; height: 18px; }
+    .arch-lb__nav--prev { left: 1rem; }
+    .arch-lb__nav--next { right: 1rem; }
+
+    /* ════════════════════════════════
+       EMPTY STATE
+    ════════════════════════════════ */
+    .arch-empty {
+      display: none;
+      text-align: center;
+      padding: 5rem 2rem;
+      color: var(--text-muted);
+    }
+    .arch-empty svg { width: 48px; height: 48px; opacity: .2; margin: 0 auto 1rem; }
+    .arch-empty p { font-size: .95rem; }
+
+    /* ════════════════════════════════
+       COLABORAR CTA
+    ════════════════════════════════ */
+    .arch-cta {
+      background: var(--burgundy-dark);
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .arch-cta__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: .75rem;
+    }
+    .arch-cta__title em { font-style: italic; color: var(--gold-light); }
+    .arch-cta__sub {
+      font-size: .95rem;
+      color: rgba(245,240,232,.7);
+      margin-bottom: 2rem;
+    }
+
+    /* ════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════ */
+    @media (max-width: 960px) {
+      .arch-grid { columns: 2; }
+      .arch-lb__panel { grid-template-columns: 1fr; max-width: 480px; }
+      .arch-lb__img { height: 260px; }
+      .arch-lb__img img { padding: 1rem; }
+    }
+    @media (max-width: 640px) {
+      .arch-grid { columns: 1; }
+      .arch-header__inner { flex-direction: column; align-items: flex-start; }
+      .arch-search input { width: 160px; }
+    }
+
+    /* ════════════════════════════════
+       OVERLAY ARCHIVO EN CONSTRUCCIÓN
+    ════════════════════════════════ */
+    .arch-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      pointer-events: all;
+      /* blur del contenido detrás */
+      backdrop-filter: blur(12px) brightness(.7);
+      -webkit-backdrop-filter: blur(12px) brightness(.7);
+      background: rgba(78, 19, 32, .18);
+    }
+    .arch-overlay__card {
+      background: var(--ivory);
+      border-radius: 16px;
+      padding: 3rem 3.5rem;
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 24px 80px rgba(0,0,0,.3);
+      border: 1px solid rgba(201,168,76,.25);
+    }
+    .arch-overlay__icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      color: var(--burgundy-dark);
+      opacity: .85;
+    }
+    .arch-overlay__eyebrow {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .75rem;
+    }
+    .arch-overlay__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .arch-overlay__body {
+      font-size: .95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .arch-overlay__body strong { color: var(--burgundy-dark); font-weight: 600; }
+    @media (max-width: 560px) {
+      .arch-overlay__card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ OVERLAY: ARCHIVO EN CONSTRUCCIÓN ══ -->
+  <div class="arch-overlay" id="archOverlay">
+    <div class="arch-overlay__card">
+      <svg class="arch-overlay__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        <line x1="9" y1="7" x2="15" y2="7"/>
+        <line x1="9" y1="11" x2="15" y2="11"/>
+        <line x1="9" y1="15" x2="12" y2="15"/>
+      </svg>
+      <p class="arch-overlay__eyebrow">Archivo Histórico</p>
+      <h2 class="arch-overlay__title">Estamos construyendo<br>la memoria monserratense</h2>
+      <p class="arch-overlay__body">
+        Trabajamos en la digitalización y catalogación de documentos, fotografías y objetos históricos del
+        <strong>Colegio Nacional de Monserrat</strong>, con el objetivo de preservar y difundir más de tres siglos de historia.
+        <br><br>
+        El archivo estará disponible próximamente. Si tenés material histórico para compartir, te invitamos a colaborar.
+      </p>
+      <a href="../" class="btn btn--burgundy" style="margin-top:1.75rem; display:inline-flex; align-items:center; gap:.4em;">
+        <svg style="width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        Volver al Inicio
+      </a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../">Inicio</a>
+        <a href="../servicios/">Servicios</a>
+        <a href="../#mundo">Por el Mundo</a>
+        <a href="../noticias/">Noticias</a>
+        <a href="../cultura/">Cultura</a>
+        <a href="./" class="active">Archivo</a>
+        <a href="../tienda/">Tienda</a>
+        <a href="../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../comision/">Comisión Directiva</a>
+            <a href="../carta-fundacional/">Carta Fundacional</a>
+            <a href="../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../" onclick="toggleMenu()">Inicio</a>
+      <a href="../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="./" onclick="toggleMenu()">Archivo</a>
+      <a href="../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+         target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <div class="arch-wrap">
+
+    <!-- HEADER INTERNO -->
+    <div class="arch-header">
+      <div class="container arch-header__inner">
+        <div class="arch-header__title">
+          <span>Archivo Histórico</span>
+          Monserratenses
+        </div>
+        <div class="arch-header__right">
+          <div class="arch-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Buscar en el archivo…" />
+          </div>
+          <a href="../contacto/" class="btn btn--gold">Colaborar</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="arch-timeline">
+      <div class="container arch-timeline__inner">
+        <button class="arch-tl-arrow" id="tlPrev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+        </button>
+        <div class="arch-tl-track">
+          <div class="arch-tl-line"></div>
+          <div class="arch-tl-decades" id="tlDecades"></div>
+        </div>
+        <button class="arch-tl-arrow" id="tlNext" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="arch-filters">
+      <div class="container arch-filters__inner">
+        <span class="arch-filters__label">Filtros · Categoría</span>
+        <div class="arch-filters__cats">
+          <label class="arch-filter-check">
+            <input type="checkbox" value="foto" checked />
+            <span class="arch-filter-check__box">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg>
+            </span>
+            Fotos
+          </label>
+          <label class="arch-filter-check">
+            <input type="checkbox" value="documento" checked />
+            <span class="arch-filter-check__box">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg>
+            </span>
+            Documentos
+          </label>
+          <label class="arch-filter-check">
+            <input type="checkbox" value="objeto" checked />
+            <span class="arch-filter-check__box">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg>
+            </span>
+            Objetos
+          </label>
+          <label class="arch-filter-check">
+            <input type="checkbox" value="publicacion" checked />
+            <span class="arch-filter-check__box">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg>
+            </span>
+            Publicaciones
+          </label>
+        </div>
+        <span class="arch-filters__count" id="filterCount"><strong>0</strong> piezas</span>
+      </div>
+    </div>
+
+    <!-- GRID -->
+    <div class="arch-main">
+      <div class="container">
+        <div class="arch-grid" id="archGrid"></div>
+        <div class="arch-empty" id="archEmpty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:block">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <p>No se encontraron piezas con esos criterios.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA COLABORAR -->
+    <div class="arch-cta">
+      <div class="container">
+        <h2 class="arch-cta__title">¿Tenés material <em>histórico</em>?</h2>
+        <p class="arch-cta__sub">Ayudanos a preservar la memoria monserratense. Fotos, diplomas, cartas, publicaciones…</p>
+        <a href="../contacto/" class="btn btn--gold">Colaborar con el Archivo</a>
+      </div>
+    </div>
+
+  </div><!-- /arch-wrap -->
+
+  <!-- LIGHTBOX -->
+  <div class="arch-lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <button class="arch-lb__close" id="lbClose" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <button class="arch-lb__nav arch-lb__nav--prev" id="lbPrev" aria-label="Anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+    </button>
+    <button class="arch-lb__nav arch-lb__nav--next" id="lbNext" aria-label="Siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+    </button>
+    <div class="arch-lb__panel">
+      <div class="arch-lb__img">
+        <img id="lbImg" src="" alt="" />
+      </div>
+      <div class="arch-lb__info">
+        <p class="arch-lb__cat" id="lbCat"></p>
+        <h2 class="arch-lb__title" id="lbTitle"></h2>
+        <p class="arch-lb__year" id="lbYear"></p>
+        <p class="arch-lb__desc" id="lbDesc"></p>
+        <div class="arch-lb__meta" id="lbMeta"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+  /* ══════════════════════════════════════════
+     DATOS DEL ARCHIVO
+     Para agregar piezas reales: añadir objetos a ITEMS
+  ══════════════════════════════════════════ */
+  const ITEMS = [
+    {
+      id: 1, decade: 1675, cat: 'documento', catLabel: 'Documento',
+      title: 'La autorización real, 1685',
+      shortTitle: 'LA AUTORIZACIÓN REAL, 1685',
+      year: '1685',
+      tooltip: 'Cédula Real de Carlos II autorizando la creación del convictorio en Córdoba del Tucumán.',
+      desc: 'El Rey Carlos II de España expide una Cédula Real el 15 de junio de 1685, autorizando la creación de un convictorio en Córdoba del Tucumán. Era la respuesta a una necesidad concreta: la Universidad ya tenía prestigio en toda América del Sur, pero los jóvenes que llegaban de otras ciudades no tenían dónde residir. Ese documento real sería el punto de partida de una institución que duraría siglos.',
+      img: 'https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=600&q=75',
+      meta: { 'Año': '1685', 'Tipo': 'Documento real', 'Origen': 'Corona española', 'Emisor': 'Rey Carlos II' }
+    },
+    {
+      id: 2, decade: 1675, cat: 'documento', catLabel: 'Documento',
+      title: 'La fundación, 1687',
+      shortTitle: 'LA FUNDACIÓN, 1687',
+      year: '1° agosto 1687',
+      tooltip: 'Ignacio Duarte y Quirós dona sus bienes y funda el Real Colegio Convictorio de Nuestra Señora de Monserrat.',
+      desc: 'El 1° de agosto de 1687, el presbítero cordobés Ignacio Duarte y Quirós dona todos sus bienes a la Compañía de Jesús y funda el Real Colegio Convictorio de Nuestra Señora de Monserrat. Desde sus primeros días, la institución quedó bajo la dirección de los jesuitas, orden religiosa que combinaba evangelización con una formación humanista y científica de alto nivel. Nacía así el colegio más antiguo de la Argentina con funcionamiento ininterrumpido.',
+      img: 'https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?w=600&q=75',
+      meta: { 'Año': '1687', 'Tipo': 'Acto fundacional', 'Fundador': 'Ignacio Duarte y Quirós', 'Orden': 'Compañía de Jesús' }
+    },
+    {
+      id: 3, decade: 1675, cat: 'documento', catLabel: 'Documento',
+      title: 'El primer alumno, 1695',
+      shortTitle: 'EL PRIMER ALUMNO, 1695',
+      year: '1695',
+      tooltip: 'Jerónimo de Ceballos, primer alumno inscrito en los libros del Convictorio.',
+      desc: 'Jerónimo de Ceballos queda registrado en los libros del Convictorio como el primer alumno inscrito. Su nombre figura en los documentos originales que hoy custodia el Archivo Histórico, convirtiéndose en el símbolo de todos los estudiantes que eligieron al Monserrat como su casa de estudios. Desde entonces, el registro de matrícula no se interrumpió jamás.',
+      img: 'https://images.unsplash.com/photo-1532153955177-f59af40d6472?w=600&q=75',
+      meta: { 'Año': '1695', 'Tipo': 'Registro de matrícula', 'Primer alumno': 'Jerónimo de Ceballos', 'Estado': 'Custodiado' }
+    },
+    {
+      id: 4, decade: 1775, cat: 'documento', catLabel: 'Documento',
+      title: 'La expulsión jesuítica, 1767',
+      shortTitle: 'LA EXPULSIÓN JESUÍTICA, 1767',
+      year: '1767',
+      tooltip: 'La Corona española decreta la expulsión de los jesuitas. El Colegio pasa a manos franciscanas.',
+      desc: 'Tras ochenta años de conducción jesuítica, la Corona española decreta la expulsión de la Compañía de Jesús de todos sus dominios. El Colegio pasa a manos de los franciscanos, inaugurando un nuevo período de su historia. La institución atraviesa la transición sin cerrar sus puertas, manteniendo la continuidad educativa que la distinguiría a lo largo de los siglos.',
+      img: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&q=75',
+      meta: { 'Año': '1767', 'Tipo': 'Hito institucional', 'Transición': 'Jesuitas → Franciscanos' }
+    },
+    {
+      id: 5, decade: 1775, cat: 'foto', catLabel: 'Fotografía',
+      title: 'Un nuevo hogar, 1782',
+      shortTitle: 'UN NUEVO HOGAR, 1782',
+      year: '1782',
+      tooltip: 'Los franciscanos trasladan el Colegio a la casa paterna de Ignacio Duarte y Quirós, sede actual.',
+      desc: 'Los franciscanos toman una decisión que moldearía para siempre la identidad urbana del Colegio: trasladarlo a la casa paterna del propio Ignacio Duarte y Quirós, su fundador. Ese edificio, ubicado en la esquina de Obispo Trejo con Caseros, es el mismo que ocupa el Monserrat hasta hoy. Sus paredes guardan tres siglos de historia viva.',
+      img: '../Public/Banner\'s/fachada-monserrat.jpg',
+      meta: { 'Año': '1782', 'Tipo': 'Traslado edilicio', 'Ubicación': 'Obispo Trejo y Caseros', 'Estado': 'Sede actual' }
+    },
+    {
+      id: 6, decade: 1825, cat: 'documento', catLabel: 'Documento',
+      title: 'Los congresales de la Independencia, 1816',
+      shortTitle: 'CONGRESALES DE LA INDEPENDENCIA, 1816',
+      year: '1816',
+      tooltip: 'Egresados del Monserrat firman el Acta de la Independencia en Tucumán.',
+      desc: 'Cuando los representantes de las Provincias Unidas se reúnen en Tucumán para declarar la Independencia, la mayoría de los congresales que firman el acta son egresados del Monserrat. Entre sus aulas se formaron figuras como Juan José Castelli, Juan José Paso y el Deán Gregorio Funes. La educación humanista del Colegio había dejado su marca en quienes construirían la nación.',
+      img: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=75',
+      meta: { 'Año': '1816', 'Tipo': 'Hito histórico', 'Figuras': 'Castelli, Paso, Funes' }
+    },
+    {
+      id: 7, decade: 1850, cat: 'documento', catLabel: 'Documento',
+      title: 'La nacionalización, 1854',
+      shortTitle: 'LA NACIONALIZACIÓN, 1854',
+      year: '1854',
+      tooltip: 'El Colegio y la UNC son incorporados al Estado Nacional tras las guerras civiles.',
+      desc: 'Concluidas las guerras civiles, el Colegio y la Universidad Nacional de Córdoba son incorporados al Estado Nacional. Comienza el período nacional, en el que la institución se consolida como escuela secundaria pública. La decisión garantizó la continuidad del proyecto educativo más allá de las disputas políticas y los vaivenes de la época.',
+      img: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=75',
+      meta: { 'Año': '1854', 'Tipo': 'Hito institucional', 'Transición': 'Incorporación al Estado Nacional' }
+    },
+    {
+      id: 8, decade: 1875, cat: 'documento', catLabel: 'Documento',
+      title: 'El fin del internado, 1879',
+      shortTitle: 'EL FIN DEL INTERNADO, 1879',
+      year: '1879',
+      tooltip: 'Decreto nacional suprime el régimen de internado. El Monserrat se convierte en colegio de puertas abiertas.',
+      desc: 'El 14 de septiembre de 1878, el Gobierno Nacional decreta la supresión del régimen de internado, que entraría en vigencia el año siguiente. Con esa medida desaparecía el último rasgo del convictorio original: ya no habría alumnos que vivieran entre sus muros. El Monserrat se transformaba definitivamente en un colegio secundario de puertas abiertas.',
+      img: 'https://images.unsplash.com/photo-1465220080731-ee5da83e1428?w=600&q=75',
+      meta: { 'Año': '1879', 'Tipo': 'Decreto nacional', 'Efecto': 'Supresión del internado' }
+    },
+    {
+      id: 9, decade: 1900, cat: 'documento', catLabel: 'Documento',
+      title: 'La UNC como tutora, 1907',
+      shortTitle: 'LA UNC COMO TUTORA, 1907',
+      year: '1907',
+      tooltip: 'El Colegio es transferido a la Universidad Nacional de Córdoba.',
+      desc: 'El Colegio es transferido a la Universidad Nacional de Córdoba, institución a la que pertenece hasta el presente. La anexión no fue solo administrativa: marcó el inicio de una etapa de reformas pedagógicas que reforzaron la impronta humanista del Monserrat, con planes de estudio propios y una identidad académica cada vez más consolidada.',
+      img: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=75',
+      meta: { 'Año': '1907', 'Tipo': 'Transferencia institucional', 'Tutora': 'Universidad Nacional de Córdoba' }
+    },
+    {
+      id: 10, decade: 1900, cat: 'documento', catLabel: 'Documento',
+      title: 'La Reforma Universitaria, 1918',
+      shortTitle: 'LA REFORMA UNIVERSITARIA, 1918',
+      year: '1918',
+      tooltip: 'Egresados del Monserrat lideran la Reforma Universitaria que sacudió América Latina.',
+      desc: 'Egresados del Monserrat encabezan el movimiento estudiantil que sacudiría a la educación superior de toda América Latina. Juan Filloy, Arturo Orgaz y Arturo Capdevila, entre otros, fueron figuras clave en la redacción del Manifiesto Liminar de la Reforma Universitaria. Un hito que nació en las aulas del Colegio y resonó en todo el continente.',
+      img: 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=75',
+      meta: { 'Año': '1918', 'Tipo': 'Hito histórico', 'Figuras': 'Filloy, Orgaz, Capdevila' }
+    },
+    {
+      id: 11, decade: 1925, cat: 'foto', catLabel: 'Fotografía',
+      title: 'La reforma del edificio, 1927',
+      shortTitle: 'LA REFORMA DEL EDIFICIO, 1927',
+      year: '1927',
+      tooltip: 'Arq. Jaime Roca reforma el edificio. Se incorpora la torre con reloj de influencia hispano-islámica.',
+      desc: 'El arquitecto Jaime Roca lleva adelante la última gran reforma edilicia del Colegio. Se respetan rigurosamente el claustro y las bóvedas originales del período colonial, mientras se amplían las aulas y se remodelan las fachadas. Se incorpora además la torre con reloj en el ángulo sudeste del edificio, de influencia hispano-islámica, que desde entonces define el perfil urbano de la Manzana Jesuítica.',
+      img: '../Public/Banner\'s/techo-monserrat-vista-cenital.jpg',
+      meta: { 'Año': '1927', 'Tipo': 'Reforma edilicia', 'Arquitecto': 'Jaime Roca', 'Elemento': 'Torre con reloj' }
+    },
+    {
+      id: 12, decade: 2000, cat: 'foto', catLabel: 'Fotografía',
+      title: 'Las puertas abiertas a las mujeres, 1998',
+      shortTitle: 'LAS PUERTAS ABIERTAS A LAS MUJERES, 1998',
+      year: '1998',
+      tooltip: 'El Monserrat establece régimen mixto e incorpora mujeres como alumnas.',
+      desc: 'Después de más de tres siglos como institución exclusivamente masculina, el Monserrat establece el régimen mixto e incorpora a las mujeres como alumnas. Una transformación que actualizó la promesa fundacional del Colegio: la educación como bien universal, sin distinciones.',
+      img: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=75',
+      meta: { 'Año': '1998', 'Tipo': 'Reforma institucional', 'Cambio': 'Régimen mixto' }
+    },
+    {
+      id: 13, decade: 2000, cat: 'objeto', catLabel: 'Objeto',
+      title: 'Patrimonio de la Humanidad, 2000',
+      shortTitle: 'PATRIMONIO DE LA HUMANIDAD, 2000',
+      year: '2000',
+      tooltip: 'La UNESCO declara la Manzana Jesuítica de Córdoba Patrimonio Cultural de la Humanidad.',
+      desc: 'La UNESCO declara a la Manzana Jesuítica de Córdoba Patrimonio Cultural de la Humanidad. El Colegio Nacional de Monserrat, parte inseparable de ese conjunto histórico, queda reconocido ante el mundo como un bien cultural de valor excepcional. Sus edificios, su historia y su acervo documental trascienden las fronteras nacionales.',
+      img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75',
+      meta: { 'Año': '2000', 'Tipo': 'Reconocimiento internacional', 'Organismo': 'UNESCO', 'Categoría': 'Patrimonio Cultural de la Humanidad' }
+    },
+    {
+      id: 14, decade: 2000, cat: 'publicacion', catLabel: 'Publicación',
+      title: 'Nace el Archivo Histórico, 2005',
+      shortTitle: 'NACE EL ARCHIVO HISTÓRICO, 2005',
+      year: '2005',
+      tooltip: 'El Consejo Asesor crea formalmente el Archivo Histórico y Contemporáneo.',
+      desc: 'El Consejo Asesor del Colegio crea formalmente el Archivo Histórico y Contemporáneo mediante resolución institucional. Su misión: preservar el acervo documental acumulado desde 1687 y garantizar el acceso democrático a sus colecciones. Documentos fundacionales, registros de matrícula, planos, fotografías, un herbario del siglo XIX y miles de tomos manuscritos y mecanografiados encuentran por fin un espacio propio y especializado.',
+      img: 'https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?w=600&q=75',
+      meta: { 'Año': '2005', 'Tipo': 'Resolución institucional', 'Creado por': 'Consejo Asesor del Colegio' }
+    },
+    {
+      id: 15, decade: 2025, cat: 'foto', catLabel: 'Fotografía',
+      title: 'Más de tres siglos sin interrupciones',
+      shortTitle: 'MÁS DE TRES SIGLOS SIN INTERRUPCIONES',
+      year: 'Hoy',
+      tooltip: 'El Archivo custodia una de las colecciones archivísticas más completas de Sudamérica en materia educativa.',
+      desc: 'El Archivo Histórico del Monserrat custodia una de las colecciones archivísticas más completas de Sudamérica en materia educativa. Sus registros ininterrumpidos desde 1687 hasta la actualidad lo convierten en un testimonio único: la memoria escrita de una institución que atravesó la Colonia, la Independencia, las guerras civiles y dos siglos de vida republicana sin cerrar sus puertas ni perder un solo documento.',
+      img: '../Public/Banner\'s/segundo-piso-monserrat.jpg',
+      meta: { 'Período': '1687 – hoy', 'Colección': 'Archivística educativa', 'Alcance': 'Sudamérica', 'Estado': 'Activo' }
+    }
+  ];
+
+  /* ══════════════════════════════════════════
+     ESTADO
+  ══════════════════════════════════════════ */
+  const DECADES = [1675, 1700, 1725, 1750, 1775, 1800, 1825, 1850, 1875, 1900, 1925, 1950, 1975, 2000, 2025];
+  let activeDecade = null; // null = todas
+  let activeFilters = new Set(['foto', 'documento', 'objeto', 'publicacion']);
+  let searchQuery = '';
+  let currentLbIndex = 0;
+  let filteredItems = [];
+
+  /* ══════════════════════════════════════════
+     TIMELINE
+  ══════════════════════════════════════════ */
+  function buildTimeline() {
+    const container = document.getElementById('tlDecades');
+    container.innerHTML = '';
+    DECADES.forEach(d => {
+      const el = document.createElement('div');
+      el.className = 'arch-tl-decade' + (activeDecade === d ? ' active' : '');
+      el.dataset.decade = d;
+      el.innerHTML = `
+        <div class="arch-tl-decade__dot" style="position:relative">
+          <span class="arch-tl-bubble">${d}</span>
+        </div>
+        <span class="arch-tl-decade__label">${d}</span>`;
+      el.addEventListener('click', () => {
+        activeDecade = (activeDecade === d) ? null : d;
+        buildTimeline();
+        renderGrid();
+      });
+      container.appendChild(el);
+    });
+  }
+
+  document.getElementById('tlPrev').addEventListener('click', () => {
+    const idx = activeDecade ? DECADES.indexOf(activeDecade) : -1;
+    if (idx > 0) { activeDecade = DECADES[idx - 1]; buildTimeline(); renderGrid(); }
+    else if (idx === -1 && DECADES.length) { activeDecade = DECADES[DECADES.length - 1]; buildTimeline(); renderGrid(); }
+  });
+  document.getElementById('tlNext').addEventListener('click', () => {
+    const idx = activeDecade ? DECADES.indexOf(activeDecade) : -1;
+    if (idx < DECADES.length - 1) {
+      activeDecade = DECADES[idx + 1 === 0 ? 0 : idx + 1];
+      buildTimeline(); renderGrid();
+    } else if (idx === -1) {
+      activeDecade = DECADES[0]; buildTimeline(); renderGrid();
+    }
+  });
+
+  /* ══════════════════════════════════════════
+     FILTROS & BÚSQUEDA
+  ══════════════════════════════════════════ */
+  document.querySelectorAll('.arch-filter-check input').forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (cb.checked) activeFilters.add(cb.value);
+      else activeFilters.delete(cb.value);
+      renderGrid();
+    });
+  });
+
+  document.getElementById('searchInput').addEventListener('input', e => {
+    searchQuery = e.target.value.toLowerCase().trim();
+    renderGrid();
+  });
+
+  /* ══════════════════════════════════════════
+     RENDER GRID
+  ══════════════════════════════════════════ */
+  function getFiltered() {
+    return ITEMS.filter(item => {
+      const matchDecade = !activeDecade || item.decade === activeDecade;
+      const matchFilter = activeFilters.has(item.cat);
+      const matchSearch = !searchQuery ||
+        item.title.toLowerCase().includes(searchQuery) ||
+        item.desc.toLowerCase().includes(searchQuery) ||
+        item.year.toLowerCase().includes(searchQuery);
+      return matchDecade && matchFilter && matchSearch;
+    });
+  }
+
+  function renderGrid() {
+    filteredItems = getFiltered();
+    const grid = document.getElementById('archGrid');
+    const empty = document.getElementById('archEmpty');
+    const count = document.getElementById('filterCount');
+
+    grid.innerHTML = '';
+    count.innerHTML = `<strong>${filteredItems.length}</strong> ${filteredItems.length === 1 ? 'pieza' : 'piezas'}`;
+
+    if (filteredItems.length === 0) {
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+
+    filteredItems.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'arch-item';
+      el.dataset.id = item.id;
+      el.innerHTML = `
+        <div class="arch-item__img-wrap">
+          <img src="${item.img}" alt="${item.title}" loading="lazy" />
+          <div class="arch-item__tooltip"><p>${item.tooltip}</p></div>
+        </div>
+        <div class="arch-item__footer">
+          <span class="arch-item__cat">${item.catLabel}</span>
+          <p class="arch-item__title">${item.shortTitle}</p>
+        </div>`;
+      el.addEventListener('click', () => openLightbox(i));
+      grid.appendChild(el);
+    });
+  }
+
+  /* ══════════════════════════════════════════
+     LIGHTBOX
+  ══════════════════════════════════════════ */
+  function openLightbox(index) {
+    currentLbIndex = index;
+    const item = filteredItems[index];
+    document.getElementById('lbImg').src = item.img;
+    document.getElementById('lbImg').alt = item.title;
+    document.getElementById('lbCat').textContent = item.catLabel;
+    document.getElementById('lbTitle').textContent = item.title;
+    document.getElementById('lbYear').textContent = item.year;
+    document.getElementById('lbDesc').textContent = item.desc;
+    const meta = document.getElementById('lbMeta');
+    meta.innerHTML = Object.entries(item.meta).map(([k,v]) =>
+      `<div class="arch-lb__meta-row"><strong>${k}</strong><span>${v}</span></div>`
+    ).join('');
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox').addEventListener('click', e => {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  });
+  document.getElementById('lbPrev').addEventListener('click', e => {
+    e.stopPropagation();
+    currentLbIndex = (currentLbIndex - 1 + filteredItems.length) % filteredItems.length;
+    openLightbox(currentLbIndex);
+  });
+  document.getElementById('lbNext').addEventListener('click', e => {
+    e.stopPropagation();
+    currentLbIndex = (currentLbIndex + 1) % filteredItems.length;
+    openLightbox(currentLbIndex);
+  });
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') { currentLbIndex = (currentLbIndex - 1 + filteredItems.length) % filteredItems.length; openLightbox(currentLbIndex); }
+    if (e.key === 'ArrowRight') { currentLbIndex = (currentLbIndex + 1) % filteredItems.length; openLightbox(currentLbIndex); }
+  });
+
+  /* ══════════════════════════════════════════
+     INIT
+  ══════════════════════════════════════════ */
+  buildTimeline();
+  renderGrid();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asociación Civil Duarte y Quirós | Monserratenses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="Public/Favicon/favicon.svg" />
+</head>
+<body>
+
+  <!-- ══════════════════════ NAVBAR ══════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="#" class="active">Inicio</a>
+        <a href="servicios/">Servicios</a>
+        <a href="#mundo">Por el Mundo</a>
+        <a href="/noticias/">Noticias</a>
+        <a href="/cultura/">Cultura</a>
+        <a href="/archivo/">Archivo</a>
+        <a href="/tienda/">Tienda</a>
+        <a href="/contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="/comision/">Comisión Directiva</a>
+            <a href="/carta-fundacional/">Carta Fundacional</a>
+            <a href="/carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="#" onclick="toggleMenu()">Inicio</a>
+      <a href="servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="/noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="/cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="/archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="/tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="/contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="/comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="/carta-fundacional/" onclick="toggleMenu()">Carta Fundacional</a>
+      <a href="/carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+         target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════ HERO ══════════════════════ -->
+  <!--
+    Variables de ajuste MOBILE (modificar aquí):
+      --hero-img-x            : posición horizontal imagen mobile  (0%=izq · 50%=centro · 100%=der)
+      --hero-img-y            : posición vertical imagen mobile    (top · center · bottom · "30%")
+      --hero-text-mobile-x    : desplazamiento horizontal TÍTULO   ("-40px" = izq · "40px" = der)
+      --hero-text-mobile-y    : desplazamiento vertical TÍTULO     ("-60px" = arriba · "60px" = abajo)
+      --hero-font-mobile-scale: escala del título mobile           (0.8 = chico · 1 = normal · 1.2 = grande)
+      --hero-body-mobile-x    : desplazamiento horizontal DESC+BTN ("-40px" = izq · "40px" = der)
+      --hero-body-mobile-y    : desplazamiento vertical DESC+BTN   ("-60px" = arriba · "60px" = abajo)
+
+    Variables de ajuste DESKTOP:
+      --hero-text-x           : desplazamiento horizontal TÍTULO   ("-80px" = izq · "80px" = der)
+      --hero-text-y           : desplazamiento vertical TÍTULO     ("-40px" = arriba · "40px" = abajo)
+      --hero-font-scale       : escala del título desktop          (0.8 = chico · 1 = normal · 1.2 = grande)
+      --hero-body-x           : desplazamiento horizontal DESC+BTN ("-80px" = izq · "80px" = der)
+      --hero-body-y           : desplazamiento vertical DESC+BTN   ("-40px" = arriba · "40px" = abajo)
+  -->
+  <section class="hero" style="
+    --hero-img-x: 0%;
+    --hero-img-y: top;
+    --hero-text-mobile-x: 0px;
+    --hero-text-mobile-y: -60px;
+    --hero-font-mobile-scale: 1.2;
+    --hero-body-mobile-x: 0px;
+    --hero-body-mobile-y: 100px;
+    --hero-text-x: 30px;
+    --hero-text-y: 20px;
+    --hero-font-scale: 1;
+    --hero-body-x: 20px;
+    --hero-body-y: 20px;
+  ">
+    <div class="hero__bg">
+      <!-- Web -->
+      <img class="hero__bg-web"
+        src="Public/Images/torre-monserrat.jpg"
+        alt="Colegio Nacional de Monserrat"
+      />
+      <!-- Mobile -->
+      <img class="hero__bg-mobile"
+        src="Public/Images/torre-monserrat-mobile-1.jpg"
+        alt="Colegio Nacional de Monserrat"
+      />
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Vos también<br />podés ser parte</h1>
+      <div class="hero__divider"></div>
+      <div class="hero__body">
+        <p class="hero__subtitle">
+          Si en el pasado el Monse nos unió, hoy la Asociación nos convoca para reencontrarnos y comenzar a construir juntos.
+        </p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--outline-ivory">Asociate vos también</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ SIEMPRE MONSERRATENSES ══════════════════════ -->
+  <section class="section section--ivory" id="sobre-nosotros">
+    <div class="container about">
+      <div class="about__img fade-in">
+        <img
+          src="Public/Images/fachada-monserrat.jpg"
+          alt="Fachada del Colegio Nacional de Monserrat"
+        />
+      </div>
+      <div class="about__text fade-in fade-in--delay">
+        <h2 class="about__title">Siempre Monserratenses</h2>
+        <p>
+          Somos una Asociación formada por ex estudiantes del Colegio Nacional de Monserrat
+          con el propósito de darle una visibilidad institucional al estamento y trabajar en
+          la extensión de su legado humanista.
+        </p>
+        <p>
+          Nuestro compromiso es acompañar y brindar respuestas concretas a las necesidades
+          de los compañeros, fortaleciendo los lazos que nos unen. Todo lo que hacemos es
+          posible gracias al apoyo y a la colaboración activa de los egresados.
+        </p>
+        <p>
+          Los invitamos a sumarse a este proyecto colectivo que nos convoca a trabajar
+          juntos con entusiasmo y solidaridad por un futuro compartido.
+        </p>
+        <div class="about__ctas">
+          <a href="/carta-fundacional/" class="btn btn--gold-outline">Carta Fundacional</a>
+          <a href="/carta-abierta-a-los-egresados/" class="btn btn--gold-outline">Carta Abierta a los Egresados</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ MISIÓN VISIÓN VALORES ══════════════════════ -->
+  <section class="section section--dark" id="mision">
+    <div class="mvv__bg">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Colegio_Nacional_de_Monserrat%2C_C%C3%B3rdoba%2C_Argentina_-_20110402.jpg/1280px-Colegio_Nacional_de_Monserrat%2C_C%C3%B3rdoba%2C_Argentina_-_20110402.jpg" alt="" aria-hidden="true" />
+    </div>
+    <div class="container">
+
+      <!-- DESKTOP: grilla 3 columnas -->
+      <div class="mvv__grid mvv--desktop fade-in">
+        <div class="mvv__card">
+          <div class="mvv__icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M24 10c0 0 8 5 8 14 0 4-2 7-4 9l-4 5-4-5c-2-2-4-5-4-9 0-9 8-14 8-14z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="24" cy="22" r="3" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3 class="mvv__card-title">Misión</h3>
+          <p class="mvv__card-text">Generar un espacio de participación e integración y cumplir con los objetivos para los que la asociación fue creada. Trabajamos en conjunto con todas las promociones que así lo deseen.</p>
+        </div>
+        <div class="mvv__card">
+          <div class="mvv__icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M24 12l10 4v8c0 6-4.5 10-10 12-5.5-2-10-6-10-12v-8l10-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M19 24l3 3 7-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="mvv__card-title">Visión</h3>
+          <p class="mvv__card-text">Consolidarnos como una asociación que refleje el pensamiento de todas las promociones. Llevar adelante una gestión transparente que genere la confianza y la credibilidad en nuestras acciones.</p>
+        </div>
+        <div class="mvv__card">
+          <div class="mvv__icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M14 27c0 0 3 4 7 4s6-2 8-2 5 2 8 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M14 22l4-4 4 4 4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="mvv__card-title">Valores</h3>
+          <p class="mvv__card-text">Compromiso secular, autonomía sin distinción de sexo, raza o religión, coherencia, transparencia, ética de gestión y búsqueda permanente del bien común para nuestros integrantes.</p>
+        </div>
+      </div><!-- /desktop grid -->
+
+      <!-- MOBILE: slider de tarjetas -->
+      <div class="mvv-slider mvv--mobile fade-in" id="mvvSlider">
+        <div class="mvv-slider__track" id="mvvTrack">
+
+          <div class="mvv__card mvv__card--pill">
+            <div class="mvv__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M24 10c0 0 8 5 8 14 0 4-2 7-4 9l-4 5-4-5c-2-2-4-5-4-9 0-9 8-14 8-14z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <circle cx="24" cy="22" r="3" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="mvv__card-title">Misión</h3>
+            <p class="mvv__card-text">Generar un espacio de participación e integración y cumplir con los objetivos para los que la asociación fue creada. Trabajamos en conjunto con todas las promociones que así lo deseen.</p>
+          </div>
+
+          <div class="mvv__card mvv__card--pill">
+            <div class="mvv__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M24 12l10 4v8c0 6-4.5 10-10 12-5.5-2-10-6-10-12v-8l10-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M19 24l3 3 7-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="mvv__card-title">Visión</h3>
+            <p class="mvv__card-text">Consolidarnos como una asociación que refleje el pensamiento de todas las promociones. Llevar adelante una gestión transparente que genere la confianza y la credibilidad en nuestras acciones.</p>
+          </div>
+
+          <div class="mvv__card mvv__card--pill">
+            <div class="mvv__icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M14 27c0 0 3 4 7 4s6-2 8-2 5 2 8 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M14 22l4-4 4 4 4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="mvv__card-title">Valores</h3>
+            <p class="mvv__card-text">Compromiso secular, autonomía sin distinción de sexo, raza o religión, coherencia, transparencia, ética de gestión y búsqueda permanente del bien común para nuestros integrantes.</p>
+          </div>
+
+        </div><!-- /track -->
+
+        <!-- Controls -->
+        <div class="mvv-slider__controls">
+          <button class="mvv-slider__arrow mvv-slider__arrow--prev" id="mvvPrev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="mvv-slider__dots" id="mvvDots">
+            <button class="mvv-slider__dot active" data-idx="0" aria-label="Misión"></button>
+            <button class="mvv-slider__dot" data-idx="1" aria-label="Visión"></button>
+            <button class="mvv-slider__dot" data-idx="2" aria-label="Valores"></button>
+          </div>
+          <button class="mvv-slider__arrow mvv-slider__arrow--next" id="mvvNext" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div><!-- /mobile slider -->
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════ SUMÁ TU APOYO ══════════════════════ -->
+  <section class="section section--ivory" id="asociate">
+    <div class="container">
+      <div class="support__header fade-in">
+        <span class="support__eyebrow">Comunidad</span>
+        <h2 class="support__title">Sumá tu apoyo</h2>
+      </div>
+
+      <!-- DESKTOP: grilla 2 columnas -->
+      <div class="support__grid support--desktop fade-in">
+        <div class="support__card support__card--primary">
+          <div class="support__card-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M33 17c-5-3-9 0-9 0s-4-3-9 0c-3 2-4 6-2 9l11 12 11-12c2-3 1-7-2-9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="support__card-title">Hacé una donación y sumá tu apoyo</h3>
+          <p class="support__card-text">Cada aporte, por más pequeño que sea, nos permite seguir desarrollando iniciativas que beneficien a estudiantes, egresados y a la comunidad en general.<br><br>Tu donación voluntaria es una forma concreta de retribuir lo recibido en el colegio y de proyectar juntos más oportunidades para todos.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7wq_CL0n0TqcP6r4wt6VaKZJHYr8fGjzpKkm6P7tmAXX4Cg/viewform"
+             target="_blank" class="btn btn--gold">Donar Libremente</a>
+        </div>
+        <div class="support__card support__card--secondary">
+          <div class="support__card-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M16 24c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M24 20v8M20 24h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="support__card-title">Asociate y seguí siendo parte<br>de esta historia</h3>
+          <p class="support__card-text">Formar parte de la Asociación Civil Duarte y Quirós es una manera de seguir conectado con el espíritu monserratense. Al asociarte, contribuís al fortalecimiento de una red de egresados que impulsa proyectos educativos, culturales y solidarios. Tu participación hace la diferencia y mantiene viva la comunidad que nos formó.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+             target="_blank" class="btn btn--gold-outline-dark">Asociáte</a>
+        </div>
+      </div><!-- /desktop -->
+
+      <!-- MOBILE: slider 1 card a la vez, Donar primero -->
+      <div class="support-slider support--mobile fade-in" id="supportSlider">
+        <div class="support-slider__track" id="supportTrack">
+          <div class="support__card support__card--primary">
+            <div class="support__card-icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M33 17c-5-3-9 0-9 0s-4-3-9 0c-3 2-4 6-2 9l11 12 11-12c2-3 1-7-2-9z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="support__card-title">Hacé una donación y sumá tu apoyo</h3>
+            <p class="support__card-text">Cada aporte, por más pequeño que sea, nos permite seguir desarrollando iniciativas que beneficien a estudiantes, egresados y a la comunidad en general.<br><br>Tu donación voluntaria es una forma concreta de retribuir lo recibido en el colegio y de proyectar juntos más oportunidades para todos.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7wq_CL0n0TqcP6r4wt6VaKZJHYr8fGjzpKkm6P7tmAXX4Cg/viewform"
+               target="_blank" class="btn btn--gold">Donar Libremente</a>
+          </div>
+          <div class="support__card support__card--secondary">
+            <div class="support__card-icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M16 24c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M24 20v8M20 24h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="support__card-title">Asociate y seguí siendo parte<br>de esta historia</h3>
+            <p class="support__card-text">Formar parte de la Asociación Civil Duarte y Quirós es una manera de seguir conectado con el espíritu monserratense. Al asociarte, contribuís al fortalecimiento de una red de egresados que impulsa proyectos educativos, culturales y solidarios. Tu participación hace la diferencia y mantiene viva la comunidad que nos formó.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+               target="_blank" class="btn btn--gold-outline-dark">Asociáte</a>
+          </div>
+        </div>
+        <div class="support-slider__controls">
+          <button class="support-slider__arrow support-slider__arrow--prev" id="supportPrev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="support-slider__dots" id="supportDots">
+            <button class="support-slider__dot active" data-idx="0" aria-label="Donar"></button>
+            <button class="support-slider__dot" data-idx="1" aria-label="Asociarme"></button>
+          </div>
+          <button class="support-slider__arrow support-slider__arrow--next" id="supportNext" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div><!-- /mobile slider -->
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════ NOTICIAS ══════════════════════ -->
+  <section class="section section--ivory" id="noticias">
+    <div class="container">
+      <h2 class="section__title--centered fade-in">Noticias y novedades</h2>
+
+      <!-- DESKTOP: slider paginado (igual que antes) -->
+      <div class="news-slider news--desktop fade-in" id="newsSlider">
+        <div class="news-slider__track" id="newsTrack">
+          <!-- Página 1: Tarjeta Liber (más reciente) -->
+          <div class="news-slider__page">
+            <div class="news-grid news-grid--2x2">
+              <a class="news-card" href="/noticias/tarjeta-liber/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Comunidad</span>
+                  <img src="/Public/RedLiber/tarjetamano.png" alt="Información Tarjeta Liber" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">Abril de 2026</span>
+                  <h3 class="news-card__title">Información Tarjeta Liber</h3>
+                  <span class="news-card__link">Leer más →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/noticias/bono-contribucion-2026/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Comunidad</span>
+                  <img src="/noticias/Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="Bono Contribución Anual 2026" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">Abril de 2026</span>
+                  <h3 class="news-card__title">Bono Contribución Anual 2026</h3>
+                  <span class="news-card__link">Leer más →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/noticias/335-aniversario/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Institucional</span>
+                  <img src="/noticias/fotos/Flyer335A.jpg" alt="335° Aniversario" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">1 de agosto, 2022</span>
+                  <h3 class="news-card__title">335° Aniversario del Colegio Nacional de Monserrat</h3>
+                  <span class="news-card__link">Leer más →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/noticias/sede-virtual/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Institucional</span>
+                  <img src="/noticias/fotos/Sede virtual.jpg" alt="Sede Virtual" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">15 de enero, 2022</span>
+                  <h3 class="news-card__title">Sede Virtual: el segundo paso de la Asociación</h3>
+                  <span class="news-card__link">Leer más →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/noticias/reflexion/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Institucional</span>
+                  <img src="/noticias/fotos/Reflexion.jpg" alt="Reflexión" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">10 de enero, 2022</span>
+                  <h3 class="news-card__title">Reflexión sobre el legado monserratense</h3>
+                  <span class="news-card__link">Leer más →</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- Página 2 -->
+          <div class="news-slider__page">
+            <div class="news-grid news-grid--2x2">
+              <a class="news-card" href="/noticias/reflexion/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Institucional</span>
+                  <img src="/noticias/fotos/Reflexion.jpg" alt="Reflexión" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">10 de enero, 2022</span>
+                  <h3 class="news-card__title">Reflexión sobre el legado monserratense</h3>
+                  <span class="news-card__link">Leer más →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/noticias/bienvenida/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Institucional</span>
+                  <img src="/noticias/fotos/Bienvenida.jpg" alt="Bienvenida" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">5 de enero, 2022</span>
+                  <h3 class="news-card__title">Bienvenidos a vuestra asociación</h3>
+                  <span class="news-card__link">Leer más →</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="news-slider__controls" id="newsControls" style="display:none;">
+          <button class="news-slider__arrow news-slider__arrow--prev" id="newsPrev" aria-label="Noticias anteriores">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="news-slider__dots" id="newsDots"></div>
+          <button class="news-slider__arrow news-slider__arrow--next" id="newsNext" aria-label="Noticias siguientes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div><!-- /desktop slider -->
+
+      <!-- MOBILE: 1 fila × 2 col, scroll horizontal -->
+      <div class="news-hscroll news--mobile fade-in">
+        <div class="news-hscroll__track">
+          <a class="news-card" href="/noticias/tarjeta-liber/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Comunidad</span>
+              <img src="/Public/RedLiber/tarjetamano.png" alt="Información Tarjeta Liber" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">Abril de 2026</span>
+              <h3 class="news-card__title">Información Tarjeta Liber</h3>
+              <span class="news-card__link">Leer más →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/noticias/bono-contribucion-2026/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Comunidad</span>
+              <img src="/noticias/Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="Bono Contribución Anual 2026" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">Abril de 2026</span>
+              <h3 class="news-card__title">Bono Contribución Anual 2026</h3>
+              <span class="news-card__link">Leer más →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/noticias/335-aniversario/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Institucional</span>
+              <img src="/noticias/fotos/Flyer335A.jpg" alt="335° Aniversario" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">1 de agosto, 2022</span>
+              <h3 class="news-card__title">335° Aniversario del Colegio Nacional de Monserrat</h3>
+              <span class="news-card__link">Leer más →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/noticias/sede-virtual/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Institucional</span>
+              <img src="/noticias/fotos/Sede virtual.jpg" alt="Sede Virtual" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">15 de enero, 2022</span>
+              <h3 class="news-card__title">Sede Virtual: el segundo paso de la Asociación</h3>
+              <span class="news-card__link">Leer más →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/noticias/reflexion/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Institucional</span>
+              <img src="/noticias/fotos/Reflexion.jpg" alt="Reflexión" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">10 de enero, 2022</span>
+              <h3 class="news-card__title">Reflexión sobre el legado monserratense</h3>
+              <span class="news-card__link">Leer más →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/noticias/bienvenida/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Institucional</span>
+              <img src="/noticias/fotos/Bienvenida.jpg" alt="Bienvenida" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">5 de enero, 2022</span>
+              <h3 class="news-card__title">Bienvenidos a vuestra asociación</h3>
+              <span class="news-card__link">Leer más →</span>
+            </div>
+          </a>
+        </div>
+      </div><!-- /mobile hscroll -->
+
+      <div class="news__more fade-in">
+        <a href="/noticias/" class="btn btn--gold">Ver todas las noticias</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ CONFERENCIAS ══════════════════════ -->
+  <section class="section section--ivory" id="conferencias" style="padding-top: 0;">
+    <div class="container">
+      <h2 class="section__title--centered fade-in" style="margin-bottom:2rem;">Últimas conferencias</h2>
+
+      <!-- DESKTOP: slider paginado -->
+      <div class="news-slider news--desktop fade-in" id="confSlider">
+        <div class="news-slider__track" id="confTrack">
+          <div class="news-slider__page">
+            <div class="news-grid news-grid--2x2">
+              <a class="news-card" href="/cultura/conferencias/tillard/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Conferencia</span>
+                  <img src="/noticias/fotos/Foto-Tillard.jpeg" alt="Tillard" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">2024</span>
+                  <h3 class="news-card__title">Ampliando las fronteras del conocimiento</h3>
+                  <span class="news-card__link">Ver conferencia →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/cultura/conferencias/yanzi-ferreira/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Conferencia</span>
+                  <img src="/noticias/fotos/ramon-pedro-yanzi-ferreira.jpg" alt="Yanzi Ferreira" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">2022</span>
+                  <h3 class="news-card__title">La Universitas Cordubensis y el Monserrat</h3>
+                  <span class="news-card__link">Ver conferencia →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/cultura/conferencias/bustos-arganaraz/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Conferencia</span>
+                  <img src="/noticias/fotos/prudencio-bustos-arganaraz.jpg" alt="Bustos Argañaraz" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">2022</span>
+                  <h3 class="news-card__title">La Córdoba de Duarte y Quirós</h3>
+                  <span class="news-card__link">Ver conferencia →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/cultura/conferencias/domina/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Conferencia</span>
+                  <img src="/noticias/fotos/esteban-domina.jpg" alt="Domina" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">2022</span>
+                  <h3 class="news-card__title">Monserratenses en acción</h3>
+                  <span class="news-card__link">Ver conferencia →</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="news-slider__controls" id="confControls" style="display:none;">
+          <button class="news-slider__arrow news-slider__arrow--prev" id="confPrev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="news-slider__dots" id="confDots"></div>
+          <button class="news-slider__arrow news-slider__arrow--next" id="confNext" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div><!-- /conf desktop slider -->
+
+      <!-- MOBILE: 1 fila × 2 col, scroll horizontal -->
+      <div class="news-hscroll news--mobile fade-in">
+        <div class="news-hscroll__track">
+          <a class="news-card" href="/cultura/conferencias/tillard/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Conferencia</span>
+              <img src="/noticias/fotos/Foto-Tillard.jpeg" alt="Tillard" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">2024</span>
+              <h3 class="news-card__title">Ampliando las fronteras del conocimiento</h3>
+              <span class="news-card__link">Ver conferencia →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/cultura/conferencias/yanzi-ferreira/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Conferencia</span>
+              <img src="/noticias/fotos/ramon-pedro-yanzi-ferreira.jpg" alt="Yanzi Ferreira" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">2022</span>
+              <h3 class="news-card__title">La Universitas Cordubensis y el Monserrat</h3>
+              <span class="news-card__link">Ver conferencia →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/cultura/conferencias/bustos-arganaraz/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Conferencia</span>
+              <img src="/noticias/fotos/prudencio-bustos-arganaraz.jpg" alt="Bustos Argañaraz" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">2022</span>
+              <h3 class="news-card__title">La Córdoba de Duarte y Quirós</h3>
+              <span class="news-card__link">Ver conferencia →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/cultura/conferencias/domina/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Conferencia</span>
+              <img src="/noticias/fotos/esteban-domina.jpg" alt="Domina" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">2022</span>
+              <h3 class="news-card__title">Monserratenses en acción</h3>
+              <span class="news-card__link">Ver conferencia →</span>
+            </div>
+          </a>
+        </div>
+      </div><!-- /conf mobile hscroll -->
+
+      <div class="news__more fade-in">
+        <a href="/cultura/" class="btn btn--gold">Ver todas las conferencias</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ POR EL MUNDO ══════════════════════ -->
+  <section id="mundo" style="background:var(--burgundy-dark); text-align:center; padding: 6rem 0;">
+    <div class="container">
+      <p style="font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem;">Presencia Global</p>
+      <h2 style="font-family:var(--ff-serif); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; letter-spacing:-.02em; color:var(--ivory); margin-bottom:1rem; line-height:1.1;">
+        Por el <em style="font-style:italic; color:var(--gold);">Mundo</em>
+      </h2>
+      <p style="font-size:.97rem; color:rgba(245,240,232,.75); max-width:540px; margin:0 auto; line-height:1.7;">
+        Estamos trabajando en esta sección. Próximamente vas a poder explorar la red de monserratenses distribuidos por el mundo.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ CONTACTO ══════════════════════ -->
+  <section class="section section--dark-footer" id="contacto">
+    <div class="container contact">
+      <div class="contact__form-wrap fade-in">
+        <h2 class="contact__title">Contacto</h2>
+        <form onsubmit="handleSubmit(event)">
+          <div class="contact__row">
+            <input type="text" placeholder="Nombre" required />
+            <input type="text" placeholder="Apellido" required />
+          </div>
+          <input type="email" placeholder="Email" required />
+          <textarea rows="4" placeholder="Mensaje" required></textarea>
+          <button type="submit" class="btn btn--gold">Enviar</button>
+          <p class="form__success" id="formSuccess">¡Mensaje enviado! Te respondemos pronto.</p>
+        </form>
+      </div>
+      <div class="contact__socials-wrap fade-in fade-in--delay">
+        <a href="https://www.youtube.com/@acduarteyquiros1687" target="_blank" aria-label="YouTube" class="social-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/asoc.duarteyquiros/" target="_blank" aria-label="Instagram" class="social-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.2 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.2-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.3 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0-2.2C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 4.9.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7C24 15.7 24 15.3 24 12c0-3.3 0-3.7-.1-4.9-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61581859852513" target="_blank" aria-label="Facebook" class="social-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+        </a>
+        <a href="http://wa.me/5493516367773" target="_blank" aria-label="WhatsApp" class="social-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.45A11.94 11.94 0 0 0 12.01 0C5.47 0 .12 5.36.12 11.9c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.94 11.94 0 0 0 5.7 1.45h.01C18.55 23.8 24 18.44 24 11.9a11.86 11.86 0 0 0-3.48-8.45zm-8.51 18.33a9.9 9.9 0 0 1-5.04-1.38l-.36-.22-3.74.98 1-3.65-.23-.38a9.9 9.9 0 0 1-1.52-5.28c0-5.47 4.44-9.9 9.91-9.9a9.83 9.83 0 0 1 7 2.91 9.83 9.83 0 0 1 2.9 6.99c0 5.47-4.45 9.93-9.92 9.93zm5.44-7.42c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.64.07a8.1 8.1 0 0 1-2.38-1.47 8.94 8.94 0 0 1-1.65-2.05c-.17-.3 0-.46.13-.6s.3-.35.44-.52.2-.3.3-.5.05-.37-.02-.52-.67-1.61-.92-2.2c-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.06 2.88 1.21 3.08 2.1 3.2 5.08 4.49a17.1 17.1 0 0 0 1.7.63c.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.19-.57-.34z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- ── Sliders & layout inline styles ── -->
+  <style>
+
+    /* ══════════════════════════════════════
+       MVV — desktop grid / mobile slider
+    ══════════════════════════════════════ */
+    .mvv--desktop { display: grid; }
+    .mvv--mobile  { display: none;  }
+
+    /* Tarjeta pill para el slider mobile */
+    .mvv__card--pill {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(201,168,76,.25);
+      border-radius: 1.25rem;
+      padding: 2.5rem 2rem 2.5rem;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 8px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(201,168,76,.12);
+      position: relative;
+    }
+    .mvv__card--pill::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 3rem; height: 3px;
+      background: var(--gold, #C9A84C);
+      border-radius: 0 0 4px 4px;
+    }
+    .mvv__card--pill .mvv__icon  { color: var(--gold, #C9A84C); }
+    .mvv__card--pill .mvv__card-title { color: var(--ivory, #F5F0E8); font-size: 1.4rem; }
+    .mvv__card--pill .mvv__card-text  { color: rgba(245,240,232,.85); font-size: .95rem; line-height: 1.7; }
+
+    /* MVV slider */
+    .mvv-slider {
+      position: relative;
+      overflow: hidden;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .mvv-slider__track {
+      display: flex;
+      transition: transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .mvv-slider__track .mvv__card {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    .mvv-slider__controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .mvv-slider__arrow {
+      background: rgba(245,240,232,.15);
+      border: 1px solid rgba(245,240,232,.3);
+      color: var(--ivory, #F5F0E8);
+      width: 2.4rem; height: 2.4rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .mvv-slider__arrow:hover { background: rgba(245,240,232,.28); transform: scale(1.08); }
+    .mvv-slider__arrow svg  { width: 1rem; height: 1rem; }
+    .mvv-slider__dots       { display: flex; gap: .55rem; }
+    .mvv-slider__dot {
+      width: .55rem; height: .55rem;
+      border-radius: 50%;
+      border: none;
+      background: rgba(245,240,232,.35);
+      cursor: pointer;
+      transition: background .25s, transform .2s;
+      padding: 0;
+    }
+    .mvv-slider__dot.active { background: var(--gold, #C9A84C); transform: scale(1.25); }
+
+
+    /* ══════════════════════════════════════
+       NOTICIAS / CONFERENCIAS
+       Desktop: slider paginado
+       Mobile:  scroll horizontal 1 fila × 2 col visibles
+    ══════════════════════════════════════ */
+    .news--desktop { display: block; }
+    .news--mobile  { display: none;  }
+
+    /* Desktop slider */
+    .news-slider { position: relative; overflow: hidden; }
+    .news-slider__track {
+      display: flex;
+      transition: transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .news-slider__page { flex: 0 0 100%; width: 100%; }
+
+    .news-grid--2x2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .news-slider__controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+    .news-slider__arrow {
+      background: var(--ivory, #F5F0E8);
+      border: 1px solid rgba(107,27,42,.2);
+      color: var(--burgundy, #6B1B2A);
+      width: 2.4rem; height: 2.4rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .news-slider__arrow:hover { background: rgba(107,27,42,.08); transform: scale(1.08); }
+    .news-slider__arrow svg  { width: 1rem; height: 1rem; }
+    .news-slider__dots       { display: flex; gap: .55rem; }
+    .news-slider__dot {
+      width: .55rem; height: .55rem;
+      border-radius: 50%;
+      border: none;
+      background: rgba(107,27,42,.25);
+      cursor: pointer;
+      transition: background .25s, transform .2s;
+      padding: 0;
+    }
+    .news-slider__dot.active { background: var(--burgundy, #6B1B2A); transform: scale(1.25); }
+
+    /* Mobile hscroll — 1 fila, 2 cards visibles, resto arrastrando */
+    .news-hscroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: .5rem;
+    }
+    .news-hscroll::-webkit-scrollbar { display: none; }
+    .news-hscroll__track {
+      display: flex;
+      gap: 1rem;
+      /* Cada card ocupa ~46% del ancho → 2 visibles + pico del 3° */
+      padding: .25rem .25rem .5rem;
+    }
+    .news-hscroll__track .news-card {
+      flex: 0 0 calc(50% - .5rem);
+      min-width: 0;
+    }
+
+
+    /* ══════════════════════════════════════
+       SUMÁ TU APOYO
+       Desktop: grilla 2 col
+       Mobile:  slider 1 card a la vez
+    ══════════════════════════════════════ */
+    .support--desktop { display: grid; }
+    .support--mobile  { display: none;  }
+
+    /* Support slider */
+    .support-slider {
+      position: relative;
+      overflow: hidden;
+    }
+    .support-slider__track {
+      display: flex;
+      transition: transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .support-slider__track .support__card {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    .support-slider__controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .support-slider__arrow {
+      background: rgba(107,27,42,.08);
+      border: 1px solid rgba(107,27,42,.2);
+      color: var(--burgundy, #6B1B2A);
+      width: 2.4rem; height: 2.4rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .support-slider__arrow:hover { background: rgba(107,27,42,.16); transform: scale(1.08); }
+    .support-slider__arrow svg  { width: 1rem; height: 1rem; }
+    .support-slider__dots       { display: flex; gap: .55rem; }
+    .support-slider__dot {
+      width: .55rem; height: .55rem;
+      border-radius: 50%;
+      border: none;
+      background: rgba(107,27,42,.25);
+      cursor: pointer;
+      transition: background .25s, transform .2s;
+      padding: 0;
+    }
+    .support-slider__dot.active { background: var(--burgundy, #6B1B2A); transform: scale(1.25); }
+
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — punto de corte 860px
+    ══════════════════════════════════════ */
+    @media (max-width: 860px) {
+      /* MVV */
+      .mvv--desktop { display: none;  }
+      .mvv--mobile  { display: block; }
+      /* Noticias / Conferencias */
+      .news--desktop { display: none;  }
+      .news--mobile  { display: block; }
+      /* Sumá tu apoyo */
+      .support--desktop { display: none;  }
+      .support--mobile  { display: block; }
+    }
+
+  </style>
+
+  <script>
+
+    /* ── MVV Slider (mobile only) ── */
+    (function () {
+      var track = document.getElementById('mvvTrack');
+      var dots  = document.querySelectorAll('#mvvDots .mvv-slider__dot');
+      var cards = track ? track.querySelectorAll('.mvv__card') : [];
+      var total = cards.length, cur = 0;
+      if (!track || total === 0) return;
+
+      function goTo(n) {
+        cur = (n + total) % total;
+        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+      }
+      var prev = document.getElementById('mvvPrev');
+      var next = document.getElementById('mvvNext');
+      if (prev) prev.addEventListener('click', function() { goTo(cur - 1); });
+      if (next) next.addEventListener('click', function() { goTo(cur + 1); });
+      dots.forEach(function(d) {
+        d.addEventListener('click', function() { goTo(+d.dataset.idx); });
+      });
+      var startX = 0;
+      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend',   function(e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? cur + 1 : cur - 1);
+      });
+    })();
+
+    /* ── News Slider (desktop paginado) ── */
+    (function () {
+      var track    = document.getElementById('newsTrack');
+      var dotsWrap = document.getElementById('newsDots');
+      var controls = document.getElementById('newsControls');
+      var pages    = track ? track.querySelectorAll('.news-slider__page') : [];
+      var total = pages.length, cur = 0;
+      if (total <= 1) return;
+
+      controls.style.display = '';
+      for (var i = 0; i < total; i++) {
+        var d = document.createElement('button');
+        d.className = 'news-slider__dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Página ' + (i + 1));
+        d.dataset.idx = i;
+        dotsWrap.appendChild(d);
+      }
+      function goTo(n) {
+        cur = (n + total) % total;
+        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+        dotsWrap.querySelectorAll('.news-slider__dot').forEach(function(d, i) {
+          d.classList.toggle('active', i === cur);
+        });
+      }
+      document.getElementById('newsPrev').addEventListener('click', function() { goTo(cur - 1); });
+      document.getElementById('newsNext').addEventListener('click', function() { goTo(cur + 1); });
+      dotsWrap.addEventListener('click', function(e) {
+        if (e.target.dataset.idx !== undefined) goTo(+e.target.dataset.idx);
+      });
+      var startX = 0;
+      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend',   function(e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? cur + 1 : cur - 1);
+      });
+    })();
+
+    /* ── Conferencias Slider (desktop paginado) ── */
+    (function () {
+      var track    = document.getElementById('confTrack');
+      var dotsWrap = document.getElementById('confDots');
+      var controls = document.getElementById('confControls');
+      var pages    = track ? track.querySelectorAll('.news-slider__page') : [];
+      var total = pages.length, cur = 0;
+      if (total <= 1) return;
+
+      controls.style.display = '';
+      for (var i = 0; i < total; i++) {
+        var d = document.createElement('button');
+        d.className = 'news-slider__dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Página ' + (i + 1));
+        d.dataset.idx = i;
+        dotsWrap.appendChild(d);
+      }
+      function goTo(n) {
+        cur = (n + total) % total;
+        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+        dotsWrap.querySelectorAll('.news-slider__dot').forEach(function(d, i) {
+          d.classList.toggle('active', i === cur);
+        });
+      }
+      document.getElementById('confPrev').addEventListener('click', function() { goTo(cur - 1); });
+      document.getElementById('confNext').addEventListener('click', function() { goTo(cur + 1); });
+      dotsWrap.addEventListener('click', function(e) {
+        if (e.target.dataset.idx !== undefined) goTo(+e.target.dataset.idx);
+      });
+      var startX = 0;
+      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend',   function(e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? cur + 1 : cur - 1);
+      });
+    })();
+
+    /* ── Support Slider (mobile, 1 card a la vez) ── */
+    (function () {
+      var track = document.getElementById('supportTrack');
+      var dots  = document.querySelectorAll('#supportDots .support-slider__dot');
+      var cards = track ? track.querySelectorAll('.support__card') : [];
+      var total = cards.length, cur = 0;
+      if (!track || total === 0) return;
+
+      function goTo(n) {
+        cur = (n + total) % total;
+        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+      }
+      var prev = document.getElementById('supportPrev');
+      var next = document.getElementById('supportNext');
+      if (prev) prev.addEventListener('click', function() { goTo(cur - 1); });
+      if (next) next.addEventListener('click', function() { goTo(cur + 1); });
+      dots.forEach(function(d) {
+        d.addEventListener('click', function() { goTo(+d.dataset.idx); });
+      });
+      var startX = 0;
+      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend',   function(e) {
+        var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? cur + 1 : cur - 1);
+      });
+    })();
+
+  </script>
+
+  <!-- ── Floating Redes Button ── -->
+  <style>
+    .sf {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 9998;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: .6rem;
+    }
+    .sf__panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      background: #4E1320;
+      border: 1px solid rgba(201,168,76,.35);
+      border-radius: 1rem;
+      padding: .75rem .65rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,.45);
+      opacity: 0;
+      transform: translateY(12px) scale(.95);
+      pointer-events: none;
+      transition: opacity .3s ease, transform .3s ease;
+    }
+    .sf__panel.is-open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .sf__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      color: #F5F0E8;
+      background: rgba(201,168,76,.15);
+      transition: background .2s, transform .2s;
+    }
+    .sf__icon:hover {
+      background: rgba(201,168,76,.35);
+      transform: scale(1.12);
+    }
+    .sf__icon svg { width: 1.25rem; height: 1.25rem; fill: currentColor; }
+    .sf__divider {
+      width: 1.5rem;
+      height: 1px;
+      background: rgba(201,168,76,.25);
+      margin: .1rem 0;
+    }
+    .sf__btn {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      background: #6B1B2A;
+      color: #C9A84C;
+      border: 1px solid rgba(201,168,76,.5);
+      border-radius: 2rem;
+      padding: .5rem 1.1rem;
+      font-family: var(--ff-sans, 'Source Sans 3', sans-serif);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,.35);
+      transition: background .2s, transform .15s;
+      outline: none;
+      border-width: 1px;
+    }
+    .sf__btn:hover { background: #4E1320; transform: translateY(-1px); }
+    .sf__btn svg { width: 1rem; height: 1rem; fill: currentColor; }
+
+    /* ── Botón Bono ── */
+    .sf__bono-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: .4rem;
+    }
+    .sf__bono-tooltip {
+      position: absolute;
+      bottom: calc(100% + .5rem);
+      right: 0;
+      background: #4E1320;
+      color: #F5F0E8;
+      border: 1px solid rgba(201,168,76,.45);
+      border-radius: .75rem;
+      padding: .6rem .9rem;
+      font-family: var(--ff-sans, 'Source Sans 3', sans-serif);
+      font-size: .8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 6px 20px rgba(0,0,0,.5);
+      opacity: 0;
+      transform: translateY(6px) scale(.95);
+      pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease;
+    }
+    .sf__bono-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      right: 1rem;
+      border: 6px solid transparent;
+      border-top-color: #4E1320;
+    }
+    .sf__bono-wrap:hover .sf__bono-tooltip,
+    .sf__bono-tooltip.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .sf__bono-btn {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      background: #C9A84C;
+      color: #4E1320;
+      border: none;
+      border-radius: 2rem;
+      padding: .5rem 1.1rem;
+      font-family: var(--ff-sans, 'Source Sans 3', sans-serif);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,.35);
+      transition: background .2s, transform .15s;
+      text-decoration: none;
+    }
+    .sf__bono-btn:hover { background: #E2C87A; transform: translateY(-1px); }
+    .sf__bono-btn svg { width: 1rem; height: 1rem; fill: currentColor; }
+  </style>
+
+  <div class="sf" id="sfWrap" aria-label="Redes sociales">
+    <div class="sf__panel" id="sfPanel" role="dialog" aria-label="Nuestras redes">
+      <a class="sf__icon" href="https://www.youtube.com/@acduarteyquiros1687" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+      </a>
+      <a class="sf__icon" href="https://www.instagram.com/asoc.duarteyquiros/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4a4.4 4.4 0 0 1 1.6 1.1 4.4 4.4 0 0 1 1.1 1.6c.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2a4.4 4.4 0 0 1-1.1 1.6 4.4 4.4 0 0 1-1.6 1.1c-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4a4.4 4.4 0 0 1-1.6-1.1 4.4 4.4 0 0 1-1.1-1.6c-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2A4.4 4.4 0 0 1 3.8 3.3a4.4 4.4 0 0 1 1.6-1.1c.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0-2.2C8.7 0 8.3 0 7 .1 5.7.2 4.8.4 4 .7A6.6 6.6 0 0 0 1.6 2.2 6.6 6.6 0 0 0 .1 4.6C-.2 5.4 0 6.3 0 7.6 0 8.9 0 9.3 0 12c0 2.7 0 3.1.1 4.4.1 1.3.3 2.2.6 3a6.6 6.6 0 0 0 1.5 2.4A6.6 6.6 0 0 0 4.6 23.4c.8.3 1.7.5 3 .6C8.9 24 9.3 24 12 24c2.7 0 3.1 0 4.4-.1 1.3-.1 2.2-.3 3-.6a6.6 6.6 0 0 0 2.4-1.5 6.6 6.6 0 0 0 1.5-2.4c.3-.8.5-1.7.6-3C24 15.1 24 14.7 24 12c0-2.7 0-3.1-.1-4.4-.1-1.3-.3-2.2-.6-3a6.6 6.6 0 0 0-1.5-2.4A6.6 6.6 0 0 0 19.4.7C18.6.4 17.7.2 16.4.1 15.1 0 14.7 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+      </a>
+      <a class="sf__icon" href="https://www.facebook.com/profile.php?id=61581859852513" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+      </a>
+      <div class="sf__divider"></div>
+      <a class="sf__icon" href="http://wa.me/5493516367773" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M20.52 3.45A11.94 11.94 0 0 0 12.03 0C5.44 0 .1 5.33.1 11.9c0 2.1.55 4.15 1.6 5.95L0 24l6.35-1.66a11.96 11.96 0 0 0 5.68 1.44h.01c6.58 0 11.92-5.33 11.92-11.9 0-3.18-1.24-6.17-3.44-8.43zM12.04 21.78a9.93 9.93 0 0 1-5.06-1.38l-.36-.22-3.77.99 1-3.67-.24-.38a9.87 9.87 0 0 1-1.52-5.23c0-5.46 4.45-9.9 9.93-9.9a9.86 9.86 0 0 1 7.02 2.91 9.83 9.83 0 0 1 2.9 6.99c0 5.47-4.45 9.89-9.9 9.89zm5.44-7.41c-.3-.15-1.76-.87-2.03-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51H7.4c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.87 1.21 3.07c.15.2 2.09 3.19 5.06 4.47.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.34z"/></svg>
+      </a>
+    </div>
+
+    <button class="sf__btn" id="sfBtn" aria-expanded="false" aria-controls="sfPanel">
+      <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7A3.32 3.32 0 0 0 9 12c0-.24-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 0 0 18 8a3 3 0 1 0-3-3c0 .24.04.47.09.7L8.04 9.81A3 3 0 0 0 6 9a3 3 0 0 0 0 6 3 3 0 0 0 2.04-.81l7.12 4.16A2.97 2.97 0 0 0 15 19.5a3 3 0 1 0 3-3.42z"/></svg>
+      Redes
+    </button>
+
+    <div class="sf__bono-wrap">
+      <div class="sf__bono-tooltip" id="bonoTooltip">🎟️ Entrá acá para ver nuestro bono vigente</div>
+      <a class="sf__bono-btn" href="/noticias/bono-contribucion-2026/" id="bonoBtn">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Bono
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('sfBtn');
+      var panel = document.getElementById('sfPanel');
+      var autoCloseTimer = null;
+
+      function openPanel() {
+        panel.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+      function closePanel() {
+        panel.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        clearTimeout(autoCloseTimer);
+      }
+      function toggle() {
+        if (panel.classList.contains('is-open')) {
+          closePanel();
+        } else {
+          openPanel();
+          autoCloseTimer = setTimeout(closePanel, 4000);
+        }
+      }
+
+      btn.addEventListener('click', toggle);
+
+      // Auto-open after 3s, auto-close 4s later (total 7s)
+      setTimeout(function () {
+        openPanel();
+        autoCloseTimer = setTimeout(closePanel, 4000);
+      }, 3000);
+
+      // Bono tooltip: mostrar automáticamente al cargar, ocultar al click
+      var bonoTooltip = document.getElementById('bonoTooltip');
+      if (bonoTooltip) {
+        // Mostrar tooltip al inicio por 5 segundos
+        setTimeout(function () {
+          bonoTooltip.classList.add('is-visible');
+          setTimeout(function () {
+            bonoTooltip.classList.remove('is-visible');
+          }, 5000);
+        }, 1200);
+      }
+    })();
+  </script>
+</body>
+</html>

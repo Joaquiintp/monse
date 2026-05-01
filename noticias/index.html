@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noticias | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../Public/Favicon/favicon.svg" />
+  <style>
+    /* ── Banner ── */
+    .page-hero {
+      position: relative;
+      padding: 6rem 0 4rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../Public/Banner\'s/fuente-patio-menor-monserrat.jpg');
+      background-size: cover;
+      background-position: center var(--banner-y, 40%);
+      z-index: 0;
+    }
+    .page-hero__content {
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: .75rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.65), 0 1px 4px rgba(0,0,0,.5);
+    }
+    .page-hero__sub {
+      color: rgba(245,240,232,.92);
+      font-size: 1.05rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    }
+
+    /* ── Filtro de categorías ── */
+    .news-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    .news-filter-btn {
+      background: transparent;
+      border: 1.5px solid rgba(107,27,42,.2);
+      color: var(--text-muted);
+      font-family: var(--ff-sans);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .45rem 1.1rem;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .news-filter-btn:hover,
+    .news-filter-btn.active {
+      background: var(--burgundy-dark);
+      border-color: var(--burgundy-dark);
+      color: var(--ivory);
+    }
+
+    /* ── Grid ampliada ── */
+    .news-grid--full {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .news-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.07);
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    }
+    .news-card__img {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: var(--cream);
+      flex-shrink: 0;
+    }
+    .news-card__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .news-card:hover .news-card__img img { transform: scale(1.05); }
+    /* Badge superpuesto */
+    .news-card__tag {
+      position: absolute;
+      top: .6rem;
+      left: .6rem;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      background: var(--burgundy-dark);
+      padding: .22rem .6rem;
+      border-radius: 99px;
+      z-index: 1;
+    }
+    .news-card__body {
+      padding: .75rem .9rem .9rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .news-card__date {
+      font-size: .65rem;
+      color: var(--text-muted);
+      margin-bottom: .3rem;
+      letter-spacing: .04em;
+    }
+    .news-card__title {
+      font-family: var(--ff-serif);
+      font-size: .9rem;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: .5rem;
+    }
+    .news-card__link {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: color var(--transition);
+      margin-top: auto;
+    }
+    .news-card:hover .news-card__link { color: var(--burgundy); }
+
+    /* ── Destacada ── */
+    .news-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.07);
+      margin-bottom: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow var(--transition);
+      grid-column: 1 / -1;
+    }
+    .news-featured:hover { box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+    .news-featured__img {
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .news-featured__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .news-featured:hover .news-featured__img img { transform: scale(1.04); }
+
+    /* Badge "Noticia reciente" — solo desktop */
+    .news-featured__badge {
+      position: absolute;
+      top: .75rem; left: .75rem;
+      background: var(--burgundy-dark);
+      color: var(--ivory);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .28rem .7rem;
+      border-radius: 99px;
+      z-index: 1;
+    }
+    /* Tag sobre imagen — solo mobile (oculto en desktop) */
+    .news-featured__tag-mobile { display: none; }
+
+    /* Body desktop */
+    .news-featured__body {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    /* Tag en body desktop: estático */
+    .news-featured__tag-body {
+      position: static;
+      display: inline-block;
+      margin-bottom: .65rem;
+      align-self: flex-start;
+    }
+    /* Título desktop */
+    .news-featured__title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    /* Descripción desktop */
+    .news-featured__desc {
+      font-size: .9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+    .news-featured__body .news-card__link { font-size: .8rem; }
+
+    /* ── Mobile: colapsa como card vertical idéntica al resto ── */
+    @media (max-width: 900px) {
+      .news-featured {
+        grid-template-columns: 1fr;
+        grid-column: auto;
+      }
+      .news-featured__img {
+        height: auto;
+        aspect-ratio: 16 / 9;
+      }
+      /* Intercambio de badges: desktop oculto, mobile visible */
+      .news-featured__badge      { display: none; }
+      .news-featured__tag-mobile { display: block; }
+      /* Tag del body: oculto en mobile */
+      .news-featured__tag-body   { display: none; }
+      /* Body compacto igual que .news-card__body */
+      .news-featured__body {
+        padding: .75rem .9rem .9rem;
+      }
+      /* Título compacto igual que las demás cards */
+      .news-featured__title {
+        font-size: .88rem;
+        margin-bottom: .4rem;
+      }
+      /* Descripción larga: oculta en mobile */
+      .news-featured__desc { display: none; }
+    }
+
+    @media (max-width: 580px) {
+      .news-grid--full { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 380px) {
+      .news-grid--full { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../">Inicio</a>
+        <a href="../servicios/">Servicios</a>
+        <a href="../#mundo">Por el Mundo</a>
+        <a href="./" class="active">Noticias</a>
+        <a href="../cultura/">Cultura</a>
+        <a href="../archivo/">Archivo</a>
+        <a href="../tienda/">Tienda</a>
+        <a href="../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../comision/">Comisión Directiva</a>
+            <a href="../carta-fundacional/">Carta Fundacional</a>
+            <a href="../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../" onclick="toggleMenu()">Inicio</a>
+      <a href="../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="./" onclick="toggleMenu()">Noticias</a>
+      <a href="../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+         target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <!-- BANNER -->
+  <div class="page-hero" style="--banner-y: 93%">
+    <div class="page-hero__bg"></div>
+    <div class="container page-hero__content">
+      <h1 class="page-hero__title">Noticias y Novedades</h1>
+      <p class="page-hero__sub">Todo lo que pasa en la comunidad monserratense</p>
+    </div>
+  </div>
+
+  <!-- NOTICIAS -->
+  <section class="section section--ivory">
+    <div class="container">
+
+      <div class="news-filters fade-in">
+        <button class="news-filter-btn active">Todas</button>
+        <button class="news-filter-btn">Institucional</button>
+        <button class="news-filter-btn">Cultura</button>
+        <button class="news-filter-btn">Académico</button>
+        <button class="news-filter-btn">Comunidad</button>
+      </div>
+
+      <div class="news-grid--full">
+
+        <!-- Destacada: Tarjeta Liber (más reciente) -->
+        <a class="news-featured fade-in" href="./tarjeta-liber/">
+          <div class="news-featured__img">
+            <span class="news-featured__badge">Noticia reciente</span>
+            <span class="news-card__tag news-featured__tag-mobile">Comunidad</span>
+            <img src="../Public/RedLiber/tarjetamano.png" alt="Información Tarjeta Liber" style="object-position: center center;" />
+          </div>
+          <div class="news-featured__body">
+            <span class="news-card__tag news-featured__tag-body">Comunidad · Red Liber</span>
+            <span class="news-card__date">Abril de 2026</span>
+            <h2 class="news-card__title news-featured__title">Información Tarjeta Liber</h2>
+            <p class="news-featured__desc">
+              A partir del mes de mayo, quienes hayan completado el formulario de inscripción tendrán a disposición su tarjeta personalizada como socio. Conocé los detalles sobre las clases de socios, beneficios de la Red LIBER y cómo acceder nuevamente al Colegio.
+            </p>
+            <span class="news-card__link">Leer nota completa →</span>
+          </div>
+        </a>
+
+        <!-- Bono Contribución 2026 -->
+        <a class="news-card fade-in" href="./bono-contribucion-2026/">
+          <div class="news-card__img">
+            <span class="news-card__tag">Comunidad</span>
+            <img src="./Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="Bono Contribución Anual 2026" />
+          </div>
+          <div class="news-card__body">
+            <span class="news-card__date">Abril de 2026</span>
+            <h3 class="news-card__title">Bono Contribución Anual 2026</h3>
+            <span class="news-card__link">Leer más →</span>
+          </div>
+        </a>
+        <a class="news-card fade-in" href="./335-aniversario/">
+          <div class="news-card__img">
+            <span class="news-card__tag">Institucional</span>
+            <img src="./fotos/Flyer335A.jpg" alt="335° Aniversario" />
+          </div>
+          <div class="news-card__body">
+            <span class="news-card__date">1 de agosto, 2022</span>
+            <h3 class="news-card__title">335° Aniversario del Colegio Nacional de Monserrat</h3>
+            <span class="news-card__link">Leer más →</span>
+          </div>
+        </a>
+
+        <!-- Sede Virtual -->
+        <a class="news-card fade-in" href="./sede-virtual/">
+          <div class="news-card__img">
+            <span class="news-card__tag">Institucional</span>
+            <img src="./fotos/Sede virtual.jpg" alt="Sede Virtual" />
+          </div>
+          <div class="news-card__body">
+            <span class="news-card__date">15 de enero, 2022</span>
+            <h3 class="news-card__title">Sede Virtual: el segundo paso de la Asociación</h3>
+            <span class="news-card__link">Leer más →</span>
+          </div>
+        </a>
+
+        <!-- Reflexión -->
+        <a class="news-card fade-in fade-in--delay" href="./reflexion/">
+          <div class="news-card__img">
+            <span class="news-card__tag">Institucional</span>
+            <img src="./fotos/Reflexion.jpg" alt="Reflexión" />
+          </div>
+          <div class="news-card__body">
+            <span class="news-card__date">10 de enero, 2022</span>
+            <h3 class="news-card__title">Reflexión sobre el legado monserratense</h3>
+            <span class="news-card__link">Leer más →</span>
+          </div>
+        </a>
+
+        <!-- Bienvenida -->
+        <a class="news-card fade-in fade-in--delay" href="./bienvenida/">
+          <div class="news-card__img">
+            <span class="news-card__tag">Institucional</span>
+            <img src="./fotos/Bienvenida.jpg" alt="Bienvenida" />
+          </div>
+          <div class="news-card__body">
+            <span class="news-card__date">5 de enero, 2022</span>
+            <h3 class="news-card__title">Bienvenidos a vuestra asociación</h3>
+            <span class="news-card__link">Leer más →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="news-pagination fade-in" style="display:none"></div>
+
+    </div>
+  </section>
+
+  <!-- SUMA TU APOYO -->
+  <section style="background: var(--burgundy-dark); padding: 5rem 0; text-align: center;">
+    <div class="container">
+      <p style="font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-light); margin-bottom:.75rem;">Comunidad Monserratense</p>
+      <h2 style="font-family:var(--ff-serif); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; letter-spacing:-.02em; line-height:1.05; color:var(--ivory); margin-bottom:.85rem;">
+        Sumá tu apoyo a la <em style="font-style:italic; color:var(--gold-light);">comunidad</em>
+      </h2>
+      <p style="font-size:.97rem; color:rgba(245,240,232,.72); max-width:540px; margin:0 auto 2.25rem; line-height:1.7;">
+        Cada egresado que se asocia fortalece la red, amplía los proyectos culturales y sostiene el legado humanista del Monserrat. Ser parte es hacer que todo esto sea posible.
+      </p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--gold">Asociarme ahora</a>
+        <a href="../contacto/" class="btn btn--outline-ivory">Tengo una pregunta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    // Filtros de categorías (UI only por ahora)
+    document.querySelectorAll('.news-filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.news-filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

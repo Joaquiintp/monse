@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comisión Directiva | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../Public/Favicon/favicon.svg" />
+  <style>
+    /* Banner */
+    .page-hero {
+      position: relative;
+      padding: 6rem 0 4rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../Public/Banner\'s/fachada-monserrat.jpg');
+      background-size: cover;
+      background-position: center var(--banner-y, 40%);
+      z-index: 0;
+    }
+    .page-hero__content {
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: .75rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.65), 0 1px 4px rgba(0,0,0,.5);
+    }
+    .page-hero__sub {
+      color: rgba(245,240,232,.9);
+      font-size: 1.05rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    }
+
+    /* Comisión */
+    .cd-section {
+      padding: 5rem 0 6rem;
+    }
+    .cd-intro {
+      max-width: 620px;
+      margin: 0 auto 4rem;
+      text-align: center;
+    }
+    .cd-intro__eyebrow {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      background: rgba(78,19,32,.07);
+      padding: .3rem .9rem;
+      border-radius: 99px;
+      margin-bottom: 1.25rem;
+    }
+    .cd-intro__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .cd-intro__text {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    /* Grid de cargos */
+    .cd-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .cd-card {
+      background: var(--white);
+      border: 1px solid rgba(78,19,32,.1);
+      border-radius: 12px;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .cd-card:hover {
+      box-shadow: 0 10px 32px rgba(0,0,0,.09);
+      transform: translateY(-3px);
+    }
+    .cd-card--president {
+      background: var(--burgundy-dark);
+      border-color: transparent;
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
+    .cd-card--president .cd-card__role,
+    .cd-card--president .cd-card__name {
+      color: var(--ivory);
+    }
+    .cd-card--president .cd-card__role {
+      color: var(--gold);
+    }
+    .cd-card--president .cd-card__icon {
+      background: rgba(255,255,255,.1);
+      color: var(--gold);
+    }
+    .cd-card__icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: rgba(78,19,32,.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--burgundy);
+      flex-shrink: 0;
+    }
+    .cd-card__role {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+    }
+    .cd-card__name {
+      font-family: var(--ff-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      letter-spacing: -.01em;
+      line-height: 1.2;
+    }
+
+    /* Divider entre grupos */
+    .cd-divider {
+      margin: 3rem 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cd-divider span {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .cd-divider::before,
+    .cd-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(78,19,32,.12);
+    }
+
+    @media (max-width: 600px) {
+      .cd-card--president { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .cd-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../">Inicio</a>
+        <a href="../servicios/">Servicios</a>
+        <a href="../#mundo">Por el Mundo</a>
+        <a href="../noticias/">Noticias</a>
+        <a href="../cultura/">Cultura</a>
+        <a href="../archivo/">Archivo</a>
+        <a href="../tienda/">Tienda</a>
+        <a href="../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../comision/" class="active">Comisión Directiva</a>
+            <a href="../carta-fundacional/">Carta Fundacional</a>
+            <a href="../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../" onclick="toggleMenu()">Inicio</a>
+      <a href="../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../comision/" onclick="toggleMenu()" class="active">Comisión Directiva</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+         target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <!-- BANNER -->
+  <div class="page-hero" style="--banner-y: 40%">
+    <div class="page-hero__bg"></div>
+    <div class="container page-hero__content">
+      <h1 class="page-hero__title">Comisión Directiva</h1>
+      <p class="page-hero__sub">Las personas que conducen la Asociación Civil Duarte y Quirós</p>
+    </div>
+  </div>
+
+  <!-- CONTENIDO -->
+  <section class="cd-section section--ivory">
+    <div class="container">
+
+      <div class="cd-intro fade-in">
+        <span class="cd-intro__eyebrow">Período vigente</span>
+        <h2 class="cd-intro__title">Autoridades de la Asociación</h2>
+        <p class="cd-intro__text">La Comisión Directiva es el órgano de gobierno de la Asociación Civil Duarte y Quirós, responsable de llevar adelante los objetivos institucionales y representar a la comunidad monserratense.</p>
+      </div>
+
+      <!-- Presidente -->
+      <div class="cd-grid fade-in">
+        <div class="cd-card cd-card--president">
+          <div class="cd-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <div>
+            <p class="cd-card__role">Presidente</p>
+            <h3 class="cd-card__name">Adrián Guillermo Rodríguez</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comisión -->
+      <div class="cd-divider fade-in"><span>Comisión</span></div>
+      <div class="cd-grid fade-in">
+
+        <div class="cd-card">
+          <div class="cd-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>
+            </svg>
+          </div>
+          <p class="cd-card__role">Secretario</p>
+          <h3 class="cd-card__name">Marcelo Rafael González</h3>
+        </div>
+
+        <div class="cd-card">
+          <div class="cd-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+            </svg>
+          </div>
+          <p class="cd-card__role">Tesorero</p>
+          <h3 class="cd-card__name">Jorge Alberto López</h3>
+        </div>
+
+        <div class="cd-card">
+          <div class="cd-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <p class="cd-card__role">Vocal Titular</p>
+          <h3 class="cd-card__name">Jorge Victor Manfredi</h3>
+        </div>
+
+        <div class="cd-card">
+          <div class="cd-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <p class="cd-card__role">Vocal Suplente</p>
+          <h3 class="cd-card__name">Diego Javier Lion</h3>
+        </div>
+
+      </div>
+
+      <!-- Revisores -->
+      <div class="cd-divider fade-in"><span>Revisión de Cuentas</span></div>
+      <div class="cd-grid fade-in">
+
+        <div class="cd-card">
+          <div class="cd-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9,11 12,14 22,4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <p class="cd-card__role">Revisor de Cuentas Titular</p>
+          <h3 class="cd-card__name">Jose Tomas Amaya</h3>
+        </div>
+
+        <div class="cd-card">
+          <div class="cd-card__icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9,11 12,14 22,4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <p class="cd-card__role">Revisor de Cuentas Suplente</p>
+          <h3 class="cd-card__name">Diego Blázquez</h3>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

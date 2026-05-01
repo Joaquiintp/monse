@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monserratenses en acción | Noticias | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../../Public/Favicon/favicon.svg" />
+  <style>
+    .page-hero { position: relative; padding: 6rem 0 4rem; margin-top: var(--navbar-h); text-align: center; overflow: hidden; }
+    .page-hero__bg { position: absolute; inset: 0; background-image: url('../fotos/esteban-domina.jpg'); background-size: cover; background-position: center var(--banner-y, 30%); z-index: 0; }
+    .page-hero__content { position: relative; z-index: 1; }
+    .page-hero__eyebrow { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .page-hero__title { font-family: var(--ff-serif); font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; color: var(--ivory); line-height: 1.1; margin-bottom: .75rem; text-shadow: 0 2px 12px rgba(0,0,0,.65), 0 1px 4px rgba(0,0,0,.5); }
+    .page-hero__sub { color: rgba(245,240,232,.9); font-size: 1rem; text-shadow: 0 1px 8px rgba(0,0,0,.6); }
+    .article-section { padding: 5rem 0 7rem; background: var(--ivory); }
+    .article-inner { max-width: 760px; margin: 0 auto; }
+    .article-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid rgba(78,19,32,.1); }
+    .article-header__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .article-header__tag { display: inline-block; font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--burgundy); background: rgba(78,19,32,.08); padding: .25rem .75rem; border-radius: 99px; }
+    .article-header__date { font-size: .8rem; color: var(--text-muted); }
+    .article-header__title { font-family: var(--ff-serif); font-size: clamp(1.9rem, 3.5vw, 2.7rem); font-weight: 700; color: var(--burgundy-dark); line-height: 1.15; letter-spacing: -.02em; }
+    .article-body { font-size: 1.1rem; line-height: 1.85; color: #1e1409; }
+    .article-body p { margin-bottom: 1.75rem; }
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-img { width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 2rem; }
+    .article-img img { width: 100%; height: auto; display: block; }
+    .article-disertante { display: flex; align-items: center; gap: 1rem; background: rgba(78,19,32,.05); border-left: 3px solid var(--burgundy); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin-bottom: 2rem; }
+    .article-disertante__label { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--burgundy); display: block; margin-bottom: .2rem; }
+    .article-disertante__name { font-family: var(--ff-serif); font-size: 1.05rem; color: var(--burgundy-dark); font-weight: 600; }
+    .article-video { margin-bottom: 2.5rem; }
+    .article-video__label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .6rem; }
+    .article-video a { font-size: .9rem; color: var(--burgundy); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(107,27,42,.3); transition: opacity .2s; }
+    .article-video a:hover { opacity: .7; }
+    .article-nav { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid rgba(78,19,32,.12); display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .article-nav a { font-size: .85rem; font-weight: 700; color: var(--burgundy); text-decoration: none; border-bottom: 1px solid rgba(107,27,42,.3); padding-bottom: 1px; transition: opacity .2s; }
+    .article-nav a:hover { opacity: .7; }
+  </style>
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../../">Inicio</a>
+        <a href="../../servicios/">Servicios</a>
+        <a href="../../#mundo">Por el Mundo</a>
+        <a href="../../noticias/" class="active">Noticias</a>
+        <a href="../../cultura/">Cultura</a>
+        <a href="../../archivo/">Archivo</a>
+        <a href="../../tienda/">Tienda</a>
+        <a href="../../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../../comision/">Comisión Directiva</a>
+            <a href="../../carta-fundacional/">Carta Fundacional</a>
+            <a href="../../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../../" onclick="toggleMenu()">Inicio</a>
+      <a href="../../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="../../carta-fundacional/" onclick="toggleMenu()">Carta Fundacional</a>
+      <a href="../../carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <div class="page-hero" style="--banner-y: 30%">
+    <div class="page-hero__bg"></div>
+    <div class="container page-hero__content">
+      <span class="page-hero__eyebrow">Noticias · 19 de agosto de 2022 · Ciclo "Pensar para ser libres"</span>
+      <h1 class="page-hero__title">Monserratenses en acción</h1>
+      <p class="page-hero__sub">Conferencias</p>
+    </div>
+  </div>
+
+  <section class="article-section">
+    <div class="container article-inner">
+
+      <div class="article-header">
+        <div class="article-header__meta">
+          <span class="article-header__tag">Conferencias</span>
+          <span class="article-header__date">19 de agosto de 2022 · Conferencia y Concierto — Ciclo "Pensar para ser libres"</span>
+        </div>
+        <h1 class="article-header__title">Monserratenses en acción</h1>
+      </div>
+
+      <div class="article-body">
+
+        <div class="article-img">
+          <img src="../fotos/esteban-domina.jpg" alt="Esteban Dómina" />
+        </div>
+
+        <div class="article-disertante">
+          <div>
+            <span class="article-disertante__label">Disertante</span>
+            <span class="article-disertante__name">Lic. Esteban Dómina</span>
+          </div>
+        </div>
+
+        <p>Llegamos a la tercera semana del ciclo de conferencias y conciertos en homenaje a Duarte y Quirós cargados de expectativas y con propuestas más que interesantes tanto en el plano expositivo como musical. Y, como por arte de magia, nos quedamos cortos.</p>
+
+        <p>La disertación de Esteban Dómina nos propuso un paseo por una historia cargada de acontecimientos, anécdotas y reflexiones que crearon un clima único en el auditorio que disfrutó de una conferencia que nos pareció corta como todas las cosas que escuchamos con placer.</p>
+
+        <div class="article-video">
+          <p class="article-video__label">Ver la conferencia completa</p>
+          <a href="https://www.youtube.com/watch?v=-eCOO1AQyHg" target="_blank" rel="noopener">▶ Ver en YouTube →</a>
+        </div>
+
+        <p>Conociendo la enorme participación de egresados de nuestro querido colegio en la vida pública del país, y con el título <em>Monserratenses en acción</em>, Tito nos interpeló para que volviéramos a recuperar el protagonismo de entonces. Y no le vamos a escapar al desafío. La universidad como el eje más elevado de nuestros estudios, tuvo en dos egresados monserratenses los máximos exponentes de la reforma más trascendente de las casas de altos estudios que luego se nacionalizó.</p>
+
+        <p>No es menos cierto que la diversidad de disciplinas que se desarrollaron en el siglo veinte comenzó a nutrir de condiscípulos monserratenses en los distintos campos del conocimiento. Gracias querido Esteban por desafiarnos a mantener la vara alta y ayudarnos a "pensar" y reflexionar sobre los temas en los que podamos colaborar para el mejoramiento de nuestra sociedad.</p>
+
+        <p>No faltó nada. Fue una tarde noche cargada de emociones. El enorme talento del director Santiago Ruiz, al frente de los excelentes músicos de la orquesta de cuerdas de nuestra municipalidad, nos brindó un concierto impecable. Su director contribuyó a crear un clima muy especial entre los asistentes al acompañar cada ejecución con una introducción breve, pero muy interesante, de cada composición y las motivaciones de su creador.</p>
+
+        <p>En síntesis, disfrutamos de otra propuesta para homenajear a Ignacio. Es nuestra humilde ofrenda para expresarle que siempre va a estar entre nosotros.</p>
+
+      </div>
+
+      <div class="article-nav">
+        <a href="../bustos-arganaraz/">← La Córdoba de Duarte y Quirós</a>
+        <a href="../achaval-becu/">La importancia de difundir el legado histórico de los jesuitas →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

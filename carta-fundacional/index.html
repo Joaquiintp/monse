@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carta Fundacional | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../Public/Favicon/favicon.svg" />
+  <style>
+    .page-hero {
+      position: relative;
+      padding: 7rem 0 5rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../Public/Banner\'s/fachada-monserrat.jpg');
+      background-size: cover;
+      background-position: center var(--banner-y, 30%);
+      z-index: 0;
+    }
+    .page-hero__content {
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero__eyebrow {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .page-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: .75rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.65), 0 1px 4px rgba(0,0,0,.5);
+    }
+    .page-hero__sub {
+      color: rgba(245,240,232,.9);
+      font-size: 1.05rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    }
+
+    /* Carta */
+    .carta-section {
+      padding: 5rem 0 7rem;
+      background: var(--ivory);
+    }
+    .carta-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .carta-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 2px solid rgba(78,19,32,.12);
+    }
+    .carta-header__eyebrow {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      background: rgba(78,19,32,.07);
+      padding: .3rem .9rem;
+      border-radius: 99px;
+      margin-bottom: 1.25rem;
+    }
+    .carta-header__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+    .carta-ornament {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 1.5rem auto 0;
+    }
+
+    .carta-body {
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.9;
+      color: #1e1409;
+    }
+    .carta-body p {
+      margin-bottom: 1.9rem;
+    }
+    .carta-body p:last-child {
+      margin-bottom: 0;
+    }
+    .carta-saludo {
+      font-family: var(--ff-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--burgundy-dark);
+      margin-bottom: 2rem !important;
+    }
+
+    .carta-footer {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(78,19,32,.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .carta-footer__firma {
+      font-family: var(--ff-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--burgundy-dark);
+    }
+    .carta-footer__inst {
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin-top: .25rem;
+    }
+    .carta-footer__link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--burgundy);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(107,27,42,.3);
+      padding-bottom: 1px;
+      transition: opacity .2s;
+    }
+    .carta-footer__link:hover { opacity: .7; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../">Inicio</a>
+        <a href="../servicios/">Servicios</a>
+        <a href="../#mundo">Por el Mundo</a>
+        <a href="../noticias/">Noticias</a>
+        <a href="../cultura/">Cultura</a>
+        <a href="../archivo/">Archivo</a>
+        <a href="../tienda/">Tienda</a>
+        <a href="../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../comision/">Comisión Directiva</a>
+            <a href="../carta-fundacional/" class="active">Carta Fundacional</a>
+            <a href="../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../" onclick="toggleMenu()">Inicio</a>
+      <a href="../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="../carta-fundacional/" onclick="toggleMenu()" class="active">Carta Fundacional</a>
+      <a href="../carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+         target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <!-- BANNER -->
+  <div class="page-hero" style="--banner-y: 30%">
+    <div class="page-hero__bg"></div>
+    <div class="container page-hero__content">
+      <span class="page-hero__eyebrow">Asociación Civil Duarte y Quirós</span>
+      <h1 class="page-hero__title">Carta Fundacional</h1>
+      <p class="page-hero__sub">Las palabras que dieron origen a nuestra asociación</p>
+    </div>
+  </div>
+
+  <!-- CARTA -->
+  <section class="carta-section">
+    <div class="container carta-inner">
+
+      <div class="carta-header">
+        <span class="carta-header__eyebrow">Documento fundacional</span>
+        <h2 class="carta-header__title">Carta Fundacional</h2>
+        <span class="carta-ornament"></span>
+      </div>
+
+      <div class="carta-body">
+        <p class="carta-saludo">Estimados compañeros Monserratenses:</p>
+
+        <p>Cuando decidimos iniciar este camino que nos traería de vuelta a nuestra segunda casa lo hicimos desde la creencia, y porqué no también desde la duda, de si aquella llama que encendiera el monse en nuestras vidas aún perduraría encendida en miles de corazones que pasaron por sus aulas.</p>
+
+        <p>Cuando emprendimos el retorno al refugio que tantas veces nos enseñó el camino, esa duda comenzó a disiparse. Pudimos corroborar que ese hilo invisible y misterioso, aún nos mantenía unidos a pesar del paso del tiempo.</p>
+
+        <p>Aquel desafío de re-unirnos bajo una nueva morada donde los miles de compañeros monserratenses diseminados por el mundo pudieran expresarse institucionalmente, hoy comienza a hacerse realidad.</p>
+
+        <p>La creación de la Asociación nos permitirá reencontrarnos, revivir experiencias únicas y recordar momentos maravillosos.</p>
+
+        <p>Sin duda, todo ello será inolvidable si la gratitud nos hace capaces de devolverle a nuestro querido colegio una pequeña parte del legado infinito que recibimos en sus claustros.</p>
+
+        <p>Respetando los valores históricos y su tradición humanista le daremos prioridad a desarrollar aquellas actividades culturales que expresen y difundan en la sociedad el pensamiento y el espíritu secular del colegio, para luego promover, desde y hacia los compañeros, distintas propuestas de apoyo y cooperación en las áreas que lo demanden.</p>
+
+        <p>Para alcanzar estas metas creemos que la construcción colectiva es la herramienta idónea y adecuada que le permitirá a la institución fortalecerse con el aporte de todas las promociones.</p>
+
+        <p>Es nuestro deseo que las iniciativas, inquietudes ó proyectos que se presenten, encuentren en este nuevo espacio el vehículo apropiado para su concreción. Queremos una asociación abierta, integrada por todos los compañeros que hayan pasado por las aulas del Monse sin importar si egresaron ó no, pero que sin embargo, sientan que vale la pena iniciar el camino hacia este nuevo destino. Sería un honor para la institución contar con la presencia de los distintos claustros de la comunidad monserratense. En ellos radica en buena medida, el espíritu de pertenencia que nos mantuvo unidos con el colegio y que, precisamente por ello, difícilmente olvidaremos.</p>
+
+        <p>Conociendo la riqueza intelectual e ideológica de tantas promociones que pasaron por sus aulas, de uno y de otro lado, la asociación trabajará partiendo de la premisa de articular las distintas posiciones sin perder de vista el objetivo de conciliar la diversidad de intereses que se expresen en ella. Lo haremos desde el respeto a todas las opiniones, sin discriminación alguna. Quienes se inscriban en la institución, por el sólo hecho de hacerlo, tendrán la misma consideración y los mismos derechos que les concede el estatuto a todos y a cada uno de sus miembros.</p>
+
+        <p>En suma, no descansaremos hasta lograr con los compañeros de otras promociones, un espacio transversal y representativo, donde la amplitud y la pluralidad estén garantizadas y sean valores innegociables. Un lugar donde convivan las ideas y las experiencias de distintas edades y generaciones. La convocatoria está dirigida a hombres y mujeres que se nutrieron de la sabia espiritual de un colegio único, para que se animen a extender ese legado más allá de sus paredes y a proyectarlo en la sociedad partiendo de aquellas virtudes y valores que construyeron su identidad durante siglos. Para quienes deseen incorporarse, activa ó pasivamente, las puertas estarán siempre abiertas sin ningún requisito ni condición especial de ingreso. Simplemente bastará, con que en cada uno continúe encendida, aquella llama que nos iluminó cuando ingresamos al monse.</p>
+
+        <p>Hoy, nace la Asociación Duarte y Quirós desde el colegio que siempre llevamos en el corazón. No importa cuanto tiempo hubo que esperar, tampoco, el origen, la procedencia o la edad de quienes quieran integrarla, lo que deseamos es que nadie se quede afuera de esta nueva historia que hoy comenzamos a escribir.</p>
+
+        <p>Invitamos a todas las promociones y a los distintos claustros de la comunidad monserratense a acompañarnos en este nuevo desafío. El sueño es que la asociación sea de todos. <strong>¡Bienvenidos!</strong></p>
+      </div>
+
+      <div class="carta-footer">
+        <div>
+          <p class="carta-footer__firma">Comisión Directiva</p>
+          <p class="carta-footer__inst">Asociación Civil Duarte y Quirós</p>
+        </div>
+        <a href="../carta-abierta-a-los-egresados/" class="carta-footer__link">
+          Leer Carta Abierta a los Egresados →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

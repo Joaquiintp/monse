@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Términos, Condiciones y Privacidad | Red Liber · Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../../../Public/Favicon/favicon.svg" />
+  <style>
+    .legal-hero {
+      background: var(--burgundy-dark);
+      padding: 5rem 0 3.5rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+    }
+    .legal-hero__eyebrow {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .75rem;
+    }
+    .legal-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--ivory);
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: .75rem;
+    }
+    .legal-hero__sub {
+      font-size: .9rem;
+      color: rgba(245,240,232,.65);
+    }
+
+    /* Tabs */
+    .legal-tabs {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      padding: 2rem 0 0;
+      border-bottom: 1px solid rgba(0,0,0,.1);
+      background: var(--ivory);
+      position: sticky;
+      top: var(--navbar-h);
+      z-index: 100;
+    }
+    .legal-tab {
+      padding: .65rem 1.4rem;
+      border: none;
+      background: none;
+      font-family: var(--ff-sans);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color .2s, border-color .2s;
+    }
+    .legal-tab.is-active {
+      color: var(--burgundy);
+      border-bottom-color: var(--gold);
+    }
+    .legal-tab:hover:not(.is-active) { color: var(--burgundy-dark); }
+
+    /* Content panels */
+    .legal-panel { display: none; }
+    .legal-panel.is-active { display: block; }
+
+    /* Document body */
+    .legal-doc {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+    .legal-doc h2 {
+      font-family: var(--ff-serif);
+      font-size: 1.5rem;
+      color: var(--burgundy-dark);
+      font-weight: 700;
+      margin: 2.5rem 0 .6rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid rgba(201,168,76,.3);
+    }
+    .legal-doc h2:first-child { margin-top: 0; }
+    .legal-doc h3 {
+      font-family: var(--ff-serif);
+      font-size: 1.05rem;
+      color: var(--burgundy);
+      font-weight: 600;
+      margin: 1.5rem 0 .4rem;
+    }
+    .legal-doc p {
+      font-size: .95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: .9rem;
+    }
+    .legal-doc ul {
+      margin: .5rem 0 1rem 1.25rem;
+      padding: 0;
+    }
+    .legal-doc ul li {
+      font-size: .95rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: .3rem;
+      list-style: disc;
+    }
+    .legal-doc .legal-date {
+      display: inline-block;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+    .legal-doc .legal-footer-note {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,.08);
+      font-size: .82rem;
+      color: rgba(0,0,0,.4);
+      text-align: center;
+    }
+
+    .legal-back {
+      display: flex;
+      align-items: center;
+      gap: .4em;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      padding: 1.25rem 0 0 0;
+      max-width: 760px;
+      margin: 0 auto;
+      transition: color .2s;
+    }
+    .legal-back:hover { color: var(--burgundy); }
+    .legal-back svg { flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════ NAVBAR ══════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../../../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../../../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../../../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../../../">Inicio</a>
+        <a href="../../" class="active">Servicios</a>
+        <a href="../../../#mundo">Por el Mundo</a>
+        <a href="../../../noticias/">Noticias</a>
+        <a href="../../../cultura/">Cultura</a>
+        <a href="../../../archivo/">Archivo</a>
+        <a href="../../../tienda/">Tienda</a>
+        <a href="../../../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../../../comision/">Comisión Directiva</a>
+            <a href="../../../carta-fundacional/">Carta Fundacional</a>
+            <a href="../../../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../../../" onclick="toggleMenu()">Inicio</a>
+      <a href="../../" onclick="toggleMenu()">Servicios</a>
+      <a href="../../../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../../../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../../../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../../../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../../../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../../../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../../../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+         target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════ HERO ══════════════════════ -->
+  <div class="legal-hero">
+    <div class="container">
+      <p class="legal-hero__eyebrow">Red Liber · Documentos Legales</p>
+      <h1 class="legal-hero__title">Términos, Condiciones<br>y Política de Privacidad</h1>
+      <p class="legal-hero__sub">Tarjeta de Beneficios y Prestaciones · Asociación Civil Duarte y Quirós</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════ TABS ══════════════════════ -->
+  <div class="legal-tabs" role="tablist">
+    <button class="legal-tab is-active" role="tab" aria-selected="true"  onclick="showTab('tyc',  this)">Términos y Condiciones</button>
+    <button class="legal-tab"           role="tab" aria-selected="false" onclick="showTab('priv', this)">Política de Privacidad</button>
+  </div>
+
+  <!-- ══════════════════════ PANEL: TÉRMINOS ══════════════════════ -->
+  <div class="legal-panel is-active" id="panel-tyc">
+    <div class="container">
+      <a class="legal-back" href="../">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Volver a Red Liber
+      </a>
+      <div class="legal-doc">
+        <span class="legal-date">Vigente desde: 12 de abril de 2026</span>
+
+        <h2>1. Partes del Convenio</h2>
+        <p>El presente documento establece los Términos y Condiciones que regulan la emisión, entrega y uso de la Tarjeta de Beneficios y Prestaciones (en adelante, "la Tarjeta") de la Asociación Civil Duarte y Quirós (en adelante, "la Asociación"), en el marco del convenio suscripto con el Colegio Nacional de Monserrat (en adelante, "el Colegio").</p>
+        <p>La Tarjeta es de uso personal e intransferible y se emite exclusivamente a nombre del socio adherente titular.</p>
+
+        <h2>2. Categorías de Socios</h2>
+        <h3>2.1. Socios Adherentes</h3>
+        <p>Son aquellas personas que integran la Asociación en calidad de adherentes y reciben la Tarjeta de Beneficios a fin de acreditar su condición de socio ante el Colegio Nacional de Monserrat, habilitándolos para el acceso a las instalaciones conforme al convenio vigente.</p>
+        <h3>2.2. Socios Activos</h3>
+        <p>Son aquellas personas que, además de su condición de adherente, abonan una cuota mensual o anual establecida por la Asociación. Los socios activos gozan de beneficios y prestaciones adicionales según el plan vigente al momento de la adhesión. El pago de la cuota en tiempo y forma es condición necesaria para mantener la categoría de Activo y acceder a los beneficios correspondientes.</p>
+
+        <h2>3. Emisión y Entrega de la Tarjeta</h2>
+        <p>La Tarjeta se emite previa verificación de los datos del socio y es entregada de forma personal o mediante el mecanismo habilitado por la Asociación. Para su confección se utilizarán los siguientes datos personales provistos por el socio:</p>
+        <ul>
+          <li>Nombre y apellido completo</li>
+          <li>Número de Documento Nacional de Identidad (DNI)</li>
+          <li>Año de promoción</li>
+        </ul>
+        <p>La Tarjeta es propiedad de la Asociación y deberá ser restituida ante baja, suspensión o requerimiento expreso de la misma.</p>
+
+        <h2>4. Uso de la Tarjeta</h2>
+        <p>La Tarjeta habilita al socio adherente titular para el acceso al Colegio Nacional de Monserrat conforme a las condiciones pactadas en el convenio institucional vigente. Queda expresamente prohibido:</p>
+        <ul>
+          <li>Ceder, prestar o permitir el uso de la Tarjeta a terceros.</li>
+          <li>Alterar, falsificar o manipular los datos impresos en la Tarjeta.</li>
+          <li>Utilizar la Tarjeta fuera de los ámbitos y propósitos establecidos por la Asociación.</li>
+        </ul>
+        <p>El incumplimiento de las presentes condiciones podrá derivar en la suspensión o cancelación inmediata de la membresía, sin perjuicio de las acciones legales que correspondan.</p>
+
+        <h2>5. Vigencia</h2>
+        <p>La Tarjeta tendrá vigencia anual o según el período fijado por la Asociación. La renovación estará sujeta a la continuidad de la membresía, el pago al día de la cuota (en caso de socios activos) y la actualización de los datos personales cuando corresponda.</p>
+
+        <h2>6. Pérdida, Robo o Deterioro</h2>
+        <p>Ante la pérdida, robo o deterioro de la Tarjeta, el socio deberá notificar a la Asociación a la brevedad posible. La reposición estará sujeta a los costos y procedimientos vigentes al momento del hecho. La Asociación no se responsabiliza por el uso indebido de la Tarjeta antes de recibida la notificación.</p>
+
+        <h2>7. Baja de la Membresía</h2>
+        <p>El socio podrá solicitar su baja en cualquier momento mediante comunicación formal a la Asociación. La baja implicará la pérdida inmediata de los beneficios y la obligación de restitución de la Tarjeta. Las cuotas abonadas no serán reembolsadas salvo disposición expresa en contrario.</p>
+
+        <h2>8. Modificaciones</h2>
+        <p>La Asociación se reserva el derecho de modificar los presentes Términos y Condiciones, los beneficios y prestaciones, así como las condiciones del convenio con el Colegio Nacional de Monserrat. Toda modificación será comunicada a los socios con razonable antelación por los medios habituales de la Asociación.</p>
+
+        <h2>9. Jurisdicción</h2>
+        <p>Ante cualquier controversia derivada del presente instrumento, las partes se someten a la jurisdicción de los tribunales ordinarios de la Ciudad de Córdoba, República Argentina, renunciando a cualquier otro fuero que pudiere corresponder.</p>
+
+        <p class="legal-footer-note">Asociación Civil Duarte y Quirós · Córdoba, Argentina</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════ PANEL: PRIVACIDAD ══════════════════════ -->
+  <div class="legal-panel" id="panel-priv">
+    <div class="container">
+      <a class="legal-back" href="../">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Volver a Red Liber
+      </a>
+      <div class="legal-doc">
+        <span class="legal-date">Vigente desde: 12 de abril de 2026</span>
+
+        <h2>1. Responsable del Tratamiento de Datos</h2>
+        <p>La Asociación Civil Duarte y Quirós (en adelante, "la Asociación"), con sede en la Ciudad de Córdoba, República Argentina, es la responsable del tratamiento de los datos personales recolectados en el marco de la emisión de la Tarjeta de Beneficios y Prestaciones.</p>
+        <p>La Asociación se compromete a tratar los datos personales de sus socios con estricta confidencialidad y en cumplimiento de la Ley N° 25.326 de Protección de los Datos Personales de la República Argentina y sus normas reglamentarias.</p>
+
+        <h2>2. Datos Personales Recolectados</h2>
+        <h3>2.1. Datos utilizados para la impresión de la Tarjeta</h3>
+        <ul>
+          <li>Nombre y apellido completo</li>
+          <li>Número de Documento Nacional de Identidad (DNI)</li>
+          <li>Año de promoción</li>
+        </ul>
+        <h3>2.2. Datos almacenados en bases de datos</h3>
+        <p>Adicionalmente, la Asociación conserva en sus registros internos la siguiente información:</p>
+        <ul>
+          <li>Fecha de nacimiento</li>
+          <li>Correo electrónico</li>
+          <li>Categoría de membresía (adherente / activo)</li>
+          <li>Historial de pagos (socios activos)</li>
+        </ul>
+        <p>Todos los datos son suministrados voluntariamente por el titular al momento de la adhesión o actualización de su membresía.</p>
+
+        <h2>3. Finalidad del Tratamiento</h2>
+        <p>Los datos personales recolectados son utilizados exclusivamente para los siguientes fines:</p>
+        <ul>
+          <li>Impresión y emisión de la Tarjeta de Beneficios y Prestaciones.</li>
+          <li>Gestión y administración de la membresía (altas, bajas, renovaciones).</li>
+          <li>Comunicación institucional con el socio (novedades, vencimientos, cambios en beneficios).</li>
+          <li>Cumplimiento de las obligaciones derivadas del convenio con el Colegio Nacional de Monserrat.</li>
+          <li>Verificación de identidad en el acceso a las instalaciones del Colegio.</li>
+        </ul>
+        <p>Los datos no serán utilizados con fines comerciales ni cedidos a terceros ajenos al convenio vigente, salvo obligación legal.</p>
+
+        <h2>4. Compartición de Datos con Terceros</h2>
+        <p>En el marco del convenio institucional con el Colegio Nacional de Monserrat, podrán compartirse los datos estrictamente necesarios para la verificación de la identidad del socio al momento del acceso (nombre, apellido, DNI y año de promoción). Dicha compartición se realiza únicamente con el propósito de dar cumplimiento al convenio y bajo las mismas obligaciones de confidencialidad que asume la Asociación.</p>
+        <p>La Asociación no vende, alquila ni comercializa datos personales de sus socios bajo ninguna circunstancia.</p>
+
+        <h2>5. Seguridad de los Datos</h2>
+        <p>La Asociación adopta medidas técnicas y organizativas razonables para proteger los datos personales contra accesos no autorizados, pérdida, alteración o divulgación indebida. El acceso a las bases de datos está restringido al personal autorizado de la Asociación, quien está sujeto al deber de confidencialidad.</p>
+
+        <h2>6. Plazo de Conservación</h2>
+        <p>Los datos personales serán conservados mientras el socio mantenga vigente su membresía. Ante la baja, los datos serán eliminados o anonimizados en un plazo no mayor a noventa (90) días corridos, salvo que la normativa vigente exija su conservación por un período mayor.</p>
+
+        <h2>7. Derechos del Titular</h2>
+        <p>De conformidad con la Ley N° 25.326, el titular de los datos tiene derecho a:</p>
+        <ul>
+          <li><strong>Acceso:</strong> Conocer qué datos personales posee la Asociación sobre su persona.</li>
+          <li><strong>Rectificación:</strong> Solicitar la corrección de datos inexactos o desactualizados.</li>
+          <li><strong>Supresión:</strong> Requerir la eliminación de sus datos, salvo obligación legal de conservarlos.</li>
+          <li><strong>Confidencialidad:</strong> Conocer el uso que se da a sus datos personales.</li>
+        </ul>
+        <p>Para ejercer estos derechos, el socio deberá remitir una solicitud por escrito o correo electrónico a la Asociación, acreditando su identidad. La Asociación responderá en un plazo no mayor a diez (10) días hábiles.</p>
+
+        <h2>8. Consentimiento</h2>
+        <p>Al completar el formulario de adhesión y recibir la Tarjeta de Beneficios, el socio presta su consentimiento libre, expreso e informado para el tratamiento de sus datos personales conforme a la presente Política de Privacidad.</p>
+
+        <h2>9. Modificaciones a esta Política</h2>
+        <p>La Asociación podrá actualizar la presente Política de Privacidad cuando lo estime necesario. Las modificaciones serán comunicadas a los socios a través de los canales habituales. El uso continuado de la Tarjeta con posterioridad a la notificación implica la aceptación de los términos actualizados.</p>
+
+        <h2>10. Contacto</h2>
+        <p>Para consultas, reclamos o ejercicio de derechos relacionados con sus datos personales, puede comunicarse con la Asociación Civil Duarte y Quirós a través de los <a href="../../../contacto/" style="color:var(--burgundy); text-decoration:underline;">canales de contacto institucionales</a>.</p>
+
+        <p class="legal-footer-note">Asociación Civil Duarte y Quirós · Córdoba, Argentina</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../../../script.js"></script>
+  <script>
+    function showTab(id, btn) {
+      document.querySelectorAll('.legal-panel').forEach(p => p.classList.remove('is-active'));
+      document.querySelectorAll('.legal-tab').forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+      document.getElementById('panel-' + id).classList.add('is-active');
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+      // scroll to top of content
+      window.scrollTo({ top: document.querySelector('.legal-tabs').offsetTop - 80, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

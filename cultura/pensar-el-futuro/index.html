@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pensar el Futuro | Cultura | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../../Public/Favicon/favicon.svg" />
+  <style>
+    /* ═══ BANNER ═══ */
+    .page-hero { position: relative; padding: 6rem 0 4rem; margin-top: var(--navbar-h); text-align: center; overflow: hidden; }
+    .page-hero__bg { position: absolute; inset: 0; background: linear-gradient(160deg, var(--burgundy-dark) 0%, #0f0407 100%); z-index: 0; }
+    .page-hero__bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 70%, rgba(201,168,76,.09) 0%, transparent 65%); }
+    .page-hero__content { position: relative; z-index: 1; }
+    .page-hero__eyebrow { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .page-hero__title { font-family: var(--ff-serif); font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; font-style: italic; color: var(--ivory); line-height: 1.1; margin-bottom: .5rem; text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+    .page-hero__subtitle { font-family: var(--ff-serif); font-style: italic; font-size: 1.05rem; color: var(--gold); margin-bottom: .75rem; letter-spacing: .02em; }
+    .page-hero__sub { color: rgba(245,240,232,.78); font-size: .97rem; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    /* ═══ BODY ═══ */
+    .pensar-body { padding: 4rem 0 6rem; background: var(--ivory); }
+
+    /* ═══ VIDEO GRID ═══ */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .video-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.07);
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+      transition: transform .25s ease, box-shadow .25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .video-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,.12); }
+    .video-card__embed { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #0d0408; flex-shrink: 0; }
+    .video-card__embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    .video-card__body { padding: .85rem 1rem 1.1rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .video-card__num { font-size: .6rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
+    .video-card__title { font-family: var(--ff-serif); font-size: 1rem; font-weight: 600; color: var(--text); line-height: 1.3; }
+
+    /* ═══ NAV INFERIOR ═══ */
+    .pensar-nav { margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid rgba(78,19,32,.12); display: flex; justify-content: flex-start; }
+    .pensar-nav a { font-size: .85rem; font-weight: 700; color: var(--burgundy); text-decoration: none; border-bottom: 1px solid rgba(107,27,42,.3); padding-bottom: 1px; transition: opacity .2s; }
+    .pensar-nav a:hover { opacity: .7; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 860px) { .video-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+    @media (max-width: 540px)  { .video-grid { grid-template-columns: 1fr; gap: .85rem; } .pensar-body { padding: 2.5rem 0 4rem; } }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../../">Inicio</a>
+        <a href="../../servicios/">Servicios</a>
+        <a href="../../#mundo">Por el Mundo</a>
+        <a href="../../noticias/">Noticias</a>
+        <a href="../" class="active">Cultura</a>
+        <a href="../../archivo/">Archivo</a>
+        <a href="../../tienda/">Tienda</a>
+        <a href="../../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../../comision/">Comisión Directiva</a>
+            <a href="../../carta-fundacional/">Carta Fundacional</a>
+            <a href="../../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../../" onclick="toggleMenu()">Inicio</a>
+      <a href="../../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../" onclick="toggleMenu()">Cultura</a>
+      <a href="../../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="../../carta-fundacional/" onclick="toggleMenu()">Carta Fundacional</a>
+      <a href="../../carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <!-- ══════════════ BANNER ══════════════ -->
+  <div class="page-hero">
+    <div class="page-hero__bg"></div>
+    <div class="container page-hero__content">
+      <span class="page-hero__eyebrow">Cultura · Ciclo de conferencias</span>
+      <h1 class="page-hero__title">Pensar el Futuro</h1>
+      <p class="page-hero__subtitle">El Humanismo en el Siglo XXI</p>
+      <p class="page-hero__sub">"Pensar el Futuro" busca revitalizar el pensamiento crítico y la creatividad para afrontar los desafíos de nuestro tiempo, acercando a estudiantes y egresados voces que inspiran a imaginar horizontes más amplios.</p>
+    </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="pensar-body">
+    <div class="container">
+      <div class="video-grid">
+
+        <!-- 1: Luis María Caballero -->
+        <div class="video-card fade-in">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/d6_5B2XReas"
+              title="Luis María Caballero — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 01</span>
+            <h3 class="video-card__title">Luis María Caballero</h3>
+          </div>
+        </div>
+
+        <!-- 2: Beatriz Caputo -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/JTiOnhudarw"
+              title="Beatriz Caputo — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 02</span>
+            <h3 class="video-card__title">Beatriz Caputo</h3>
+          </div>
+        </div>
+
+        <!-- 3: Pablo Canedo -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/mQPPOgKLl_U"
+              title="Pablo Canedo — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 03</span>
+            <h3 class="video-card__title">Pablo Canedo</h3>
+          </div>
+        </div>
+
+        <!-- 4: Marcelo Polakoff -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/lsyNMHsQj6g"
+              title="Marcelo Polakoff — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 04</span>
+            <h3 class="video-card__title">Marcelo Polakoff</h3>
+          </div>
+        </div>
+
+        <!-- 5: Armando Micolini -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/VMei39xlfzk"
+              title="Armando Micolini — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 05</span>
+            <h3 class="video-card__title">Armando Micolini</h3>
+          </div>
+        </div>
+
+        <!-- 6: Juan Tirao -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/EQkxpcLjauo"
+              title="Juan Tirao — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 06</span>
+            <h3 class="video-card__title">Juan Tirao</h3>
+          </div>
+        </div>
+
+        <!-- 7: Connie Keegan -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/R1AuXxIUWaM"
+              title="Connie Keegan — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 07</span>
+            <h3 class="video-card__title">Connie Keegan</h3>
+          </div>
+        </div>
+
+        <!-- 8: Gustavo Maldino -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/qnJPWhLeDUA"
+              title="Gustavo Maldino — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 08</span>
+            <h3 class="video-card__title">Gustavo Maldino</h3>
+          </div>
+        </div>
+
+        <!-- 9: Orlando Micolini -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/0bfVlGEenig"
+              title="Orlando Micolini — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 09</span>
+            <h3 class="video-card__title">Orlando Micolini</h3>
+          </div>
+        </div>
+
+        <!-- 10: Inés Achával -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/gK2fCJocG7U"
+              title="Inés Achával — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 10</span>
+            <h3 class="video-card__title">Inés Achával</h3>
+          </div>
+        </div>
+
+        <!-- 11: Raúl Montenegro -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/iS3nIzH9L2I"
+              title="Raúl Montenegro — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 11</span>
+            <h3 class="video-card__title">Raúl Montenegro</h3>
+          </div>
+        </div>
+
+        <!-- 12: Aldo Guerra -->
+        <div class="video-card fade-in fade-in--delay">
+          <div class="video-card__embed">
+            <iframe
+              src="https://www.youtube.com/embed/1IjoRSc2cSg"
+              title="Aldo Guerra — Pensar el Futuro"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div class="video-card__body">
+            <span class="video-card__num">Conferencia 12</span>
+            <h3 class="video-card__title">Aldo Guerra</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pensar-nav">
+        <a href="../#conferencias">← Volver a Conferencias</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+
+</body>
+</html>

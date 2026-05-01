@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cultura | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../Public/Favicon/favicon.svg" />
+  <style>
+
+    /* ════════════════════════════════
+       BANNER
+    ════════════════════════════════ */
+    .page-hero {
+      position: relative;
+      padding: 7rem 0 5rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../Public/Banner\'s/techo-monserrat-vista-cenital.jpg');
+      background-size: cover;
+      background-position: center var(--banner-y, 50%);
+      z-index: 0;
+    }
+    .page-hero__content {
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero__eyebrow {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      text-shadow: 0 1px 6px rgba(0,0,0,.5);
+      margin-bottom: .75rem;
+    }
+    .page-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: .75rem;
+      text-shadow: 0 2px 16px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.5);
+    }
+    .page-hero__sub {
+      color: rgba(245,240,232,.92);
+      font-size: 1.05rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.6);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ════════════════════════════════
+       NAV DE SECCIONES (pills)
+    ════════════════════════════════ */
+    .cult-nav {
+      background: var(--ivory);
+      border-bottom: 1px solid rgba(107,27,42,.1);
+      position: sticky;
+      top: var(--navbar-h);
+      z-index: 90;
+    }
+    .cult-nav__inner {
+      display: flex;
+      gap: .25rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: .6rem 0;
+    }
+    .cult-nav__inner::-webkit-scrollbar { display: none; }
+    .cult-nav__btn {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      white-space: nowrap;
+      background: transparent;
+      border: 1.5px solid rgba(107,27,42,.15);
+      color: var(--text-muted);
+      font-family: var(--ff-sans);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .5rem 1.15rem;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+    .cult-nav__btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .cult-nav__btn:hover,
+    .cult-nav__btn.active {
+      background: var(--burgundy-dark);
+      border-color: var(--burgundy-dark);
+      color: var(--ivory);
+    }
+
+    /* ════════════════════════════════
+       SECCIONES GENERALES
+    ════════════════════════════════ */
+    .cult-section {
+      padding: 5rem 0;
+      scroll-margin-top: calc(var(--navbar-h) + 56px);
+    }
+    .cult-section + .cult-section {
+      border-top: 1px solid rgba(107,27,42,.08);
+    }
+    .cult-section--alt {
+      background: var(--cream);
+    }
+
+    .cult-section__header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .cult-section__eyebrow {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .4rem;
+    }
+    .cult-section__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--burgundy-dark);
+      line-height: 1.1;
+    }
+    .cult-section__title em { font-style: italic; color: var(--burgundy); }
+    .cult-section__sub {
+      font-size: .92rem;
+      color: var(--text-muted);
+      margin-top: .5rem;
+      max-width: 500px;
+    }
+    .cult-see-all {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 1.5px solid currentColor;
+      padding-bottom: 1px;
+      transition: opacity var(--transition);
+      flex-shrink: 0;
+      align-self: flex-start;
+      margin-top: .6rem;
+    }
+    .cult-see-all:hover { opacity: .65; }
+
+    /* ════════════════════════════════
+       CHARLAS — grid de cards
+    ════════════════════════════════ */
+    #charlas { scroll-margin-top: calc(var(--navbar-h) + 52px); }
+    #streaming { scroll-margin-top: calc(var(--navbar-h) + 52px); }
+    #conferencias { scroll-margin-top: calc(var(--navbar-h) + 52px); }
+
+    .cult-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .cult-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .cult-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.1);
+    }
+    .cult-card__img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      filter: sepia(.06) contrast(1.03);
+    }
+    .cult-card__body {
+      padding: 1.25rem 1.4rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+    .cult-card__meta {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      flex-wrap: wrap;
+    }
+    .cult-card__tag {
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      background: rgba(107,27,42,.07);
+      padding: .15rem .55rem;
+      border-radius: 99px;
+    }
+    .cult-card__date {
+      font-size: .75rem;
+      color: var(--text-muted);
+    }
+    .cult-card__title {
+      font-family: var(--ff-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      line-height: 1.35;
+    }
+    .cult-card__desc {
+      font-size: .85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .cult-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+      padding: 1rem 1.4rem;
+      border-top: 1px solid rgba(0,0,0,.05);
+    }
+    .cult-card__speaker {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    .cult-card__speaker-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      flex-shrink: 0;
+    }
+    .cult-card__cta {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      text-decoration: none;
+      border-bottom: 1.5px solid currentColor;
+      padding-bottom: 1px;
+      white-space: nowrap;
+      transition: opacity var(--transition);
+      flex-shrink: 0;
+    }
+    .cult-card__cta:hover { opacity: .6; }
+
+    /* ════════════════════════════════
+       STREAMING — card destacada + lista
+    ════════════════════════════════ */
+    .stream-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .stream-featured {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.07);
+      position: relative;
+    }
+    .stream-featured__thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+    .stream-featured__thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .stream-featured:hover .stream-featured__thumb img { transform: scale(1.04); }
+    .stream-featured__play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.18);
+      transition: background var(--transition);
+    }
+    .stream-featured:hover .stream-featured__play { background: rgba(0,0,0,.28); }
+    .stream-featured__play-btn {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(245,240,232,.92);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.25);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .stream-featured:hover .stream-featured__play-btn { transform: scale(1.08); box-shadow: 0 8px 28px rgba(0,0,0,.3); }
+    .stream-featured__play-btn svg { width: 22px; height: 22px; color: var(--burgundy-dark); margin-left: 3px; }
+    .stream-featured__live {
+      position: absolute;
+      top: .85rem; left: .85rem;
+      background: #e53e3e;
+      color: #fff;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .2rem .6rem;
+      border-radius: 4px;
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .stream-featured__live::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      animation: pulse 1.2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+    .stream-featured__body {
+      padding: 1.4rem 1.5rem 1.6rem;
+    }
+    .stream-featured__label {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .4rem;
+    }
+    .stream-featured__title {
+      font-family: var(--ff-serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      line-height: 1.3;
+      margin-bottom: .5rem;
+    }
+    .stream-featured__desc {
+      font-size: .85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Lista de episodios */
+    .stream-list {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+    }
+    .stream-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1rem;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.06);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .stream-item:hover { border-color: rgba(107,27,42,.2); box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+    .stream-item__thumb {
+      position: relative;
+      overflow: hidden;
+    }
+    .stream-item__thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .stream-item__thumb-play {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.22);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .stream-item__thumb-play svg { width: 18px; height: 18px; color: #fff; }
+    .stream-item:hover .stream-item__thumb-play { opacity: 1; }
+    .stream-item__body {
+      padding: .75rem .75rem .75rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: .3rem;
+    }
+    .stream-item__tag {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+    }
+    .stream-item__title {
+      font-family: var(--ff-serif);
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--burgundy-dark);
+      line-height: 1.3;
+    }
+    .stream-item__dur {
+      font-size: .72rem;
+      color: var(--text-muted);
+    }
+
+    /* ════════════════════════════════
+       STREAMING — nuevo layout real
+    ════════════════════════════════ */
+    .stream-cycle-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .stream-video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+      background: #000;
+    }
+    .stream-video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    /* Próximos */
+    .stream-upcoming-wrap { margin-bottom: 3.5rem; }
+    .stream-upcoming-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+    .stream-upcoming-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.07);
+      box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    }
+    .stream-upcoming-body { padding: 1.25rem 1.4rem 1.5rem; }
+    .stream-upcoming-badge {
+      display: inline-block;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      background: var(--burgundy-dark);
+      padding: .2rem .65rem;
+      border-radius: 99px;
+      margin-bottom: .7rem;
+    }
+    .stream-upcoming-title {
+      font-family: var(--ff-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      line-height: 1.3;
+      margin-bottom: .75rem;
+    }
+    .stream-upcoming-program {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      font-size: .84rem;
+      color: #333;
+      line-height: 1.55;
+    }
+    .stream-upcoming-program li { padding-left: .8rem; border-left: 2px solid rgba(201,168,76,.4); }
+    /* Archivo */
+    .stream-archive-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .stream-archive-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.06);
+      transition: box-shadow var(--transition);
+    }
+    .stream-archive-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,.09); }
+    .stream-archive-body { padding: .9rem 1rem 1.1rem; }
+    .stream-archive-date {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: .35rem;
+    }
+    .stream-archive-title {
+      font-family: var(--ff-serif);
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      line-height: 1.3;
+      margin-bottom: .3rem;
+    }
+    .stream-archive-speaker {
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    @media (max-width: 900px) {
+      .stream-upcoming-grid { grid-template-columns: 1fr; }
+      .stream-archive-grid { grid-template-columns: 1fr 1fr; }
+      .conf-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .stream-archive-grid { grid-template-columns: 1fr; }
+      .conf-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ════════════════════════════════
+       CONFERENCIAS — grid de cards estilo noticias
+    ════════════════════════════════ */
+    .conf-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .conf-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.07);
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+    .conf-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,.1);
+    }
+    .conf-card__img {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--cream);
+      flex-shrink: 0;
+    }
+    .conf-card__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .conf-card:hover .conf-card__img img { transform: scale(1.05); }
+    /* Badge superpuesto */
+    .conf-card__tag {
+      position: absolute;
+      top: .45rem;
+      left: .45rem;
+      font-size: .55rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      background: var(--burgundy-dark);
+      padding: .18rem .5rem;
+      border-radius: 99px;
+      z-index: 1;
+    }
+    .conf-card__body {
+      padding: .55rem .7rem .7rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .conf-card__date {
+      font-size: .58rem;
+      color: var(--text-muted);
+      margin-bottom: .2rem;
+      letter-spacing: .04em;
+    }
+    .conf-card__title {
+      font-family: var(--ff-serif);
+      font-size: .8rem;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: .2rem;
+    }
+    .conf-card__speaker {
+      font-size: .68rem;
+      color: var(--text-muted);
+      margin-bottom: .4rem;
+      flex-grow: 1;
+    }
+    .conf-card__link {
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: color var(--transition);
+      margin-top: auto;
+    }
+    .conf-card:hover .conf-card__link { color: var(--burgundy); }
+    @media (max-width: 900px) { .conf-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .conf-grid { grid-template-columns: 1fr; } }
+
+    /* ════════════════════════════════
+       CONF-CARD — variante ciclo
+    ════════════════════════════════ */
+    .conf-card__img--cycle {
+      background: var(--burgundy-dark);
+    }
+    .conf-card__cycle-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      background: linear-gradient(135deg, var(--burgundy-dark) 0%, #3a0d16 100%);
+    }
+    .conf-card__play-icon {
+      width: 2.8rem;
+      height: 2.8rem;
+      color: var(--gold);
+      opacity: .9;
+    }
+    .conf-card__cycle-count {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,.75);
+    }
+    .conf-card--cycle:hover .conf-card__cycle-bg {
+      background: linear-gradient(135deg, #5a1522 0%, #2a0810 100%);
+    }
+
+    /* ════════════════════════════════
+       CTA FINAL
+    ════════════════════════════════ */
+    .cult-cta {
+      background: var(--burgundy-dark);
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .cult-cta__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: .75rem;
+    }
+    .cult-cta__title em { font-style: italic; color: var(--gold-light); }
+    .cult-cta__sub {
+      font-size: .95rem;
+      color: rgba(245,240,232,.7);
+      margin-bottom: 2rem;
+    }
+    .cult-cta__btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════ */
+    @media (max-width: 900px) {
+      .cult-grid { grid-template-columns: repeat(2, 1fr); }
+      .stream-layout { grid-template-columns: 1fr; }
+      .conf-item { grid-template-columns: 90px 1fr; gap: 1rem; }
+    }
+    @media (max-width: 480px) {
+      .cult-grid { grid-template-columns: 1fr; }
+      .conf-item { grid-template-columns: 1fr; }
+      .conf-item__date-block { display: flex; gap: .5rem; align-items: baseline; text-align: left; padding: .5rem .75rem; }
+      .conf-item__day { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../">Inicio</a>
+        <a href="../servicios/">Servicios</a>
+        <a href="../#mundo">Por el Mundo</a>
+        <a href="../noticias/">Noticias</a>
+        <a href="./" class="active">Cultura</a>
+        <a href="../archivo/">Archivo</a>
+        <a href="../tienda/">Tienda</a>
+        <a href="../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../comision/">Comisión Directiva</a>
+            <a href="../carta-fundacional/">Carta Fundacional</a>
+            <a href="../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../" onclick="toggleMenu()">Inicio</a>
+      <a href="../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="./" onclick="toggleMenu()">Cultura</a>
+      <a href="../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+         target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <!-- BANNER -->
+  <div class="page-hero" style="--banner-y: 85%">
+    <div class="page-hero__bg"></div>
+    <div class="container page-hero__content">
+      <span class="page-hero__eyebrow">Asociación Civil Duarte y Quirós</span>
+      <h1 class="page-hero__title">Cultura Monserratense</h1>
+      <p class="page-hero__sub">Conferencias, streaming y ciclos culturales para la comunidad de egresados y amigos del Monserrat</p>
+    </div>
+  </div>
+
+  <!-- NAV SECCIONES -->
+  <nav class="cult-nav">
+    <div class="container cult-nav__inner">
+      <button class="cult-nav__btn active" onclick="cultNav('conferencias', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        Conferencias
+      </button>
+      <button class="cult-nav__btn" onclick="cultNav('streaming', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="23,7 16,12 23,17"/>
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+        </svg>
+        Streaming
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════ CONFERENCIAS ══════════════════════ -->
+  <section class="cult-section" id="conferencias">
+    <div class="container">
+      <div class="cult-section__header">
+        <div>
+          <p class="cult-section__eyebrow">Eventos académicos</p>
+          <h2 class="cult-section__title">Conferencias & jornadas</h2>
+          <p class="cult-section__sub">Encuentros con referentes del pensamiento, la historia y la cultura monserratense.</p>
+        </div>
+      </div>
+
+      <div class="conf-grid">
+
+        <!-- Tillard — 15 ago 2024 -->
+        <a class="conf-card fade-in" href="./conferencias/tillard/">
+          <div class="conf-card__img">
+            <span class="conf-card__tag">Conferencias</span>
+            <img src="../noticias/fotos/Foto-Tillard.jpeg" alt="José Tillard" />
+          </div>
+          <div class="conf-card__body">
+            <span class="conf-card__date">15 de agosto, 2024</span>
+            <h3 class="conf-card__title">Ampliando las fronteras del conocimiento</h3>
+            <p class="conf-card__speaker">José Tillard</p>
+            <span class="conf-card__link">Leer nota →</span>
+          </div>
+        </a>
+
+        <!-- Yanzi Ferreira — 3 ago 2022 -->
+        <a class="conf-card fade-in fade-in--delay" href="./conferencias/yanzi-ferreira/">
+          <div class="conf-card__img">
+            <span class="conf-card__tag">Conferencias</span>
+            <img src="../noticias/fotos/ramon-pedro-yanzi-ferreira.jpg" alt="Dr. Ramón Pedro Yanzi Ferreira" />
+          </div>
+          <div class="conf-card__body">
+            <span class="conf-card__date">3 de agosto, 2022</span>
+            <h3 class="conf-card__title">La Universitas Cordubensis y el Monserrat</h3>
+            <p class="conf-card__speaker">Dr. Ramón Pedro Yanzi Ferreira</p>
+            <span class="conf-card__link">Leer nota →</span>
+          </div>
+        </a>
+
+        <!-- Bustos Argañaraz — 10 ago 2022 -->
+        <a class="conf-card fade-in fade-in--delay" href="./conferencias/bustos-arganaraz/">
+          <div class="conf-card__img">
+            <span class="conf-card__tag">Conferencias</span>
+            <img src="../noticias/fotos/prudencio-bustos-arganaraz.jpg" alt="Prudencio Bustos Argañaraz" />
+          </div>
+          <div class="conf-card__body">
+            <span class="conf-card__date">10 de agosto, 2022</span>
+            <h3 class="conf-card__title">La Córdoba de Duarte y Quirós</h3>
+            <p class="conf-card__speaker">Prudencio Bustos Argañaraz</p>
+            <span class="conf-card__link">Leer nota →</span>
+          </div>
+        </a>
+
+        <!-- Dómina — 19 ago 2022 -->
+        <a class="conf-card fade-in fade-in--delay" href="./conferencias/domina/">
+          <div class="conf-card__img">
+            <span class="conf-card__tag">Conferencias</span>
+            <img src="../noticias/fotos/esteban-domina.jpg" alt="Lic. Esteban Dómina" />
+          </div>
+          <div class="conf-card__body">
+            <span class="conf-card__date">19 de agosto, 2022</span>
+            <h3 class="conf-card__title">Monserratenses en acción</h3>
+            <p class="conf-card__speaker">Lic. Esteban Dómina</p>
+            <span class="conf-card__link">Leer nota →</span>
+          </div>
+        </a>
+
+        <!-- Achával Becú — 24 ago 2022 -->
+        <a class="conf-card fade-in fade-in--delay" href="./conferencias/achaval-becu/">
+          <div class="conf-card__img">
+            <span class="conf-card__tag">Conferencias</span>
+            <img src="../noticias/fotos/ines-achaval-becu.jpg" alt="Lic. Inés Achával Becú" />
+          </div>
+          <div class="conf-card__body">
+            <span class="conf-card__date">24 de agosto, 2022</span>
+            <h3 class="conf-card__title">La importancia de difundir el legado histórico de los jesuitas</h3>
+            <p class="conf-card__speaker">Lic. Inés Achával Becú</p>
+            <span class="conf-card__link">Leer nota →</span>
+          </div>
+        </a>
+
+        <!-- Ciclo Pensar el Futuro -->
+        <a class="conf-card conf-card--cycle fade-in fade-in--delay" href="./pensar-el-futuro/">
+          <div class="conf-card__img conf-card__img--cycle">
+            <span class="conf-card__tag">Ciclo</span>
+            <div class="conf-card__cycle-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="conf-card__play-icon">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/>
+              </svg>
+              <p class="conf-card__cycle-count">12 conferencias</p>
+            </div>
+          </div>
+          <div class="conf-card__body">
+            <span class="conf-card__date">El Humanismo en el Siglo XXI</span>
+            <h3 class="conf-card__title">Pensar el Futuro</h3>
+            <p class="conf-card__speaker">Caballero, Caputo, Canedo, Polakoff y más</p>
+            <span class="conf-card__link">Ver ciclo completo →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ STREAMING ══════════════════════ -->
+  <section class="cult-section cult-section--alt" id="streaming">
+    <div class="container">
+      <div class="cult-section__header">
+        <div>
+          <p class="cult-section__eyebrow">Canal Digital</p>
+          <h2 class="cult-section__title">Streaming & videos</h2>
+          <p class="cult-section__sub">Contenidos audiovisuales para ver cuando quieras, desde donde estés.</p>
+        </div>
+        <a href="https://www.youtube.com/@monserratenses" target="_blank" class="cult-see-all">Ver canal completo →</a>
+      </div>
+
+      <!-- ── Ciclo 20-21 Abril 2026 ── -->
+      <div class="stream-upcoming-wrap">
+        <p class="stream-cycle-label">Ciclo de Conferencias, Debates y Conciertos</p>
+
+        <div class="stream-upcoming-grid">
+
+          <!-- Jueves 20 de Abril -->
+          <div class="stream-upcoming-card">
+            <div class="stream-video-embed">
+              <iframe src="https://www.youtube.com/embed/ItzXTO9-Weo" title="Ciclo de Conferencias — Jueves 20 de Abril 2026" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="stream-upcoming-body">
+              <span class="stream-upcoming-badge">Jueves 20 de Abril · 2023</span>
+              <h3 class="stream-upcoming-title">Ciclo de Conferencias, Debates y Conciertos</h3>
+              <ul class="stream-upcoming-program">
+                <li><strong>16 hs.</strong> Conferencia <em>"Los senderos del humanismo"</em> — Prof. Enrique Robles</li>
+                <li><strong>18 hs.</strong> Conferencia <em>"El Monserrat y sus rebeldías"</em> — Prof. José Camaño</li>
+                <li><strong>19:30 hs.</strong> Concierto — Tenor Santiago Sirur y pianista Lucas Iriarte</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Viernes 21 de Abril -->
+          <div class="stream-upcoming-card">
+            <div class="stream-video-embed">
+              <iframe src="https://www.youtube.com/embed/hbxHgSJMNx4" title="Ciclo de Conferencias — Viernes 21 de Abril 2026" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="stream-upcoming-body">
+              <span class="stream-upcoming-badge">Viernes 21 de Abril · 2023</span>
+              <h3 class="stream-upcoming-title">Ciclo de Conferencias, Debates y Conciertos</h3>
+              <ul class="stream-upcoming-program">
+                <li><strong>17 hs.</strong> Panel y debate — Marcelo Pont Vergés, Carlos Del Franco, Sancho Arabehety y Martín Fourcade: <em>"Los desafíos de la educación humanista. Una visión de futuro"</em></li>
+                <li><strong>19:30 hs.</strong> Concierto de guitarra — Compositor Sergio Abalos</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Archivo — Ciclo 2023 ── -->
+      <div class="stream-archive-wrap">
+        <p class="stream-cycle-label">Archivo · Ciclo de Conferencias y Conciertos Corales: <em>Los desafíos del humanismo en el siglo XXI</em> — 2023</p>
+
+        <div class="stream-archive-grid">
+
+          <div class="stream-archive-card">
+            <div class="stream-video-embed">
+              <iframe src="https://www.youtube.com/embed/715_TCmQNb4" title="El Humanismo en la Ciencia — Dr. Juan Tirao" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="stream-archive-body">
+              <span class="stream-archive-date">8 ago 2023</span>
+              <h4 class="stream-archive-title">El Humanismo en la Ciencia: Matemática y Civilización</h4>
+              <p class="stream-archive-speaker">Dr. Juan Tirao</p>
+            </div>
+          </div>
+
+          <div class="stream-archive-card">
+            <div class="stream-video-embed">
+              <iframe src="https://www.youtube.com/embed/6W07-BLQEtM" title="El Humanismo en el Arte — Lic. Pablo Canedo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="stream-archive-body">
+              <span class="stream-archive-date">12 ago 2023</span>
+              <h4 class="stream-archive-title">El Humanismo en el Arte: Arte y Humanismo en nuestro siglo</h4>
+              <p class="stream-archive-speaker">Lic. Pablo Canedo</p>
+            </div>
+          </div>
+
+          <div class="stream-archive-card">
+            <div class="stream-video-embed">
+              <iframe src="https://www.youtube.com/embed/3a5PTJbcB08" title="El Humanismo en la Cultura — Dr. Luis María Caballero" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="stream-archive-body">
+              <span class="stream-archive-date">19 ago 2023</span>
+              <h4 class="stream-archive-title">El Humanismo en la Cultura: Presente, Futuro y Eternidad</h4>
+              <p class="stream-archive-speaker">Dr. Luis María Caballero</p>
+            </div>
+          </div>
+
+          <div class="stream-archive-card">
+            <div class="stream-video-embed">
+              <iframe src="https://www.youtube.com/embed/BhBoJ1-a36M" title="Una visión de futuro desde el humanismo — Panel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="stream-archive-body">
+              <span class="stream-archive-date">25 ago 2023</span>
+              <h4 class="stream-archive-title">Una visión de futuro desde el humanismo: Panel de exposición y debate</h4>
+              <p class="stream-archive-speaker">Ricardo Castro, Enrique Robles y Carlos Del Franco</p>
+            </div>
+          </div>
+
+          <div class="stream-archive-card">
+            <div class="stream-video-embed">
+              <iframe src="https://www.youtube.com/embed/4zBCBS1SGUY" title="El Humanismo en la Historia — Dr. Prudencio Bustos Argañaraz" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="stream-archive-body">
+              <span class="stream-archive-date">1 sept 2023</span>
+              <h4 class="stream-archive-title">El Humanismo en la Historia: El proyecto geopolítico de Don Jerónimo Luis de Cabrera</h4>
+              <p class="stream-archive-speaker">Dr. Prudencio Bustos Argañaraz</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <div class="cult-cta">
+    <div class="container">
+      <h2 class="cult-cta__title">¿Tenés algo para <em>compartir</em>?</h2>
+      <p class="cult-cta__sub">Proponé una charla, un evento o un proyecto cultural para la comunidad monserratense.</p>
+      <div class="cult-cta__btns">
+        <a href="../contacto/" class="btn btn--gold">Proponer un evento</a>
+        <a href="../noticias/" class="btn btn--outline-ivory">Ver noticias</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    function cultNav(id, btn) {
+      document.querySelectorAll('.cult-nav__btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById(id);
+      if (!target) return;
+      const navbarEl  = document.getElementById('navbar');
+      const cultNavEl = document.querySelector('.cult-nav');
+      const offset  = (navbarEl  ? navbarEl.offsetHeight  : 62)
+                    + (cultNavEl ? cultNavEl.offsetHeight : 50)
+                    + 8;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    // Resaltar sección activa en el scroll
+    const sections = ['conferencias', 'streaming'];
+    const navBtns = document.querySelectorAll('.cult-nav__btn');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = sections.indexOf(entry.target.id);
+          if (idx > -1) {
+            navBtns.forEach(b => b.classList.remove('active'));
+            navBtns[idx].classList.add('active');
+          }
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  </script>
+</body>
+</html>

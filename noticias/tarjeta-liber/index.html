@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Información Tarjeta Liber | Noticias | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../../Public/Favicon/favicon.svg" />
+  <style>
+    .page-hero {
+      position: relative;
+      padding: 6rem 0 4rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, var(--burgundy-dark) 0%, #0f0407 100%);
+      z-index: 0;
+    }
+    .page-hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,.18) 0%, transparent 65%);
+    }
+    .page-hero__content { position: relative; z-index: 1; }
+    .page-hero__eyebrow {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .page-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700; color: var(--ivory);
+      line-height: 1.1; margin-bottom: .75rem;
+    }
+    .page-hero__sub {
+      color: rgba(245,240,232,.85); font-size: 1rem;
+    }
+    /* Artículo */
+    .article-section { padding: 5rem 0 7rem; background: var(--ivory); }
+    .article-inner { max-width: 760px; margin: 0 auto; }
+    .article-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid rgba(78,19,32,.1); }
+    .article-header__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .article-header__tag {
+      display: inline-block; font-size: .65rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--burgundy); background: rgba(78,19,32,.08);
+      padding: .25rem .75rem; border-radius: 99px;
+    }
+    .article-header__date { font-size: .8rem; color: var(--text-muted); }
+    .article-header__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 700; color: var(--burgundy-dark);
+      line-height: 1.15; letter-spacing: -.02em;
+    }
+    .article-body { font-size: 1.1rem; line-height: 1.85; color: #1e1409; }
+    .article-body p { margin-bottom: 1.75rem; }
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-body .note {
+      font-size: .97rem;
+      background: rgba(78,19,32,.05);
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 1.75rem;
+    }
+    .article-img {
+      width: 100%; border-radius: 10px;
+      overflow: hidden; margin-bottom: 2.5rem;
+    }
+    .article-img img { width: 100%; height: auto; display: block; }
+    .article-nav {
+      margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(78,19,32,.12);
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .article-nav__back {
+      font-size: .85rem; font-weight: 700; color: var(--burgundy);
+      text-decoration: none; border-bottom: 1px solid rgba(107,27,42,.3);
+      padding-bottom: 1px; transition: opacity .2s;
+    }
+    .article-nav__back:hover { opacity: .7; }
+  </style>
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../../">Inicio</a>
+        <a href="../../servicios/">Servicios</a>
+        <a href="../../#mundo">Por el Mundo</a>
+        <a href="../../noticias/" class="active">Noticias</a>
+        <a href="../../cultura/">Cultura</a>
+        <a href="../../archivo/">Archivo</a>
+        <a href="../../tienda/">Tienda</a>
+        <a href="../../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../../comision/">Comisión Directiva</a>
+            <a href="../../carta-fundacional/">Carta Fundacional</a>
+            <a href="../../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../../" onclick="toggleMenu()">Inicio</a>
+      <a href="../../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="../../carta-fundacional/" onclick="toggleMenu()">Carta Fundacional</a>
+      <a href="../../carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <div class="page-hero__bg"></div>
+    <div class="container page-hero__content">
+      <span class="page-hero__eyebrow">Noticias · Comunidad · Abril 2026</span>
+      <h1 class="page-hero__title">Información Tarjeta Liber</h1>
+      <p class="page-hero__sub">Red Liber · Socios</p>
+    </div>
+  </div>
+
+  <section class="article-section">
+    <div class="container article-inner">
+
+      <div class="article-header">
+        <div class="article-header__meta">
+          <span class="article-header__tag">Comunidad</span>
+          <span class="article-header__tag">Red Liber</span>
+          <span class="article-header__date">Abril de 2026</span>
+        </div>
+        <h1 class="article-header__title">Información Tarjeta Liber</h1>
+      </div>
+
+      <div class="article-body">
+
+        <div class="article-img">
+          <img src="../../Public/RedLiber/tarjetamano.png" alt="Tarjeta Liber en mano" />
+        </div>
+
+        <p>Estimados Camaradas,</p>
+
+        <p>A partir del mes de mayo quienes hayan completado correctamente los datos solicitados en el formulario de inscripción tendrán a disposición una tarjeta personalizada que los identificará como socios de la institución tal como lo establece nuestro estatuto.</p>
+
+        <p>Luego de las inquietudes que nos formularan las promociones egresadas con el propósito de reducir las restricciones para ingresar al colegio, llegamos a un acuerdo con sus autoridades para poder ingresar nuevamente y visitarlo cuando los camaradas lo deseen.</p>
+
+        <p>En consonancia con este objetivo, el único "requisito indispensable" para formalizarlo será la presentación de la tarjeta al momento del ingreso. La asociación, a su vez, asistirá y acompañará al camarada para facilitarle la tarea. Habrá un <strong>protocolo</strong> con las condiciones a tener en cuenta para aprovechar al máximo la visita. </p>
+
+        <p> <strong> Así culmina exitosamente, el primer objetivo que diera origen a la tarjeta: acceder nuevamente al colegio, visitarlo y circular libremente por él. </strong> </p>
+
+        <p>Aprovechando esta implementación y tomando nota de las propuestas de los camaradas de numerosas promociones, la asociación creó la red LIBER para brindarle beneficios y soluciones a sus integrantes en distintas disciplinas y rubros.</p>
+
+        <p>El estatuto que nos rige prevé dos clases de socios: <strong>activos y adherentes.</strong></p>
+
+        <p>Los socios activos recibirán una cobertura plena con todos los beneficios que le brinde la red (prestaciones profesionales, descuentos en compras de productos y servicios, promociones especiales, etc.). Tendrán derecho de voz y voto en las asambleas y, por tanto, podrán incidir en el futuro de la institución. En contraprestación deberán abonar una cuota social fija de <strong>$&nbsp;10.000 (Diez mil)</strong> del 1 al 10 de cada mes, debiendo estar al día para no perder la cobertura.</p>
+
+        <p>Quienes no puedan abonar dicho importe, tendrán el carácter de socios adherentes y recibirán una cobertura parcial no pudiendo votar en las asambleas por disposición estatutaria.</p>
+
+        <p>Tanto los socios activos como los adherentes tendrán la misma consideración por parte de la institución, solo que los activos tendrán una cobertura plena para que puedan amortizar y recuperar el importe que abonen en carácter de cuota mensual.</p>
+
+        <p>Este aporte de los socios activos tiene una extraordinaria importancia porque permite el funcionamiento y desarrollo de las tres áreas de la asociación (social, cultural y deportiva) contribuyendo de manera solidaria con los compañeros que tengan dificultades, soliciten colaboracion o necesiten ayuda.</p>
+
+        <p class="note">Los socios activos podrán optar por el pago mediante <strong>débito automático</strong>, transferencia del 1 al 10 de cada mes, o bien, abonar la cuota en la sede de la asociación. Cualquiera sea la opción elegida, les enviaremos un recordatorio para estar al día y mantener la cobertura de las prestaciones profesionales y el resto de los beneficios de la Red LIBER.</p>
+        <p class="note">Los socios adherentes abonarán por única vez $12.000 (Doce Mil) equivalente al costo de impresión de la tarjeta. La misma, irá acompañada de un <strong> instructivo </strong> para que el titular conozca todos los detalles de su funcionamiento, alcance y cobertura. </p>
+        <!-- Botón MP solo para Socios Activos -->
+        <div style="margin:2rem 0; display:flex; flex-direction:column; align-items:flex-start; gap:.5rem;">
+          <a href="https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=232b57014e514c87a10c6bfe2ef14f7f"
+             target="_blank" rel="noopener"
+             style="display:inline-flex; align-items:center; gap:.6rem; background:#009ee3; color:#fff; border:2px solid #009ee3; border-radius:8px; font-family:var(--ff-sans); font-size:.85rem; font-weight:700; letter-spacing:.04em; padding:.85rem 2rem; text-decoration:none; box-shadow:0 4px 16px rgba(0,158,227,.3); transition:background .2s, transform .2s, box-shadow .2s;"
+             onmouseover="this.style.background='#0081c2';this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(0,158,227,.45)'"
+             onmouseout="this.style.background='#009ee3';this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(0,158,227,.3)'">
+            <svg width="20" height="20" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" r="18" fill="#fff"/><path d="M27.5 15.5c0 5.246-4.254 9.5-9.5 9.5S8.5 20.746 8.5 15.5 12.754 6 18 6s9.5 4.254 9.5 9.5z" fill="#009ee3"/><path d="M21.5 13.5h-7a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1z" fill="#fff"/></svg>
+            Suscribirse como Socio Activo
+          </a>
+          <span style="font-size:.75rem; color:var(--text-muted);">Solo para <strong>socios activos</strong> · débito automático · $10.000/mes · cancelable en cualquier momento</span>
+        </div>
+
+        
+
+      </div>
+
+      <div class="article-nav">
+        <a href="../" class="article-nav__back">← Volver a Noticias</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

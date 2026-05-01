@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Una reflexión desde el corazón | Noticias | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../../Public/Favicon/favicon.svg" />
+  <style>
+    .page-hero {
+      position: relative;
+      padding: 6rem 0 4rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../fotos/Reflexion.jpg');
+      background-size: cover;
+      background-position: center var(--banner-y, 40%);
+      z-index: 0;
+    }
+    .page-hero__content { position: relative; z-index: 1; }
+    .page-hero__eyebrow {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .page-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700; color: var(--ivory);
+      line-height: 1.1; margin-bottom: .75rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.65), 0 1px 4px rgba(0,0,0,.5);
+    }
+    .page-hero__sub {
+      color: rgba(245,240,232,.9); font-size: 1rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    }
+    /* Artículo */
+    .article-section { padding: 5rem 0 7rem; background: var(--ivory); }
+    .article-inner { max-width: 760px; margin: 0 auto; }
+    .article-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid rgba(78,19,32,.1); }
+    .article-header__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .article-header__tag {
+      display: inline-block; font-size: .65rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--burgundy); background: rgba(78,19,32,.08);
+      padding: .25rem .75rem; border-radius: 99px;
+    }
+    .article-header__date { font-size: .8rem; color: var(--text-muted); }
+    .article-header__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 700; color: var(--burgundy-dark);
+      line-height: 1.15; letter-spacing: -.02em;
+    }
+    .article-body { font-size: 1.1rem; line-height: 1.85; color: #1e1409; }
+    .article-body p { margin-bottom: 1.75rem; }
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-img {
+      width: 100%; border-radius: 10px;
+      overflow: hidden; margin-bottom: 2rem; margin-top: .5rem;
+    }
+    .article-img img { width: 100%; height: auto; display: block; }
+    .article-nav {
+      margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(78,19,32,.12);
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .article-nav__back {
+      font-size: .85rem; font-weight: 700; color: var(--burgundy);
+      text-decoration: none; border-bottom: 1px solid rgba(107,27,42,.3);
+      padding-bottom: 1px; transition: opacity .2s;
+    }
+    .article-nav__back:hover { opacity: .7; }
+    .article-nav__next {
+      font-size: .85rem; font-weight: 700; color: var(--burgundy);
+      text-decoration: none; border-bottom: 1px solid rgba(107,27,42,.3);
+      padding-bottom: 1px; transition: opacity .2s;
+    }
+    .article-nav__next:hover { opacity: .7; }
+  </style>
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../../">Inicio</a>
+        <a href="../../servicios/">Servicios</a>
+        <a href="../../#mundo">Por el Mundo</a>
+        <a href="../../noticias/" class="active">Noticias</a>
+        <a href="../../cultura/">Cultura</a>
+        <a href="../../archivo/">Archivo</a>
+        <a href="../../tienda/">Tienda</a>
+        <a href="../../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../../comision/">Comisión Directiva</a>
+            <a href="../../carta-fundacional/">Carta Fundacional</a>
+            <a href="../../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../../" onclick="toggleMenu()">Inicio</a>
+      <a href="../../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="../../carta-fundacional/" onclick="toggleMenu()">Carta Fundacional</a>
+      <a href="../../carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <div class="page-hero" style="--banner-y: 40%">
+    <div class="page-hero__bg"></div>
+    <div class="container page-hero__content">
+      <span class="page-hero__eyebrow">Noticias · 10 de enero de 2024</span>
+      <h1 class="page-hero__title">Una reflexión desde el corazón</h1>
+      <p class="page-hero__sub">Institucional</p>
+    </div>
+  </div>
+
+  <section class="article-section">
+    <div class="container article-inner">
+
+      <div class="article-header">
+        <div class="article-header__meta">
+          <span class="article-header__tag">Institucional</span>
+          <span class="article-header__date">10 de enero de 2024</span>
+        </div>
+        <h1 class="article-header__title">Una reflexión desde el corazón</h1>
+      </div>
+
+      <div class="article-body">
+
+        <p>La creación de la Asociación Monserratense después de más de tres siglos de vida del Colegio puede parecer tardía. El Monse generó muchas agrupaciones informales de egresados, promovidas en general por grupos de compañeros de promoción. Pero nunca hubo una asociación que nucleara a todos los egresados del Colegio, desde sus remotos orígenes, ni tampoco se diera forma a una "Red de Exalumnos" como sucede en las demás instituciones educativas.</p>
+
+        <p>Frases como "ya no estamos dentro del Monse, ya pasó, hay que mirar para adelante" son comunes en el imaginario de los egresados. Pero no caemos en la cuenta de que la enorme reputación que tiene el Colegio Nacional de Monserrat en el mundo académico, su condición de cuna de próceres de la Nación y de la Provincia, de semillero de figuras destacadas en todas las artes y ciencias, es también nuestra reputación: somos sus herederos. Tenemos la obligación moral de cuidar ese patrimonio y de hacerlo crecer.</p>
+
+        <p>A partir de su legado histórico, compartimos una identidad y una cosmovisión que nos une. Somos lo que somos gracias a lo que el Monse nos dio. Y esa identidad común es la raíz que funda esta asociación.</p>
+
+        <div class="article-img">
+          <img src="../fotos/Reflexion.jpg" alt="Una reflexión desde el corazón" />
+        </div>
+
+        <p>Esta entidad nace con el afán de reunir a todos los egresados del Colegio Nacional de Monserrat, sin distinción de épocas ni de promociones, con el objetivo de promover los valores que nos inculcaron, de mantener vivo el espíritu del Monse, de relacionarnos entre nosotros, de aprovechar nuestras habilidades y de contribuir a la sociedad.</p>
+
+        <p>Sería interesante que la "casa de los monserratenses" se convirtiera en un lugar de encuentro donde los egresados del Colegio pudiéramos seguir aprendiendo los unos de los otros, donde pudiéramos seguir debatiendo, donde pudiéramos seguir construyendo juntos una visión del mundo y del país que nos pertenece y que nos une.</p>
+
+        <p>Es indudable que la formación que nos brindó el Colegio, en la que el conocimiento clásico y el humanismo tuvieron un lugar central, nos dejó una impronta imborrable. Nos dio una manera de pensar, una manera de ver el mundo. Esa es nuestra riqueza y nuestra responsabilidad.</p>
+
+        <p>Este es nuestro objetivo: brindarles un espacio en el que puedan reencontrarse con sus compañeros de siempre, conocer a egresados de otras generaciones, y en el que todos juntos podamos hacerle honor a la institución que nos formó.</p>
+
+      </div>
+
+      <div class="article-nav">
+        <a href="../bienvenida/" class="article-nav__back">← Bienvenida</a>
+        <a href="../sede-virtual/" class="article-nav__next">Sede Virtual →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

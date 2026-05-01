@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bienvenida | Noticias | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../../Public/Favicon/favicon.svg" />
+  <style>
+    .page-hero {
+      position: relative;
+      padding: 6rem 0 4rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../fotos/Bienvenida.jpg');
+      background-size: cover;
+      background-position: center var(--banner-y, 40%);
+      z-index: 0;
+    }
+    .page-hero__content { position: relative; z-index: 1; }
+    .page-hero__eyebrow {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .page-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700; color: var(--ivory);
+      line-height: 1.1; margin-bottom: .75rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.65), 0 1px 4px rgba(0,0,0,.5);
+    }
+    .page-hero__sub {
+      color: rgba(245,240,232,.9); font-size: 1rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    }
+    /* Artículo */
+    .article-section { padding: 5rem 0 7rem; background: var(--ivory); }
+    .article-inner { max-width: 760px; margin: 0 auto; }
+    .article-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid rgba(78,19,32,.1); }
+    .article-header__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .article-header__tag {
+      display: inline-block; font-size: .65rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--burgundy); background: rgba(78,19,32,.08);
+      padding: .25rem .75rem; border-radius: 99px;
+    }
+    .article-header__date { font-size: .8rem; color: var(--text-muted); }
+    .article-header__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 700; color: var(--burgundy-dark);
+      line-height: 1.15; letter-spacing: -.02em;
+    }
+    .article-body { font-size: 1.1rem; line-height: 1.85; color: #1e1409; }
+    .article-body p { margin-bottom: 1.75rem; }
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-img {
+      width: 100%; border-radius: 10px;
+      overflow: hidden; margin-bottom: 2rem;
+    }
+    .article-img img { width: 100%; height: auto; display: block; }
+    .article-nav {
+      margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(78,19,32,.12);
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .article-nav__back {
+      font-size: .85rem; font-weight: 700; color: var(--burgundy);
+      text-decoration: none; border-bottom: 1px solid rgba(107,27,42,.3);
+      padding-bottom: 1px; transition: opacity .2s;
+    }
+    .article-nav__back:hover { opacity: .7; }
+    .article-nav__next {
+      font-size: .85rem; font-weight: 700; color: var(--burgundy);
+      text-decoration: none; border-bottom: 1px solid rgba(107,27,42,.3);
+      padding-bottom: 1px; transition: opacity .2s;
+    }
+    .article-nav__next:hover { opacity: .7; }
+  </style>
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../../">Inicio</a>
+        <a href="../../servicios/">Servicios</a>
+        <a href="../../#mundo">Por el Mundo</a>
+        <a href="../../noticias/" class="active">Noticias</a>
+        <a href="../../cultura/">Cultura</a>
+        <a href="../../archivo/">Archivo</a>
+        <a href="../../tienda/">Tienda</a>
+        <a href="../../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../../comision/">Comisión Directiva</a>
+            <a href="../../carta-fundacional/">Carta Fundacional</a>
+            <a href="../../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../../" onclick="toggleMenu()">Inicio</a>
+      <a href="../../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="../../carta-fundacional/" onclick="toggleMenu()">Carta Fundacional</a>
+      <a href="../../carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <div class="page-hero" style="--banner-y: 40%">
+    <div class="page-hero__bg"></div>
+    <div class="container page-hero__content">
+      <span class="page-hero__eyebrow">Noticias · 5 de enero de 2024</span>
+      <h1 class="page-hero__title">Bienvenida</h1>
+      <p class="page-hero__sub">Institucional</p>
+    </div>
+  </div>
+
+  <section class="article-section">
+    <div class="container article-inner">
+
+      <div class="article-header">
+        <div class="article-header__meta">
+          <span class="article-header__tag">Institucional</span>
+          <span class="article-header__date">5 de enero de 2024</span>
+        </div>
+        <h1 class="article-header__title">Bienvenidos a vuestra asociación</h1>
+      </div>
+
+      <div class="article-body">
+
+        <div class="article-img">
+          <img src="../fotos/Bienvenida.jpg" alt="Bienvenida a la Asociación" />
+        </div>
+
+        <p>Hoy, con enorme emoción y no exenta de algún nudo en la garganta, comenzamos a transitar este camino. Sabemos que estamos ante un gran desafío. No es fácil abordar una tarea de esta magnitud con escasos recursos humanos y económicos. Pero aquí estamos, y aquí estaremos con la misma convicción que nos trajo hasta aquí. En los próximos meses, haremos lo posible por crecer en cantidad de asociados y en recursos.</p>
+
+        <p>De todos modos, ya estamos trabajando en algunos proyectos. Y contamos con un grupo de compañeros comprometidos con esta idea y dispuestos a dedicarle el tiempo que haga falta. También sabemos que del otro lado, del lado de ustedes compañeros, hay disposición y ganas de acompañar esta iniciativa y, cómo no, el gran ejemplo de todos aquellos monserratenses que dejaron huellas imborrables en distintas disciplinas del conocimiento humano: derecho, medicina, filosofía, educación, ingeniería, arquitectura, artes, música, etc… etc. El abanico es infinito… Seguramente, habrá condiscípulos que puedan aportar su conocimiento a través de propuestas que enriquezcan el debate y que nos ayuden a seguir siendo protagonistas en la construcción de una sociedad más justa y equitativa.</p>
+
+        <p>Desde hoy, ponemos a vuestra disposición las redes sociales para que nos acompañen en este largo viaje, y les damos la bienvenida a su casa, a la casa de todos…</p>
+
+        <p><strong>Bienvenidos a vuestra asociación.</strong></p>
+
+      </div>
+
+      <div class="article-nav">
+        <a href="../../noticias/" class="article-nav__back">← Volver a Noticias</a>
+        <a href="../reflexion/" class="article-nav__next">Una reflexión desde el corazón →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

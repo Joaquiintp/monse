@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bono Contribución Anual 2026 | Noticias | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../../Public/Favicon/favicon.svg" />
+  <style>
+    .page-hero {
+      position: relative;
+      padding: 6rem 0 4rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--burgundy-dark) 0%, #0f0407 100%);
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero__content { position: relative; z-index: 1; }
+    .page-hero__eyebrow {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .page-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700; color: var(--ivory);
+      line-height: 1.1; margin-bottom: .75rem;
+      font-style: italic;
+    }
+    .page-hero__sub {
+      color: var(--gold-light);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    /* Artículo */
+    .article-section { padding: 5rem 0 7rem; background: var(--ivory); }
+    .article-inner { max-width: 780px; margin: 0 auto; }
+    .article-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid rgba(78,19,32,.1); }
+    .article-header__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .article-header__tag {
+      display: inline-block; font-size: .65rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--burgundy); background: rgba(78,19,32,.08);
+      padding: .25rem .75rem; border-radius: 99px;
+    }
+    .article-header__date { font-size: .8rem; color: var(--text-muted); }
+    .article-header__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 700; color: var(--burgundy-dark);
+      line-height: 1.15; letter-spacing: -.02em;
+    }
+    .article-body { font-size: 1.05rem; line-height: 1.85; color: #1e1409; }
+    .article-body p { margin-bottom: 1.6rem; }
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-body strong { color: var(--burgundy-dark); }
+
+    /* Bloque de precios */
+    .price-block {
+      background: var(--cream);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+    }
+    .price-block__title {
+      font-family: var(--ff-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      margin-bottom: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .8rem;
+    }
+    .price-block ul { list-style: none; padding: 0; margin: 0; }
+    .price-block ul li {
+      padding: .4rem 0;
+      border-bottom: 1px solid rgba(78,19,32,.08);
+      font-size: 1rem;
+      color: var(--text);
+      display: flex;
+      align-items: baseline;
+      gap: .6rem;
+    }
+    .price-block ul li:last-child { border-bottom: none; }
+    .price-block ul li::before {
+      content: '•';
+      color: var(--gold);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    /* Premios */
+    .prizes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+    .prize-card {
+      background: #fff;
+      border: 1px solid rgba(78,19,32,.1);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .prize-card__rank {
+      background: var(--burgundy-dark);
+      color: var(--gold);
+      font-family: var(--ff-serif);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: .5rem 1rem;
+    }
+    .prize-card__gallery {
+      position: relative;
+      overflow: hidden;
+    }
+    .prize-card__gallery img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: opacity .3s;
+    }
+    /* Miniaturas */
+    .prize-card__thumbs {
+      display: flex;
+      gap: 2px;
+      padding: 2px;
+      background: #f0ebe2;
+    }
+    .prize-card__thumbs img {
+      flex: 1;
+      aspect-ratio: 1;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 3px;
+      opacity: .65;
+      transition: opacity .2s;
+    }
+    .prize-card__thumbs img:hover,
+    .prize-card__thumbs img.active { opacity: 1; }
+    .prize-card__body {
+      padding: 1rem 1.1rem 1.25rem;
+    }
+    .prize-card__name {
+      font-family: var(--ff-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      margin-bottom: .3rem;
+    }
+    .prize-card__desc {
+      font-size: .82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Premio especial */
+    .special-prize {
+      background: linear-gradient(135deg, var(--burgundy-dark) 0%, #2a0810 100%);
+      border-radius: 12px;
+      padding: 2rem 2rem;
+      margin: 2.5rem 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .special-prize__img {
+      width: 160px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .special-prize__img img { width: 100%; display: block; }
+    .special-prize__content { flex: 1; }
+    .special-prize__eyebrow {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .5rem;
+      display: block;
+    }
+    .special-prize__title {
+      font-family: var(--ff-serif);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--ivory);
+      margin-bottom: .75rem;
+    }
+    .special-prize__text {
+      font-size: .9rem;
+      color: rgba(245,240,232,.8);
+      line-height: 1.65;
+    }
+    .special-prize__dates {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .special-prize__date-pill {
+      background: rgba(201,168,76,.15);
+      border: 1px solid rgba(201,168,76,.35);
+      color: var(--gold-light);
+      font-size: .75rem;
+      font-weight: 700;
+      padding: .3rem .85rem;
+      border-radius: 99px;
+      letter-spacing: .04em;
+    }
+
+    /* CTA contacto */
+    .article-cta {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      text-align: center;
+      margin: 2.5rem 0 0;
+      border: 1px solid rgba(78,19,32,.1);
+    }
+    .article-cta p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: .95rem; }
+    .article-cta .btn { display: inline-block; }
+
+    /* Nav */
+    .article-nav {
+      margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(78,19,32,.12);
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .article-nav__back {
+      font-size: .85rem; font-weight: 700; color: var(--burgundy);
+      text-decoration: none; border-bottom: 1px solid rgba(107,27,42,.3);
+      padding-bottom: 1px; transition: opacity .2s;
+    }
+    .article-nav__back:hover { opacity: .7; }
+
+    @media (max-width: 720px) {
+      .prizes-grid { grid-template-columns: 1fr; }
+      .special-prize { grid-template-columns: 1fr; }
+      .special-prize__img { width: 100%; max-width: 260px; margin: 0 auto; }
+      .article-cta { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../../">Inicio</a>
+        <a href="../../servicios/">Servicios</a>
+        <a href="../../#mundo">Por el Mundo</a>
+        <a href="../../noticias/" class="active">Noticias</a>
+        <a href="../../cultura/">Cultura</a>
+        <a href="../../archivo/">Archivo</a>
+        <a href="../../tienda/">Tienda</a>
+        <a href="../../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../../comision/">Comisión Directiva</a>
+            <a href="../../carta-fundacional/">Carta Fundacional</a>
+            <a href="../../carta-abierta-a-los-egresados/">Carta Abierta</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../../" onclick="toggleMenu()">Inicio</a>
+      <a href="../../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="../../carta-fundacional/" onclick="toggleMenu()">Carta Fundacional</a>
+      <a href="../../carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <div class="container page-hero__content">
+      <span class="page-hero__eyebrow">Noticias · Comunidad · Abril 2026</span>
+      <h1 class="page-hero__title">Bono Contribución Anual 2026</h1>
+      <p class="page-hero__sub">Colaborá con la Asociación y participá de premios únicos</p>
+    </div>
+  </div>
+
+  <section class="article-section">
+    <div class="container article-inner">
+
+      <div class="article-header">
+        <div class="article-header__meta">
+          <span class="article-header__tag">Comunidad</span>
+          <span class="article-header__date">Abril de 2026</span>
+        </div>
+        <h1 class="article-header__title">Bono Contribución Anual 2026</h1>
+      </div>
+
+      <div class="article-body">
+
+        <p>Camaradas, lanzamos el <strong>Bono Contribución Anual 2026</strong>. Esta iniciativa nos permite financiar los gastos de funcionamiento de la Asociación de Egresados y todas las actividades culturales y solidarias que estamos desarrollando.</p>
+
+        <p>La rifa tiene <strong>50 talonarios de 10 bonos cada uno</strong>, con 2 números por bono.</p>
+
+        <div class="price-block">
+          <p class="price-block__title">Precios</p>
+          <ul>
+            <li><span><strong>Bono individual: $10.000</strong> — orientado a los camaradas.</span></li>
+            <li><span><strong>Talonario completo: $80.000</strong> — precio especial, orientado a las promociones.</span></li>
+          </ul>
+        </div>
+
+        <p>El sorteo se realizará el <strong>miércoles 15 de julio</strong> mediante la <strong>Lotería Nocturna de Córdoba</strong>.</p>
+
+        <!-- PREMIOS -->
+        <h2 style="font-family:var(--ff-serif); font-size:1.6rem; color:var(--burgundy-dark); margin: 2.5rem 0 1.25rem; letter-spacing:-.01em;">Premios</h2>
+
+        <div class="prizes-grid">
+
+          <!-- 1° Premio -->
+          <div class="prize-card">
+            <div class="prize-card__rank">1° Premio</div>
+            <div class="prize-card__gallery">
+              <img id="p1-main" src="../Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="La Visitante — Carlos Reales" />
+            </div>
+            <div class="prize-card__thumbs">
+              <img src="../Bono/Primer Premio/pintura-la-visitante-2.jpg" alt="" class="active" onclick="switchImg('p1-main', this)" />
+            </div>
+            <div class="prize-card__body">
+              <p class="prize-card__name">Pintura original — "La Visitante"</p>
+              <p class="prize-card__desc">Carlos Reales. Óleo sobre tela, 50 × 85 cm.</p>
+            </div>
+          </div>
+
+          <!-- 2° Premio -->
+          <div class="prize-card">
+            <div class="prize-card__rank">2° Premio</div>
+            <div class="prize-card__gallery">
+              <img id="p2-main" src="../Bono/Segundo premio/maqueta-2.jpg" alt="Maqueta del Colegio Nacional de Monserrat" />
+            </div>
+            <div class="prize-card__thumbs">
+              <img src="../Bono/Segundo premio/maqueta-3.jpg" alt="" class="active" onclick="switchImg('p2-main', this)" />
+            </div>
+            <div class="prize-card__body">
+              <p class="prize-card__name">Maqueta del Colegio Nacional de Monserrat</p>
+              <p class="prize-card__desc">Réplica única iluminada con texto histórico.</p>
+            </div>
+          </div>
+
+          <!-- 3° Premio -->
+          <div class="prize-card">
+            <div class="prize-card__rank">3° Premio</div>
+            <div class="prize-card__gallery">
+              <img id="p3-main" src="../../Public/Tienda/Vinos/Blend1.jpg" alt="Caja de vinos Selección del Fundador" />
+            </div>
+            <div class="prize-card__thumbs">
+              <img src="../../Public/Tienda/Vinos/Blend2.jpg" alt="" class="active" onclick="switchImg('p3-main', this)" />
+            </div>
+            <div class="prize-card__body">
+              <p class="prize-card__name">Caja de vinos "Selección del Fundador"</p>
+              <p class="prize-card__desc">Colección DUARTE — ediciones artísticas + historia del colegio.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SORTEOS ESPECIALES -->
+        <h2 style="font-family:var(--ff-serif); font-size:1.6rem; color:var(--burgundy-dark); margin: 2.5rem 0 1.25rem; letter-spacing:-.01em;">Sorteos Especiales</h2>
+
+        <div class="special-prize">
+          <div class="special-prize__img">
+            <img src="../Bono/Premios especiales/copa-cristal.jpg" alt="Copa de cristal grabada en láser" />
+          </div>
+          <div class="special-prize__content">
+            <span class="special-prize__eyebrow">Premio adicional por fecha límite</span>
+            <h3 class="special-prize__title">Copa de cristal grabada en láser</h3>
+            <p class="special-prize__text">
+              Si abonás tu bono antes de las fechas indicadas, participás de un sorteo adicional: una copa de cristal grabada en láser con las iniciales del fundador, tu nombre y promoción, más dos botellas de la colección DUARTE.
+            </p>
+            <div class="special-prize__dates">
+              <span class="special-prize__date-pill">Hasta el 22 de abril</span>
+              <span class="special-prize__date-pill">Hasta el 17 de mayo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-cta">
+          <p>¿Te interesa colaborar? Contactanos y te indicamos cómo adquirir tu bono o talonario.</p>
+          <a href="../../contacto/" class="btn btn--gold">Contactanos</a>
+        </div>
+
+        <p style="margin-top:2.5rem; text-align:center; font-size:1.1rem;">
+          <strong>¡Gracias por tu apoyo!</strong>
+        </p>
+
+      </div>
+
+      <div class="article-nav">
+        <a href="../../noticias/" class="article-nav__back">← Volver a Noticias</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+  <script>
+    function switchImg(mainId, thumb) {
+      var main = document.getElementById(mainId);
+      if (!main) return;
+      // Intercambiar: el thumb toma la src actual de la principal
+      var prevSrc = main.src;
+      main.src = thumb.src;
+      thumb.src = prevSrc;
+    }
+  </script>
+</body>
+</html>
