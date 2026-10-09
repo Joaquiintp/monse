@@ -164,6 +164,7 @@
         <div class="about__ctas">
           <a href="/carta-fundacional/" class="btn btn--gold-outline">Carta Fundacional</a>
           <a href="/carta-abierta-a-los-egresados/" class="btn btn--gold-outline">Carta Abierta a los Egresados</a>
+          <a href="/decalogo-del-egresado/" class="btn btn--gold-outline">Decálogo del Egresado</a>
         </div>
       </div>
     </div>
@@ -1157,69 +1158,6 @@
     }
     .sf__btn:hover { background: #4E1320; transform: translateY(-1px); }
     .sf__btn svg { width: 1rem; height: 1rem; fill: currentColor; }
-
-    /* ── Botón Bono ── */
-    .sf__bono-wrap {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: .4rem;
-    }
-    .sf__bono-tooltip {
-      position: absolute;
-      bottom: calc(100% + .5rem);
-      right: 0;
-      background: #4E1320;
-      color: #F5F0E8;
-      border: 1px solid rgba(201,168,76,.45);
-      border-radius: .75rem;
-      padding: .6rem .9rem;
-      font-family: var(--ff-sans, 'Source Sans 3', sans-serif);
-      font-size: .8rem;
-      font-weight: 600;
-      white-space: nowrap;
-      box-shadow: 0 6px 20px rgba(0,0,0,.5);
-      opacity: 0;
-      transform: translateY(6px) scale(.95);
-      pointer-events: none;
-      transition: opacity .25s ease, transform .25s ease;
-    }
-    .sf__bono-tooltip::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      right: 1rem;
-      border: 6px solid transparent;
-      border-top-color: #4E1320;
-    }
-    .sf__bono-wrap:hover .sf__bono-tooltip,
-    .sf__bono-tooltip.is-visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
-    }
-    .sf__bono-btn {
-      display: flex;
-      align-items: center;
-      gap: .45rem;
-      background: #C9A84C;
-      color: #4E1320;
-      border: none;
-      border-radius: 2rem;
-      padding: .5rem 1.1rem;
-      font-family: var(--ff-sans, 'Source Sans 3', sans-serif);
-      font-size: .82rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 4px 16px rgba(0,0,0,.35);
-      transition: background .2s, transform .15s;
-      text-decoration: none;
-    }
-    .sf__bono-btn:hover { background: #E2C87A; transform: translateY(-1px); }
-    .sf__bono-btn svg { width: 1rem; height: 1rem; fill: currentColor; }
   </style>
 
   <div class="sf" id="sfWrap" aria-label="Redes sociales">
@@ -1243,14 +1181,6 @@
       <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7A3.32 3.32 0 0 0 9 12c0-.24-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 0 0 18 8a3 3 0 1 0-3-3c0 .24.04.47.09.7L8.04 9.81A3 3 0 0 0 6 9a3 3 0 0 0 0 6 3 3 0 0 0 2.04-.81l7.12 4.16A2.97 2.97 0 0 0 15 19.5a3 3 0 1 0 3-3.42z"/></svg>
       Redes
     </button>
-
-    <div class="sf__bono-wrap">
-      <div class="sf__bono-tooltip" id="bonoTooltip">🎟️ Entrá acá para ver nuestro bono vigente</div>
-      <a class="sf__bono-btn" href="/noticias/bono-contribucion-2026/" id="bonoBtn">
-        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        Bono
-      </a>
-    </div>
   </div>
 
   <script>
@@ -1284,18 +1214,6 @@
         openPanel();
         autoCloseTimer = setTimeout(closePanel, 4000);
       }, 3000);
-
-      // Bono tooltip: mostrar automáticamente al cargar, ocultar al click
-      var bonoTooltip = document.getElementById('bonoTooltip');
-      if (bonoTooltip) {
-        // Mostrar tooltip al inicio por 5 segundos
-        setTimeout(function () {
-          bonoTooltip.classList.add('is-visible');
-          setTimeout(function () {
-            bonoTooltip.classList.remove('is-visible');
-          }, 5000);
-        }, 1200);
-      }
     })();
   </script>
 </body>
