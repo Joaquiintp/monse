@@ -4,6 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cultura | Asociación Civil Duarte y Quirós</title>
+  <meta name="description" content="Conferencias, streaming y ciclos culturales para la comunidad de egresados y amigos del Monserrat." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cultura" />
+  <meta property="og:description" content="Conferencias, streaming y ciclos culturales para la comunidad de egresados y amigos del Monserrat." />
+  <meta property="og:image" content="https://monserratenses.org.ar/Public/Banner%27s/techo-monserrat-vista-cenital.jpg" />
+  <meta property="og:url" content="https://monserratenses.org.ar/cultura/" />
+  <meta property="og:locale" content="es_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cultura" />
+  <meta name="twitter:description" content="Conferencias, streaming y ciclos culturales para la comunidad de egresados y amigos del Monserrat." />
+  <meta name="twitter:image" content="https://monserratenses.org.ar/Public/Banner%27s/techo-monserrat-vista-cenital.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
@@ -632,6 +643,16 @@
       line-height: 1.3;
       margin-bottom: .2rem;
     }
+    .conf-card__img--cover { background: #000; }
+    .conf-card__img--cover img { object-fit: contain; }
+    .conf-card__title--cycle { font-weight: 400; }
+    .conf-card__title--cycle strong { font-weight: 700; }
+    .conf-card__desc {
+      font-size: .7rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin: .35rem 0 .5rem;
+    }
     .conf-card__speaker {
       font-size: .68rem;
       color: var(--text-muted);
@@ -759,6 +780,7 @@
             <a href="../comision/">Comisión Directiva</a>
             <a href="../carta-fundacional/">Carta Fundacional</a>
             <a href="../carta-abierta-a-los-egresados/">Carta Abierta</a>
+            <a href="../decalogo-del-egresado/">Decálogo del Egresado</a>
           </div>
         </div>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
@@ -821,6 +843,46 @@
       <div class="cult-section__header">
         <div>
           <p class="cult-section__eyebrow">Eventos académicos</p>
+          <h2 class="cult-section__title">Ciclos de conferencias</h2>
+          <p class="cult-section__sub">Series de encuentros en torno a un mismo eje de reflexión.</p>
+        </div>
+      </div>
+
+      <div class="conf-grid" style="margin-bottom:4rem;">
+
+        <!-- Ciclo Pensar el Futuro -->
+        <a class="conf-card conf-card--cycle fade-in" href="./pensar-el-futuro/">
+          <div class="conf-card__img conf-card__img--cover">
+            <span class="conf-card__tag">Ciclo</span>
+            <img src="../noticias/fotos/pensar-el-futuro-humanismo.jpg" alt="Pensar el Futuro: El Humanismo en el Siglo XXI" />
+          </div>
+          <div class="conf-card__body">
+            <h3 class="conf-card__title conf-card__title--cycle"><strong>Pensar el Futuro:</strong> El Humanismo en el Siglo XXI</h3>
+            <p class="conf-card__desc">Busca revitalizar el pensamiento crítico y la creatividad para afrontar los desafíos de nuestro tiempo, acercando a estudiantes y egresados voces que inspiran a imaginar horizontes más amplios.</p>
+            <p class="conf-card__speaker">Oradores: Caballero, Caputo, Canedo, Polakoff y más</p>
+            <span class="conf-card__link">Ver ciclo completo →</span>
+          </div>
+        </a>
+
+        <!-- Ciclo Pensar el Futuro II -->
+        <a class="conf-card conf-card--cycle fade-in fade-in--delay" href="./pensar-el-futuro-ii/">
+          <div class="conf-card__img conf-card__img--cover">
+            <span class="conf-card__tag">Ciclo</span>
+            <img src="../noticias/fotos/pensar-el-futuro-II-praxis-politica.jpg" alt="Pensar el Futuro II: Desde la Ética Hacia la Praxis Política" />
+          </div>
+          <div class="conf-card__body">
+            <h3 class="conf-card__title conf-card__title--cycle"><strong>Pensar el Futuro II:</strong> Desde la Ética Hacia la Praxis Política</h3>
+            <p class="conf-card__desc">Es un espacio de diálogo y reflexión que busca abordar los grandes desafíos de nuestro tiempo desde una perspectiva humanista. En esta segunda etapa, la propuesta es avanzar un paso más: preguntarnos cómo los principios que orientan nuestra vida pueden convertirse en decisiones, participación y prácticas capaces de transformar la sociedad.</p>
+            <p class="conf-card__speaker">Oradores: Gattás y Orchansky</p>
+            <span class="conf-card__link">Ver ciclo completo →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="cult-section__header">
+        <div>
+          <p class="cult-section__eyebrow">Encuentros</p>
           <h2 class="cult-section__title">Conferencias & jornadas</h2>
           <p class="cult-section__sub">Encuentros con referentes del pensamiento, la historia y la cultura monserratense.</p>
         </div>
@@ -895,26 +957,6 @@
             <h3 class="conf-card__title">La importancia de difundir el legado histórico de los jesuitas</h3>
             <p class="conf-card__speaker">Lic. Inés Achával Becú</p>
             <span class="conf-card__link">Leer nota →</span>
-          </div>
-        </a>
-
-        <!-- Ciclo Pensar el Futuro -->
-        <a class="conf-card conf-card--cycle fade-in fade-in--delay" href="./pensar-el-futuro/">
-          <div class="conf-card__img conf-card__img--cycle">
-            <span class="conf-card__tag">Ciclo</span>
-            <div class="conf-card__cycle-bg">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="conf-card__play-icon">
-                <circle cx="12" cy="12" r="10"/>
-                <polygon points="10,8 16,12 10,16" fill="currentColor" stroke="none"/>
-              </svg>
-              <p class="conf-card__cycle-count">12 conferencias</p>
-            </div>
-          </div>
-          <div class="conf-card__body">
-            <span class="conf-card__date">El Humanismo en el Siglo XXI</span>
-            <h3 class="conf-card__title">Pensar el Futuro</h3>
-            <p class="conf-card__speaker">Caballero, Caputo, Canedo, Polakoff y más</p>
-            <span class="conf-card__link">Ver ciclo completo →</span>
           </div>
         </a>
 

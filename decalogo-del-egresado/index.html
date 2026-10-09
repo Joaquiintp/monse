@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decálogo del Egresado | Asociación Civil Duarte y Quirós</title>
+  <meta name="description" content="El Decálogo del Egresado Monserratense: diez compromisos en honor a Virtud y Letras, presentados en el primer Día del Egresado del Colegio Nacional de Monserrat." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Decálogo del Egresado Monserratense" />
+  <meta property="og:description" content="Diez compromisos en honor a «Virtud y Letras», presentados en el primer Día del Egresado del Colegio Nacional de Monserrat." />
+  <meta property="og:image" content="https://monserratenses.org.ar/Public/Og/decalogo-og.jpg" />
+  <meta property="og:url" content="https://monserratenses.org.ar/decalogo-del-egresado/" />
+  <meta property="og:locale" content="es_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Decálogo del Egresado Monserratense" />
+  <meta name="twitter:description" content="Diez compromisos en honor a «Virtud y Letras», presentados en el primer Día del Egresado del Colegio Nacional de Monserrat." />
+  <meta name="twitter:image" content="https://monserratenses.org.ar/Public/Og/decalogo-og.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../Public/Favicon/favicon.svg" />
+  <style>
+    .page-hero {
+      position: relative;
+      padding: 7rem 0 5rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('../Public/Banner\'s/fachada-monserrat.jpg');
+      background-size: cover;
+      background-position: center var(--banner-y, 30%);
+      z-index: 0;
+    }
+    .page-hero__content {
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero__eyebrow {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .page-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: var(--ivory);
+      line-height: 1.05;
+      margin-bottom: .75rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,.65), 0 1px 4px rgba(0,0,0,.5);
+    }
+    .page-hero__sub {
+      color: rgba(245,240,232,.9);
+      font-size: 1.05rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    }
+
+    /* Carta / intro */
+    .carta-section {
+      padding: 5rem 0 3rem;
+      background: var(--ivory);
+    }
+    .carta-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .carta-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 2px solid rgba(78,19,32,.12);
+    }
+    .carta-header__eyebrow {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      background: rgba(78,19,32,.07);
+      padding: .3rem .9rem;
+      border-radius: 99px;
+      margin-bottom: 1.25rem;
+    }
+    .carta-header__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+    .carta-ornament {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 1.5rem auto 0;
+    }
+    .carta-body {
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.9;
+      color: #1e1409;
+    }
+    .carta-body p {
+      margin-bottom: 1.9rem;
+    }
+    .carta-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Programa del día */
+    .programa-section {
+      padding: 1rem 0 5rem;
+      background: var(--ivory);
+    }
+    .programa-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(78,19,32,.04);
+      border: 1px solid rgba(78,19,32,.12);
+      border-radius: 12px;
+      padding: 2.75rem 2.5rem;
+    }
+    .programa-title {
+      font-family: var(--ff-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--burgundy-dark);
+      text-align: center;
+      margin-bottom: .35rem;
+    }
+    .programa-fecha {
+      display: block;
+      text-align: center;
+      font-size: .82rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+    .programa-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .programa-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: baseline;
+      padding: .85rem 0;
+      border-bottom: 1px solid rgba(78,19,32,.1);
+    }
+    .programa-item:last-child { border-bottom: none; }
+    .programa-item__hora {
+      flex: 0 0 auto;
+      font-family: var(--ff-serif);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--burgundy);
+      min-width: 3.6rem;
+    }
+    .programa-item__desc {
+      font-size: .98rem;
+      color: #1e1409;
+      line-height: 1.5;
+    }
+
+    /* Decálogo */
+    .decalogo-section {
+      padding: 1rem 0 6rem;
+      background: var(--ivory);
+    }
+    .decalogo-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .decalogo-doc {
+      text-align: center;
+    }
+    .decalogo-doc img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 18px 45px rgba(30,20,9,.28), 0 2px 8px rgba(30,20,9,.15);
+    }
+
+    .decalogo-credito {
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(78,19,32,.12);
+      text-align: center;
+      font-size: .9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .decalogo-solicitud {
+      margin-top: 2.5rem;
+      padding: 2rem 2.25rem;
+      background: rgba(78,19,32,.05);
+      border: 1px solid rgba(78,19,32,.12);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .decalogo-solicitud__texto {
+      font-size: 1rem;
+      color: #1e1409;
+      margin-bottom: 1.25rem;
+    }
+    .decalogo-solicitud__acciones {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .decalogo-solicitud__pdf {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--burgundy);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(107,27,42,.3);
+      padding-bottom: 1px;
+      transition: opacity .2s;
+    }
+    .decalogo-solicitud__pdf:hover { opacity: .7; }
+
+    .decalogo-cta {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../">Inicio</a>
+        <a href="../servicios/">Servicios</a>
+        <a href="../#mundo">Por el Mundo</a>
+        <a href="../noticias/">Noticias</a>
+        <a href="../cultura/">Cultura</a>
+        <a href="../archivo/">Archivo</a>
+        <a href="../tienda/">Tienda</a>
+        <a href="../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../comision/">Comisión Directiva</a>
+            <a href="../carta-fundacional/">Carta Fundacional</a>
+            <a href="../carta-abierta-a-los-egresados/">Carta Abierta</a>
+            <a href="../decalogo-del-egresado/" class="active">Decálogo del Egresado</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../" onclick="toggleMenu()">Inicio</a>
+      <a href="../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="../carta-fundacional/" onclick="toggleMenu()">Carta Fundacional</a>
+      <a href="../carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="../decalogo-del-egresado/" onclick="toggleMenu()" class="active">Decálogo del Egresado</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+         target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <!-- BANNER -->
+  <div class="page-hero" style="--banner-y: 30%">
+    <div class="page-hero__bg"></div>
+    <div class="container page-hero__content">
+      <span class="page-hero__eyebrow">Primer Día del Egresado · 8 de septiembre</span>
+      <h1 class="page-hero__title">Decálogo del Egresado Monserratense</h1>
+      <p class="page-hero__sub">Un compromiso libre y voluntario, en honor a «Virtud y Letras»</p>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="carta-section">
+    <div class="container carta-inner">
+
+      <div class="carta-header">
+        <span class="carta-header__eyebrow">Documento institucional</span>
+        <h2 class="carta-header__title">El legado que nos deja el Monse</h2>
+        <span class="carta-ornament"></span>
+      </div>
+
+      <div class="carta-body">
+        <p>Ser egresado del Colegio Nacional de Monserrat no termina el día en que dejamos sus aulas. Es una pertenencia que se sostiene en el tiempo, que atraviesa generaciones y que nos une —más allá de la promoción, la época o el camino que cada uno haya tomado después— en una misma tradición: <strong>Virtud y Letras</strong>.</p>
+
+        <p>Ese legado no es un lema decorativo. Es un modo de estar en el mundo que el colegio nos transmitió con paciencia, a través de sus aulas, sus maestros y sus compañeros, y que cada uno de nosotros lleva consigo, muchas veces sin nombrarlo, en la forma de pensar, de discutir, de trabajar y de tratar al otro.</p>
+
+        <p>Por eso, en este primer Día del Egresado, quisimos poner ese legado en palabras: el <strong>Decálogo del Egresado Monserratense</strong>, un compromiso libre y voluntario que expresa lo que significa haber pasado por el Monse y lo que elegimos seguir siendo después de haber egresado.</p>
+
+        <p>Su contenido expresa y honra el legado en «Virtud y Letras» y fue redactado por el grupo Duarte, con la colaboración directa e indirecta de cientos de egresados de más de treinta promociones. Lo presentamos hoy a las autoridades del colegio, en un acto que también incluye el himno, una ofrenda a la Virgen de Monserrat y a Duarte y Quirós, y la actuación del Coro Alberto Grandi.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROGRAMA DEL DÍA -->
+  <section class="programa-section">
+    <div class="container">
+      <div class="programa-inner">
+        <p class="programa-title">Día del Egresado — Programa</p>
+        <span class="programa-fecha">8 de septiembre de 2026</span>
+        <ol class="programa-list">
+          <li class="programa-item">
+            <span class="programa-item__hora">19:00</span>
+            <span class="programa-item__desc">Acceso al colegio.</span>
+          </li>
+          <li class="programa-item">
+            <span class="programa-item__hora">19:30</span>
+            <span class="programa-item__desc">Comienzo del acto: palabras de bienvenida.</span>
+          </li>
+          <li class="programa-item">
+            <span class="programa-item__hora">19:35</span>
+            <span class="programa-item__desc">Himno del colegio.</span>
+          </li>
+          <li class="programa-item">
+            <span class="programa-item__hora">19:50</span>
+            <span class="programa-item__desc">Entrega del Decálogo a las autoridades.</span>
+          </li>
+          <li class="programa-item">
+            <span class="programa-item__hora">19:55</span>
+            <span class="programa-item__desc">Ofrendas a la Virgen de Monserrat y a Duarte y Quirós.</span>
+          </li>
+          <li class="programa-item">
+            <span class="programa-item__hora">20:00</span>
+            <span class="programa-item__desc">Actuación del Coro Alberto Grandi de la Asociación de Egresados. Dir. Pablo Behm.</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- DECÁLOGO -->
+  <section class="decalogo-section">
+    <div class="container decalogo-inner">
+
+      <div class="carta-header">
+        <span class="carta-header__eyebrow">Decálogo del Egresado Monserratense</span>
+        <h2 class="carta-header__title">Diez compromisos</h2>
+        <span class="carta-ornament"></span>
+      </div>
+
+      <div class="decalogo-doc">
+        <img
+          src="../Public/Decalogo/decalogo-egresado.jpg"
+          alt="Decálogo del Egresado Monserratense. En mi condición de egresante del Colegio Nacional de Monserrat y reconociendo haber tenido el privilegio de cursar mis estudios en el colegio más antiguo del país, con una tradición de excelencia formativa en virtud y letras, me comprometo de manera libre y voluntaria a: I. Alentar el pensamiento crítico, la reflexión, la comunicación, la creatividad y la profundización del legado secular humanista de nuestra institución, desafiando todo intento dogmático que nos aleje de la premisa de desarrollar un espíritu libre y solidario, base del humanismo y de la construcción de la cultura. II. Respetar a todos los seres humanos por su sola condición de tales, entendiendo que ésta es otorgada tanto por la genética como por la cultura, utilizando la formación que se me ha brindado para mejorar mi vida y la de la especie y jamás emplear ese saber para dañar de manera alguna, directa o indirectamente, a mis semejantes. III. Reconocer siempre en los demás un congénere más allá de toda diferencia ideológica, política, religiosa, étnica o de cualquier otro orden, promoviendo en forma permanente la tolerancia a toda expresión y acción con la sola excepción de la intolerancia, origen de toda violencia. IV. Promover la defensa de la supervivencia de la especie humana y el derecho de propiedad pública y privada, desde una ética de la probidad, denunciando y combatiendo la falsedad y la corrupción donde la encontrare. V. Colaborar para que mi prójimo pueda acceder al mismo grado de formación que se me ha brindado, en la certeza que la educación y la solidaridad pueden mejorar la vida de las personas y que el conocimiento es un desarrollo permanente al cual debe tener acceso toda la humanidad. VI. Inspirar una conducta humanista que priorice el empleo de la razón y evite la manipulación emocional, concibiendo que la razón no es un principio enfrentado a la sensibilidad sino complementario de ella, en la convicción de que cuando el ser humano logra tranquilidad de espíritu, la pulsión encuentra significado. VII. Manifestar por escrito, durante mi primer año como egresado, una devolución ecuánime de los profesores que tuve, con el sólo objeto de contribuir al constante mejoramiento y actualización de la calidad y excelencia de nuestra institución, haciendo llegar sugerencias, ideas y aportes que pudieren favorecer una educación con visión de futuro. VIII. Actuar de forma solidaria con mis camaradas monserratenses de todas las promociones, fomentando acciones que ayuden y contengan especialmente a aquellos más desfavorecidos y vulnerables, tanto en forma personal como a través de las asociaciones que existen y que en el futuro se crearen a tal efecto. IX. Incorporar este decálogo a todos los actos de mi vida personal y profesional, pública y privada, promoviendo su divulgación en todos los ámbitos en que participare. X. Revisar periódicamente este decálogo, tratando de mejorarlo, acordando cambios con mis camaradas monserratenses e intentando siempre producir versiones superadoras que se adapten mejor al tiempo y circunstancias que nos toque vivir, en el marco de una permanente búsqueda de la verdad, la justicia, el bien y la belleza."
+          loading="lazy"
+        />
+      </div>
+
+      <div class="decalogo-credito">
+        <p>Decálogo del Egresado Monserratense — Asociación Civil Duarte y Quirós.<br />
+        Redactado por el grupo Duarte con la colaboración directa e indirecta de cientos de egresados de más de treinta promociones.</p>
+      </div>
+
+      <div class="decalogo-solicitud">
+        <p class="decalogo-solicitud__texto">¿Querés tu propio Decálogo en tamaño personal? Podés solicitarlo a través de nuestros medios de contacto.</p>
+        <div class="decalogo-solicitud__acciones">
+          <a href="../contacto/?motivo=decalogo" class="btn btn--gold-outline-dark">Solicitar mi ejemplar</a>
+          <a href="../Public/Decalogo/decalogo-egresado.pdf" target="_blank" rel="noopener" class="decalogo-solicitud__pdf">Descargar PDF →</a>
+        </div>
+      </div>
+
+      <div class="decalogo-cta">
+        <a href="../" class="btn btn--gold">Ver página completa</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

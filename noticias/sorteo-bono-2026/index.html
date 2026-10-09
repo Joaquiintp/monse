@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorteo del Bono Contribución 2026 | Noticias | Asociación Civil Duarte y Quirós</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../../Public/Favicon/favicon.svg" />
+  <style>
+    .page-hero {
+      position: relative;
+      padding: 6rem 0 4rem;
+      margin-top: var(--navbar-h);
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--burgundy-dark) 0%, #0f0407 100%);
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero__content { position: relative; z-index: 1; }
+    .page-hero__eyebrow {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .page-hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700; color: var(--ivory);
+      line-height: 1.1; margin-bottom: .75rem;
+      font-style: italic;
+    }
+    .page-hero__sub {
+      color: var(--gold-light);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    /* Artículo */
+    .article-section { padding: 5rem 0 7rem; background: var(--ivory); }
+    .article-inner { max-width: 780px; margin: 0 auto; }
+    .article-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 2px solid rgba(78,19,32,.1); }
+    .article-header__meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .article-header__tag {
+      display: inline-block; font-size: .65rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--burgundy); background: rgba(78,19,32,.08);
+      padding: .25rem .75rem; border-radius: 99px;
+    }
+    .article-header__date { font-size: .8rem; color: var(--text-muted); }
+    .article-header__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 700; color: var(--burgundy-dark);
+      line-height: 1.15; letter-spacing: -.02em;
+    }
+    .article-body { font-size: 1.05rem; line-height: 1.85; color: #1e1409; }
+    .article-body p { margin-bottom: 1.6rem; }
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-body strong { color: var(--burgundy-dark); }
+
+    /* Encabezado de premio */
+    .prize-heading {
+      font-family: var(--ff-serif);
+      font-size: 1.55rem; color: var(--burgundy-dark);
+      margin: 2.75rem 0 1rem; letter-spacing: -.01em;
+    }
+    .prize-rank {
+      display: inline-block; font-size: .65rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--gold); background: var(--burgundy-dark);
+      padding: .3rem .85rem; border-radius: 99px; margin-bottom: .75rem;
+    }
+    .prize-rank--vacant { background: #9e6665; color: #fbeee9; }
+
+    /* Banner de ganador */
+    .winner-banner {
+      background: var(--cream);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.5rem; margin: 0 0 1.5rem;
+    }
+    .winner-banner__label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: .2rem;
+    }
+    .winner-banner__name {
+      font-family: var(--ff-serif); font-size: 1.15rem; font-weight: 700; color: var(--burgundy-dark);
+    }
+    .winner-banner__num { color: var(--burgundy); font-weight: 700; }
+
+    /* Figuras */
+    .article-figure { margin: 1.5rem 0 2rem; }
+    .article-figure img {
+      width: 100%; display: block; border-radius: 12px;
+      border: 1px solid rgba(78,19,32,.1); box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .article-figure figcaption {
+      font-size: .82rem; color: var(--text-muted); text-align: center;
+      margin-top: .65rem; font-style: italic;
+    }
+    .article-figure--pair {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .article-figure--pair figure { margin: 0; }
+
+    /* Cierre / CTA */
+    .article-cta {
+      background: var(--cream); border-radius: 12px; padding: 2rem 2.5rem;
+      text-align: center; margin: 3rem 0 0; border: 1px solid rgba(78,19,32,.1);
+    }
+    .article-cta p { color: var(--text-muted); margin-bottom: 1.25rem; font-size: .95rem; }
+    .article-cta .btn { display: inline-block; }
+
+    .article-nav {
+      margin-top: 3.5rem; padding-top: 2rem;
+      border-top: 1px solid rgba(78,19,32,.12);
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .article-nav__back {
+      font-size: .85rem; font-weight: 700; color: var(--burgundy);
+      text-decoration: none; border-bottom: 1px solid rgba(107,27,42,.3);
+      padding-bottom: 1px; transition: opacity .2s;
+    }
+    .article-nav__back:hover { opacity: .7; }
+
+    @media (max-width: 720px) {
+      .article-figure--pair { grid-template-columns: 1fr; }
+      .article-cta { padding: 1.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../../" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="../../Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="../../Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="../../">Inicio</a>
+        <a href="../../servicios/">Servicios</a>
+        <a href="../../#mundo">Por el Mundo</a>
+        <a href="../../noticias/" class="active">Noticias</a>
+        <a href="../../cultura/">Cultura</a>
+        <a href="../../archivo/">Archivo</a>
+        <a href="../../tienda/">Tienda</a>
+        <a href="../../contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="../../comision/">Comisión Directiva</a>
+            <a href="../../carta-fundacional/">Carta Fundacional</a>
+            <a href="../../carta-abierta-a-los-egresados/">Carta Abierta</a>
+            <a href="../../decalogo-del-egresado/">Decálogo del Egresado</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="../../" onclick="toggleMenu()">Inicio</a>
+      <a href="../../servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="../../#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="../../noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="../../cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="../../archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="../../tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="../../contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="../../comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="../../carta-fundacional/" onclick="toggleMenu()">Carta Fundacional</a>
+      <a href="../../carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="../../decalogo-del-egresado/" onclick="toggleMenu()">Decálogo del Egresado</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header" target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <div class="page-hero">
+    <div class="container page-hero__content">
+      <span class="page-hero__eyebrow">Noticias · Comunidad · Julio 2026</span>
+      <h1 class="page-hero__title">Se sorteó el Bono Contribución 2026</h1>
+      <p class="page-hero__sub">Ganadores del 1.° y 2.° premio · El 3.° quedó vacante</p>
+    </div>
+  </div>
+
+  <section class="article-section">
+    <div class="container article-inner">
+
+      <div class="article-header">
+        <div class="article-header__meta">
+          <span class="article-header__tag">Comunidad</span>
+          <span class="article-header__date">Julio de 2026</span>
+        </div>
+        <h1 class="article-header__title">Ya tenemos los ganadores del Bono Contribución 2026</h1>
+      </div>
+
+      <div class="article-body">
+
+        <p>Camaradas, el <strong>miércoles 15 de julio</strong> por la noche se realizó el sorteo del <strong>Bono Contribución Anual 2026</strong> a través de la Lotería de Córdoba. Salieron favorecidos el 1.° y el 2.° premio; el 3.° quedó vacante y lo sortearemos nuevamente.</p>
+
+        <figure class="article-figure">
+          <img src="./img/extracto-sorteo.png" alt="Extracto del sorteo y talonario premiado" />
+          <figcaption>Extracto del sorteo y talonario premiado.</figcaption>
+        </figure>
+
+        <span class="prize-rank">Primer premio</span>
+        <h2 class="prize-heading">«La Visitante», de Carlos Reales</h2>
+        <div class="winner-banner">
+          <span class="winner-banner__label">Ganador</span>
+          <span class="winner-banner__name">Daniel Piqueras — Promoción ’79 &nbsp;·&nbsp; <span class="winner-banner__num">Número 047 / 547</span></span>
+        </div>
+        <p>El primer premio es una pintura original del artista plástico <strong>Carlos Reales</strong>: «La Visitante», óleo sobre tela de 50 × 85 cm.</p>
+        <figure class="article-figure">
+          <img src="../Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="«La Visitante», óleo sobre tela de Carlos Reales" />
+          <figcaption>«La Visitante» — Carlos Reales, óleo sobre tela.</figcaption>
+        </figure>
+
+        <span class="prize-rank">Segundo premio</span>
+        <h2 class="prize-heading">Maqueta del Colegio Nacional de Monserrat</h2>
+        <div class="winner-banner">
+          <span class="winner-banner__label">Número premiado</span>
+          <span class="winner-banner__name"><span class="winner-banner__num">Número 192 / 692</span> — Promoción ’81</span>
+        </div>
+        <p>El número ganador pertenece a un talonario adquirido por la <strong>Promoción ’81</strong>. El premio es una maqueta del Colegio Nacional de Monserrat: réplica única iluminada con texto histórico de referencia.</p>
+        <div class="article-figure article-figure--pair">
+          <figure>
+            <img src="./img/numero-promo81.png" alt="Talonario premiado de la Promoción ’81" />
+            <figcaption>Talonario premiado — Promoción ’81.</figcaption>
+          </figure>
+          <figure>
+            <img src="../Bono/Segundo premio/maqueta-2.jpg" alt="Maqueta del Colegio Nacional de Monserrat" />
+            <figcaption>Maqueta del Colegio Nacional de Monserrat.</figcaption>
+          </figure>
+        </div>
+
+        <span class="prize-rank prize-rank--vacant">Tercer premio — vacante</span>
+        <h2 class="prize-heading">Caja de vinos Colección DUARTE</h2>
+        <p>El tercer premio es una caja de vinos de la Colección DUARTE «Selección del Fundador», con las dos ediciones artísticas y el resumen de la historia del colegio. Como ningún número resultó favorecido, <strong>se sorteará nuevamente</strong>; oportunamente comunicaremos la nueva fecha.</p>
+        <figure class="article-figure">
+          <img src="./img/caja-vinos-duarte.png" alt="Caja de vinos Colección DUARTE — Selección del Fundador" />
+          <figcaption>Caja de vinos Colección DUARTE — Selección del Fundador.</figcaption>
+        </figure>
+
+        <p>Felicitaciones a los ganadores y muchísimas gracias a todos quienes colaboraron. Cada bono es el que sostiene la causa y hace posible los objetivos de la institución que nos nuclea: sin ustedes, la Asociación no seguiría adelante.</p>
+
+        <p><strong>Un abrazo monserratense.</strong></p>
+
+        <div class="article-cta">
+          <p>¿Querés conocer los detalles del bono y sus premios?</p>
+          <a href="../bono-contribucion-2026/" class="btn btn--gold">Ver la nota del Bono 2026</a>
+        </div>
+
+        <div class="article-nav">
+          <a href="../" class="article-nav__back">← Volver a Noticias</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© 2025 Asociación Civil Duarte y Quirós. Todos los derechos reservados.</p>
+      <p>Desarrollado por <a href="https://xenovaweb.com" target="_blank" rel="noopener">Xenova</a></p>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

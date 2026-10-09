@@ -4,6 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacto | Asociación Civil Duarte y Quirós</title>
+  <meta name="description" content="Contactate con la Asociación Civil Duarte y Quirós — estamos para escucharte." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contacto" />
+  <meta property="og:description" content="Contactate con la Asociación Civil Duarte y Quirós — estamos para escucharte." />
+  <meta property="og:image" content="https://monserratenses.org.ar/Public/Banner%27s/oficina-asociacion.jpg" />
+  <meta property="og:url" content="https://monserratenses.org.ar/contacto/" />
+  <meta property="og:locale" content="es_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contacto" />
+  <meta name="twitter:description" content="Contactate con la Asociación Civil Duarte y Quirós — estamos para escucharte." />
+  <meta name="twitter:image" content="https://monserratenses.org.ar/Public/Banner%27s/oficina-asociacion.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
@@ -128,6 +139,18 @@
       text-align: center;
     }
     .form__success.show { display: block; }
+    .form__error {
+      display: none;
+      color: #8a2c2c;
+      font-size: .88rem;
+      font-weight: 600;
+      padding: .75rem 1rem;
+      background: rgba(138,44,44,.07);
+      border: 1.5px solid rgba(138,44,44,.2);
+      border-radius: 6px;
+      text-align: center;
+    }
+    .form__error.show { display: block; }
 
     /* ── Panel lateral ── */
     .contact-aside {
@@ -256,6 +279,7 @@
             <a href="../comision/">Comisión Directiva</a>
             <a href="../carta-fundacional/">Carta Fundacional</a>
             <a href="../carta-abierta-a-los-egresados/">Carta Abierta</a>
+            <a href="../decalogo-del-egresado/">Decálogo del Egresado</a>
           </div>
         </div>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
@@ -302,22 +326,25 @@
         </p>
         <form class="contact-form" onsubmit="handleContactSubmit(event)">
           <div class="contact-form__row">
-            <input type="text" placeholder="Nombre" required />
-            <input type="text" placeholder="Apellido" required />
+            <input type="text" name="nombre" placeholder="Nombre" required />
+            <input type="text" name="apellido" placeholder="Apellido" required />
           </div>
-          <input type="email" placeholder="Correo electrónico" required />
-          <input type="tel" placeholder="Teléfono (opcional)" />
-          <select>
+          <input type="email" name="email" placeholder="Correo electrónico" required />
+          <input type="tel" name="telefono" placeholder="Teléfono (opcional)" />
+          <select name="motivo" id="motivoSelect">
             <option value="" disabled selected>Motivo de consulta</option>
             <option>Información sobre membresía</option>
             <option>Red Liber</option>
             <option>Eventos institucionales</option>
             <option>Prensa y comunicación</option>
+            <option>Solicitud de Decálogo</option>
             <option>Otro</option>
           </select>
-          <textarea rows="5" placeholder="Tu mensaje" required></textarea>
+          <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required></textarea>
+          <input type="hidden" name="_subject" value="Nuevo mensaje — Formulario de contacto Monserratenses" />
           <button type="submit" class="btn contact-form__btn">Enviar mensaje</button>
           <p class="form__success" id="contactSuccess">¡Mensaje enviado! Te respondemos pronto.</p>
+          <p class="form__error" id="contactError">Hubo un error al enviar. Probá de nuevo o escribinos a <a href="mailto:asociacion@monserratenses.org.ar">asociacion@monserratenses.org.ar</a>.</p>
         </form>
       </div>
 
@@ -404,16 +431,45 @@
   <script>
     function handleContactSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      const success = document.getElementById('contactSuccess');
+      const error = document.getElementById('contactError');
+      success.classList.remove('show');
+      error.classList.remove('show');
       btn.textContent = 'Enviando…';
       btn.disabled = true;
-      setTimeout(() => {
-        e.target.reset();
-        btn.textContent = 'Enviar mensaje';
-        btn.disabled = false;
-        document.getElementById('contactSuccess').classList.add('show');
-        setTimeout(() => document.getElementById('contactSuccess').classList.remove('show'), 5000);
-      }, 1200);
+
+      fetch('https://formspree.io/f/mnpqopky', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then((response) => {
+          if (response.ok) {
+            form.reset();
+            success.classList.add('show');
+            setTimeout(() => success.classList.remove('show'), 5000);
+          } else {
+            error.classList.add('show');
+          }
+        })
+        .catch(() => {
+          error.classList.add('show');
+        })
+        .finally(() => {
+          btn.textContent = 'Enviar mensaje';
+          btn.disabled = false;
+        });
+    }
+
+    if (new URLSearchParams(window.location.search).get('motivo') === 'decalogo') {
+      const select = document.getElementById('motivoSelect');
+      const option = [...select.options].find((o) => o.value === 'Solicitud de Decálogo');
+      if (option) {
+        option.selected = true;
+        select.closest('form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     }
   </script>
 </body>

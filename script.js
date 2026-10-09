@@ -45,11 +45,38 @@ window.addEventListener('scroll', () => {
   }
 });
 
-/* ── Contact form (demo) ── */
+/* ── Contact form ── */
 function handleSubmit(e) {
   e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
   const success = document.getElementById('formSuccess');
-  success.classList.add('show');
-  e.target.reset();
-  setTimeout(() => success.classList.remove('show'), 5000);
+  const error = document.getElementById('formError');
+  success.classList.remove('show');
+  error.classList.remove('show');
+  const originalText = btn.textContent;
+  btn.textContent = 'Enviando…';
+  btn.disabled = true;
+
+  fetch('https://formspree.io/f/mnpqopky', {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  })
+    .then((response) => {
+      if (response.ok) {
+        form.reset();
+        success.classList.add('show');
+        setTimeout(() => success.classList.remove('show'), 5000);
+      } else {
+        error.classList.add('show');
+      }
+    })
+    .catch(() => {
+      error.classList.add('show');
+    })
+    .finally(() => {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    });
 }
