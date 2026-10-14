@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monserratenses por el Mundo | Asociación Civil Duarte y Quirós</title>
+  <meta name="description" content="Egresados del Monserrat que viven y trabajan en distintas partes del mundo. Explorá el mapa y conocé sus historias." />
+  <meta property="og:title" content="Monserratenses por el Mundo" />
+  <meta property="og:description" content="Egresados del Monserrat que viven y trabajan en distintas partes del mundo. Explorá el mapa y conocé sus historias." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Inter:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="/Public/Favicon/favicon.svg" />
+  <style>
+    html, body { margin: 0; padding: 0; overflow: hidden; height: 100%; background: #1a0e0c; }
+    #root {
+      position: fixed;
+      top: var(--navbar-h, 62px);
+      left: 0; right: 0; bottom: 0;
+    }
+    .mm-loading {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      color: rgba(251,247,237,.55); font: italic 15px 'Fraunces', Georgia, serif; letter-spacing: .02em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════ NAVBAR ══════════════════════ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__logo">
+        <img class="logo-img logo-img--aoc" src="/Public/Logos/logoaoc.svg" alt="Asociación Civil Duarte y Quirós" />
+        <span class="logo-divider"></span>
+        <img class="logo-img logo-img--redliber" src="/Public/Logos/redliber.svg" alt="Red Liber" />
+      </a>
+      <nav class="navbar__links">
+        <a href="/">Inicio</a>
+        <a href="/servicios/">Servicios</a>
+        <a href="/mundo/" class="active">Por el Mundo</a>
+        <a href="/noticias/">Noticias</a>
+        <a href="/cultura/">Cultura</a>
+        <a href="/archivo/">Archivo</a>
+        <a href="/tienda/">Tienda</a>
+        <a href="/contacto/">Contacto</a>
+        <div class="navbar__more">
+          <button class="navbar__more-btn" onclick="toggleMore(event)" aria-label="Más páginas">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="5" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="12" cy="19" r="1.2"/>
+            </svg>
+          </button>
+          <div class="navbar__dropdown" id="navDropdown">
+            <a href="/comision/">Comisión Directiva</a>
+            <a href="/carta-fundacional/">Carta Fundacional</a>
+            <a href="/carta-abierta-a-los-egresados/">Carta Abierta</a>
+            <a href="/decalogo-del-egresado/">Decálogo del Egresado</a>
+          </div>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+           target="_blank" class="btn btn--gold">Asociáte</a>
+      </nav>
+      <button class="navbar__burger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" id="mobileMenu">
+      <a href="/" onclick="toggleMenu()">Inicio</a>
+      <a href="/servicios/" onclick="toggleMenu()">Servicios</a>
+      <a href="/mundo/" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="/noticias/" onclick="toggleMenu()">Noticias</a>
+      <a href="/cultura/" onclick="toggleMenu()">Cultura</a>
+      <a href="/archivo/" onclick="toggleMenu()">Archivo</a>
+      <a href="/tienda/" onclick="toggleMenu()">Tienda</a>
+      <a href="/contacto/" onclick="toggleMenu()">Contacto</a>
+      <a href="/comision/" onclick="toggleMenu()">Comisión Directiva</a>
+      <a href="/carta-fundacional/" onclick="toggleMenu()">Carta Fundacional</a>
+      <a href="/carta-abierta-a-los-egresados/" onclick="toggleMenu()">Carta Abierta</a>
+      <a href="/decalogo-del-egresado/" onclick="toggleMenu()">Decálogo del Egresado</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScIHqYpuySa2mIjB5jCJS6s8h1U1iz0YVGmbfsuChpzzNU9yg/viewform?usp=header"
+         target="_blank" class="btn btn--gold">Asociáte</a>
+    </nav>
+  </header>
+
+  <div id="root"><div class="mm-loading">Cargando el mapa…</div></div>
+
+  <!-- Datos (egresados reales y provincias de Argentina) -->
+  <script src="/mundo/egresados.js"></script>
+  <script src="/mundo/argentina.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.24.7/babel.min.js"></script>
+
+  <script type="text/babel" data-presets="react">
+    const { useState, useEffect, useRef, useMemo, useReducer } = React;
+
+    // ═══════════════════════════════════════════
+    // DATOS
+    // ═══════════════════════════════════════════
+    const EGRESADOS = window.EGRESADOS;
+    const AR = window.ARG_MAP;
+
+    const esAR      = e => e.pais === "Argentina";
+    const enCordoba = e => esAR(e) && e.provincia === "Córdoba";
+    const EXTERIOR   = EGRESADOS.filter(e => !esAR(e));
+    const ARGENTINOS = EGRESADOS.filter(esAR);
+    const CORDOBESES = ARGENTINOS.filter(enCordoba).sort((a, b) => a.promo - b.promo);
+    const OTROS_AR   = ARGENTINOS.filter(e => !enCordoba(e));
+    const HUB        = { lat: -35.5, lon: -64.5 };      // Argentina en el globo
+    const CORDOBA    = { lat: -31.42, lon: -64.18 };    // ciudad de Córdoba
+    const PROVINCIAS_CON_GENTE = new Set(["Córdoba", "Mendoza", "Tierra del Fuego", "Ciudad de Buenos Aires"]);
+    const PAISES = new Set(EGRESADOS.map(e => e.pais)).size;
+
+    const iniciales = n => { const p = n.split(" ").filter(Boolean); return (p.length > 1 ? p[0][0] + p[p.length - 1][0] : p[0].slice(0, 2)).toUpperCase(); };
+    function nombreCorto(n) {
+      const p = n.split(" ").filter(Boolean);
+      const corto = p.length > 2 ? p[0] + " " + p[p.length - 1] : n;
+      return corto.length > 16 ? p[0][0] + ". " + p[p.length - 1] : corto;
+    }
+    const arProject = (lat, lon) => ({ x: (lon - AR.lon0) * AR.cos * AR.k, y: (AR.lat0 - lat) * AR.k });
+
+    // ═══════════════════════════════════════════
+    // TEMA (dark institucional)
+    // ═══════════════════════════════════════════
+    const THEME = {
+      bg: "#1a0e0c", bgSecondary: "#241310",
+      line: "#c9a35a", gold: "#c9a35a", burgundy: "#7a1f1a",
+      text: "#fbf7ed", cardBg: "#fbf7ed", cardText: "#2a1108",
+    };
+
+    // ═══════════════════════════════════════════
+    // GLOBO — geometría y textura
+    // ═══════════════════════════════════════════
+    const DEG = Math.PI / 180;
+    const llToXYZ = (lat, lon) => { const p = lat * DEG, l = lon * DEG; return { x: Math.cos(p) * Math.sin(l), y: Math.sin(p), z: Math.cos(p) * Math.cos(l) }; };
+    function rotate(p, rotX, rotY) {
+      const cy = Math.cos(rotY), sy = Math.sin(rotY);
+      const x = p.x * cy + p.z * sy, z = -p.x * sy + p.z * cy, y = p.y;
+      const cx = Math.cos(rotX), sx = Math.sin(rotX);
+      return { x, y: y * cx - z * sx, z: y * sx + z * cx };
+    }
+    function rotateInverse(p, rotX, rotY) {
+      const cx = Math.cos(-rotX), sx = Math.sin(-rotX);
+      const y2 = p.y * cx - p.z * sx, z2 = p.y * sx + p.z * cx;
+      const cy = Math.cos(-rotY), sy = Math.sin(-rotY);
+      return { x: p.x * cy + z2 * sy, y: y2, z: -p.x * sy + z2 * cy };
+    }
+    const xyzToLL = p => ({ lat: Math.asin(Math.max(-1, Math.min(1, p.y))) / DEG, lon: Math.atan2(p.x, p.z) / DEG });
+
+    // Textura de la Tierra (propia del sitio)
+    let tex = null, texW = 0, texH = 0, texLoading = false;
+    const texCallbacks = [];
+    function loadEarthTexture(onReady) {
+      if (tex) { onReady(); return; }
+      texCallbacks.push(onReady);
+      if (texLoading) return;
+      texLoading = true;
+      const img = new Image();
+      img.onload = () => {
+        const c = document.createElement("canvas");
+        c.width = img.width; c.height = img.height;
+        const ctx = c.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        const d = ctx.getImageData(0, 0, c.width, c.height);
+        tex = d.data; texW = c.width; texH = c.height; texLoading = false;
+        texCallbacks.splice(0).forEach(cb => cb());
+      };
+      img.onerror = () => { texLoading = false; };
+      img.src = "/Public/Mundo/tierra.jpg";
+    }
+    const _c = [0, 0, 0];
+    function sampleEarth(lon, lat) {   // bilineal
+      if (!tex) { _c[0] = 30; _c[1] = 60; _c[2] = 110; return _c; }
+      const u = (lon + 180) / 360 * texW - 0.5;
+      const v = Math.max(0, Math.min(texH - 1.001, (90 - lat) / 180 * texH - 0.5));
+      const x0 = Math.floor(u), y0 = Math.floor(v), fx = u - x0, fy = v - y0;
+      const xa = ((x0 % texW) + texW) % texW, xb = (xa + 1) % texW;
+      const ra = y0 * texW, rb = (y0 + 1) * texW;
+      const w00 = (1 - fx) * (1 - fy), w10 = fx * (1 - fy), w01 = (1 - fx) * fy, w11 = fx * fy;
+      for (let ch = 0; ch < 3; ch++)
+        _c[ch] = tex[(ra + xa) * 4 + ch] * w00 + tex[(ra + xb) * 4 + ch] * w10 + tex[(rb + xa) * 4 + ch] * w01 + tex[(rb + xb) * 4 + ch] * w11;
+      return _c;
+    }
+
+    // ═══════════════════════════════════════════
+    // GLOBO — componente
+    // ═══════════════════════════════════════════
+    // el canvas se dibuja a menor resolución y se estira (más fluido); en pantallas chicas se sube para que no se vea pixelado
+    const renderScale = w => (w < 720 ? 0.95 : 0.7);
+
+    function Globe({ w, h, base, focus, offsetX, autoRotate, hoveredId, selectedId, pins, onPin, onHover }) {
+      const st = useRef({ rotX: -0.12, rotY: 0.55, zoom: 1, offX: 0, tRotX: null, tRotY: null, tZoom: 1, drag: null, lastInteract: 0 });
+      const [, force] = useReducer(x => x + 1, 0);
+      const canvasRef = useRef(null);
+      const [texReady, setTexReady] = useState(!!tex);
+      useEffect(() => { loadEarthTexture(() => setTexReady(true)); }, []);
+
+      // Metas de animación (rotación + zoom) cuando cambia el foco
+      useEffect(() => {
+        const s = st.current;
+        if (focus.lat != null) {
+          s.tRotX = focus.lat * DEG;
+          let ty = -focus.lon * DEG;
+          let d = (ty - s.rotY) % (2 * Math.PI);
+          if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI;
+          s.tRotY = s.rotY + d;
+        }
+        s.tZoom = focus.zoom;
+        s.lastInteract = performance.now();
+      }, [focus.key]);
+
+      // Bucle único: auto-rotación + suavizado hacia las metas
+      useEffect(() => {
+        let raf, last = performance.now();
+        const tick = now => {
+          const dt = Math.min(0.05, (now - last) / 1000); last = now;
+          const s = st.current; let changed = false;
+          const k = 1 - Math.exp(-dt * 6);
+          if (s.tRotY != null) {
+            s.rotY += (s.tRotY - s.rotY) * k; s.rotX += (s.tRotX - s.rotX) * k; changed = true;
+            if (Math.abs(s.tRotY - s.rotY) < 0.0008 && Math.abs(s.tRotX - s.rotX) < 0.0008) { s.rotY = s.tRotY; s.rotX = s.tRotX; s.tRotY = s.tRotX = null; }
+          } else if (autoRotate && !s.drag && now - s.lastInteract > 1500) {
+            s.rotY += dt * 0.08; changed = true;
+          }
+          if (Math.abs(s.tZoom - s.zoom) > 0.0005) { s.zoom += (s.tZoom - s.zoom) * k; changed = true; }
+          if (Math.abs(offsetX - s.offX) > 0.05) { s.offX += (offsetX - s.offX) * k; changed = true; }
+          if (changed) force();
+          raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+        return () => cancelAnimationFrame(raf);
+      }, [autoRotate, offsetX]);
+
+      const s = st.current;
+      const R = base * 0.42 * s.zoom;
+      const cx = w / 2 + s.offX, cy = h / 2;
+
+      // Arrastrar para rotar
+      const onPointerDown = e => { e.currentTarget.setPointerCapture(e.pointerId); s.drag = { x: e.clientX, y: e.clientY }; s.tRotY = s.tRotX = null; s.lastInteract = performance.now(); };
+      const onPointerMove = e => {
+        if (!s.drag) return;
+        const dx = e.clientX - s.drag.x, dy = e.clientY - s.drag.y;
+        s.drag = { x: e.clientX, y: e.clientY };
+        s.rotY += dx * 0.005 / Math.max(1, s.zoom * 0.8);
+        s.rotX = Math.max(-1.2, Math.min(1.2, s.rotX - dy * 0.005 / Math.max(1, s.zoom * 0.8)));
+        s.lastInteract = performance.now(); force();
+      };
+      const onPointerUp = () => { s.drag = null; s.lastInteract = performance.now(); };
+
+      // Render de la esfera con textura
+      useEffect(() => {
+        if (!texReady) return;
+        const canvas = canvasRef.current; if (!canvas) return;
+        const RS = renderScale(w), W = Math.max(2, Math.round(w * RS)), H = Math.max(2, Math.round(h * RS));
+        if (canvas.width !== W) canvas.width = W; if (canvas.height !== H) canvas.height = H;
+        const ctx = canvas.getContext("2d");
+        const img = ctx.createImageData(W, H), data = img.data;
+        const sc = RS, Rr = R * sc, cxr = cx * sc, cyr = cy * sc;
+        const L = { x: -0.35, y: 0.45, z: 0.82 }, ll = Math.hypot(L.x, L.y, L.z); L.x /= ll; L.y /= ll; L.z /= ll;
+        const rotX = s.rotX, rotY = s.rotY;
+        const x0 = Math.max(0, Math.floor(cxr - Rr * 1.25)), x1 = Math.min(W, Math.ceil(cxr + Rr * 1.25));
+        const y0 = Math.max(0, Math.floor(cyr - Rr * 1.25)), y1 = Math.min(H, Math.ceil(cyr + Rr * 1.25));
+        for (let py = y0; py < y1; py++) {
+          const ny = (cyr - py) / Rr;
+          for (let px = x0; px < x1; px++) {
+            const nx = (px - cxr) / Rr, r2 = nx * nx + ny * ny, i4 = (py * W + px) * 4;
+            if (r2 > 1) {
+              if (r2 < 1.22 * 1.22) {
+                const t = (Math.sqrt(r2) - 1) / 0.22, a = Math.pow(1 - t, 2.4);
+                data[i4] = 90; data[i4 + 1] = 150; data[i4 + 2] = 230; data[i4 + 3] = Math.round(a * 130);
+              }
+              continue;
+            }
+            const nz = Math.sqrt(1 - r2);
+            const g = xyzToLL(rotateInverse({ x: nx, y: ny, z: nz }, rotX, rotY));
+            const c = sampleEarth(g.lon, g.lat);
+            const lDot = nx * L.x + ny * L.y + nz * L.z, lit = Math.max(0, lDot);
+            const shade = 0.22 + lit * 0.85, limb = Math.pow(nz, 0.4), atm = Math.pow(1 - nz, 2.6);
+            let r = c[0] * shade * limb + atm * 60, gg = c[1] * shade * limb + atm * 110, b = c[2] * shade * limb + atm * 180;
+            if (c[2] > c[0] + 20 && c[2] > c[1] + 10) { const sp = Math.pow(Math.max(0, lDot), 18) * 80; r += sp; gg += sp; b += sp; }
+            data[i4] = r > 255 ? 255 : r; data[i4 + 1] = gg > 255 ? 255 : gg; data[i4 + 2] = b > 255 ? 255 : b; data[i4 + 3] = 255;
+          }
+        }
+        ctx.clearRect(0, 0, W, H); ctx.putImageData(img, 0, 0);
+      });
+
+      // Pines
+      const pinData = pins.map(p => {
+        const r = rotate(llToXYZ(p.lat, p.lon), s.rotX, s.rotY);
+        return { p, x: cx + r.x * R, y: cy - r.y * R, z: r.z, visible: r.z > 0.02 };
+      });
+      const hub = pins.find(p => p.kind === "hub");
+      function arcPath(a, b) {
+        const pa = llToXYZ(a.lat, a.lon), pb = llToXYZ(b.lat, b.lon);
+        const dot = pa.x * pb.x + pa.y * pb.y + pa.z * pb.z, om = Math.acos(Math.max(-1, Math.min(1, dot))), so = Math.sin(om) || 1e-6;
+        let path = "", lastVis = false;
+        for (let i = 0; i <= 32; i++) {
+          const t = i / 32, k0 = Math.sin((1 - t) * om) / so, k1 = Math.sin(t * om) / so;
+          const lift = 1 + Math.sin(t * Math.PI) * 0.06;   // el arco "despega" un poco de la superficie
+          const r = rotate({ x: (pa.x * k0 + pb.x * k1) * lift, y: (pa.y * k0 + pb.y * k1) * lift, z: (pa.z * k0 + pb.z * k1) * lift }, s.rotX, s.rotY);
+          const vis = r.z > 0.02;
+          if (vis) path += (lastVis ? "L" : "M") + (cx + r.x * R).toFixed(1) + "," + (cy - r.y * R).toFixed(1) + " ";
+          lastVis = vis;
+        }
+        return path;
+      }
+
+      return (
+        <div style={{ position: "absolute", inset: 0, touchAction: "none", userSelect: "none", cursor: s.drag ? "grabbing" : "grab" }}
+             onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerUp}>
+          <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
+          <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} style={{ position: "absolute", inset: 0 }}>
+            <defs>
+              <radialGradient id="globeShade" cx="32%" cy="30%" r="75%">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.10" />
+                <stop offset="55%" stopColor="#000000" stopOpacity="0" />
+                <stop offset="100%" stopColor="#000000" stopOpacity="0.55" />
+              </radialGradient>
+            </defs>
+            <circle cx={cx} cy={cy} r={R} fill="url(#globeShade)" pointerEvents="none" />
+
+            <g pointerEvents="none">
+              {hub && pins.filter(p => p.kind === "p").map(p => (
+                <path key={p.id} d={arcPath(hub, p)} stroke={THEME.line} strokeWidth="1.2" strokeDasharray="1 5" strokeLinecap="round" fill="none" opacity="0.8" />
+              ))}
+            </g>
+
+            <g>
+              {pinData.map(({ p, x, y, z, visible }) => {
+                if (!visible) return null;
+                const isHub = p.kind === "hub";
+                const isSel = p.id === selectedId, isHov = p.id === hoveredId;
+                const depth = (z + 1) / 2;
+                const base0 = isHub ? 9 : 4.6;
+                const r = (base0 + depth * 1.6) * (isSel ? 1.5 : isHov ? 1.25 : 1);
+                const color = isHub ? THEME.burgundy : THEME.gold;
+                const showLabel = isHub || isSel || isHov;
+                return (
+                  <g key={p.id} data-pin-id={p.id} style={{ cursor: "pointer" }}
+                     onPointerDown={e => e.stopPropagation()}
+                     onClick={e => { e.stopPropagation(); onPin(p); }}
+                     onPointerEnter={() => onHover(p.id)} onPointerLeave={() => onHover(null)}>
+                    {(isHub || isSel || isHov) && (
+                      <circle cx={x} cy={y} r={r * 2} fill={color} opacity="0.2">
+                        <animate attributeName="r" values={`${r};${r * 3.2};${r}`} dur="2.2s" repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.5;0;0.5" dur="2.2s" repeatCount="indefinite" />
+                      </circle>
+                    )}
+                    <circle cx={x} cy={y} r={r + 2.5} fill="#ffffff" opacity="0.7" />
+                    <circle cx={x} cy={y} r={r} fill={color} stroke={isHub ? "#c9a35a" : "#3a2400"} strokeWidth={isHub ? 1.6 : 0.8} />
+                    {isHub
+                      ? <text x={x} y={y + 0.5} textAnchor="middle" dominantBaseline="central" fontSize={r * 1.05} fontWeight="700" fill="#fbf7ed" fontFamily="Inter, sans-serif" pointerEvents="none">{p.count}</text>
+                      : <circle cx={x} cy={y} r={r * 0.4} fill="#fff8e0" />}
+                    {showLabel && (
+                      <g pointerEvents="none">
+                        <text x={x} y={y - r - 12} textAnchor="middle" fontSize="12.5" fontWeight="600" fill="#fbf7ed" fontFamily="Inter, sans-serif"
+                              stroke="rgba(20,8,6,.9)" strokeWidth="4" paintOrder="stroke" strokeLinejoin="round">{p.label}</text>
+                        <text x={x} y={y - r - 26} textAnchor="middle" fontSize="10.5" fill="#e8c87a" fontFamily="Inter, sans-serif"
+                              stroke="rgba(20,8,6,.9)" strokeWidth="3.5" paintOrder="stroke" strokeLinejoin="round">{p.sub}</text>
+                      </g>
+                    )}
+                  </g>
+                );
+              })}
+            </g>
+          </svg>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════
+    // MAPA DE ARGENTINA (vista ampliada) + abanico de Córdoba
+    // ═══════════════════════════════════════════
+    function Avatar({ e, cx, cy, r, sel, hov, uid }) {
+      const ring = sel ? THEME.gold : "#fbf7ed";
+      return (
+        <g>
+          <circle cx={cx} cy={cy} r={r + (sel ? 3 : 2)} fill={ring} opacity={sel || hov ? 1 : 0.9} />
+          {e.foto ? (
+            <>
+              <clipPath id={`cl-${uid}`}><circle cx={cx} cy={cy} r={r} /></clipPath>
+              <image href={e.foto} x={cx - r} y={cy - r} width={r * 2} height={r * 2} preserveAspectRatio="xMidYMid slice" clipPath={`url(#cl-${uid})`} />
+            </>
+          ) : (
+            <>
+              <circle cx={cx} cy={cy} r={r} fill={THEME.burgundy} />
+              <text x={cx} y={cy + 0.5} textAnchor="middle" dominantBaseline="central" fontSize={r * 0.78} fontWeight="600" fill="#e8c87a" fontFamily="Fraunces, serif">{iniciales(e.nombre)}</text>
+            </>
+          )}
+        </g>
+      );
+    }
+
+    function ArgentinaMap({ visible, w, h, padRight, cordobaOpen, selectedId, hoveredId, onSelect, onHover, onCordoba }) {
+      const desktop = w > 720;
+      const RING = desktop ? 128 : 92, AV = desktop ? 27 : 22, LBL = desktop ? 92 : 0;
+      const aw = Math.max(200, w - padRight);
+
+      // Cámara objetivo: país entero o Córdoba
+      const target = useMemo(() => {
+        if (cordobaOpen) {
+          const c = arProject(CORDOBA.lat, CORDOBA.lon);
+          const s = Math.min((aw - 40) / (2 * (RING + AV + LBL)), (h - 130) / (2 * (RING + AV + 22)));
+          return { s, u: c.x, v: c.y };
+        }
+        const s = Math.min((aw - 40) / AR.w, (h - 130) / AR.h);
+        return { s, u: AR.w / 2, v: AR.h / 2 };
+      }, [cordobaOpen, aw, h, RING, AV, LBL]);
+
+      const cam = useRef({ ...target });
+      const [, force] = useReducer(x => x + 1, 0);
+      const ringT = useRef(0);
+      useEffect(() => {
+        let raf, last = performance.now();
+        const tick = now => {
+          const dt = Math.min(0.05, (now - last) / 1000); last = now;
+          const c = cam.current, k = 1 - Math.exp(-dt * 5.5);
+          let changed = false;
+          if (!visible) { c.s = target.s; c.u = target.u; c.v = target.v; }
+          else {
+            const ns = Math.exp(Math.log(c.s) + (Math.log(target.s) - Math.log(c.s)) * k);
+            if (Math.abs(ns - c.s) > 1e-5 || Math.abs(target.u - c.u) > 0.01 || Math.abs(target.v - c.v) > 0.01) {
+              c.s = ns; c.u += (target.u - c.u) * k; c.v += (target.v - c.v) * k; changed = true;
+            }
+          }
+          const rt = visible && cordobaOpen ? 1 : 0;
+          if (Math.abs(rt - ringT.current) > 0.003) { ringT.current += (rt - ringT.current) * (1 - Math.exp(-dt * 7)); changed = true; }
+          else if (ringT.current !== rt) { ringT.current = rt; changed = true; }
+          if (changed) force();
+          raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+        return () => cancelAnimationFrame(raf);
+      }, [target, visible, cordobaOpen]);
+
+      const { s, u, v } = cam.current;
+      const px = n => n / s;                                // px de pantalla -> unidades del mapa
+      const vbx = u - (aw / 2) / s, vby = v - (h / 2 + 24) / s;
+      const T = ringT.current, ease = 1 - Math.pow(1 - T, 3);
+      const cc = arProject(CORDOBA.lat, CORDOBA.lon);
+      const zoomed = T > 0.02;
+
+      const angulos = CORDOBESES.map((_, i) => -Math.PI / 2 + (i * 2 * Math.PI) / CORDOBESES.length);
+
+      return (
+        <svg width={w} height={h} viewBox={`${vbx} ${vby} ${w / s} ${h / s}`} style={{ position: "absolute", inset: 0 }}
+             onClick={() => { if (cordobaOpen) onCordoba(false); }}>
+          {/* Provincias */}
+          <g>
+            {AR.provincias.map(p => {
+              const hot = PROVINCIAS_CON_GENTE.has(p.n);
+              const isCba = p.n === "Córdoba";
+              return (
+                <path key={p.id} d={p.d} vectorEffect="non-scaling-stroke"
+                  fill={isCba && zoomed ? "rgba(201,163,90,0.30)" : hot ? "rgba(201,163,90,0.20)" : "rgba(201,163,90,0.07)"}
+                  stroke="rgba(201,163,90,0.55)" strokeWidth="1" strokeLinejoin="round"
+                  style={{ transition: "fill 400ms" }} />
+              );
+            })}
+          </g>
+
+          {/* Pines individuales (fuera de Córdoba) */}
+          {OTROS_AR.map(e => {
+            const p = arProject(e.lat, e.lon);
+            const sel = e.id === selectedId, hov = e.id === hoveredId;
+            const r = px(sel ? 14 : 11);
+            const fade = cordobaOpen ? 0.25 : 1;
+            return (
+              <g key={e.id} style={{ cursor: "pointer", opacity: fade, transition: "opacity 300ms" }}
+                 onClick={ev => { ev.stopPropagation(); onSelect(e.id); }}
+                 onPointerEnter={() => onHover(e.id)} onPointerLeave={() => onHover(null)}>
+                {(sel || hov) && <circle cx={p.x} cy={p.y} r={r * 2.2} fill={THEME.gold} opacity="0.25" />}
+                <Avatar e={e} cx={p.x} cy={p.y} r={r} sel={sel} hov={hov} uid={`o${e.id}`} />
+                <text x={p.x} y={p.y + r + px(18)} textAnchor="middle" fontSize={px(12.5)} fontWeight="600" fill="#fbf7ed" fontFamily="Inter, sans-serif"
+                      stroke="rgba(20,8,6,.9)" strokeWidth={px(4)} paintOrder="stroke" strokeLinejoin="round">{e.ciudad === "Buenos Aires" ? "Buenos Aires" : e.ciudad}</text>
+                <text x={p.x} y={p.y + r + px(32)} textAnchor="middle" fontSize={px(10.5)} fill="#e8c87a" fontFamily="Inter, sans-serif"
+                      stroke="rgba(20,8,6,.9)" strokeWidth={px(3.5)} paintOrder="stroke" strokeLinejoin="round">{nombreCorto(e.nombre)}</text>
+              </g>
+            );
+          })}
+
+          {/* Córdoba: pin con el total (cerrado) */}
+          {T < 0.98 && (
+            <g style={{ cursor: "pointer", opacity: 1 - ease }}
+               onClick={ev => { ev.stopPropagation(); onCordoba(true); }}
+               onPointerEnter={() => onHover("cba")} onPointerLeave={() => onHover(null)}>
+              <circle cx={cc.x} cy={cc.y} r={px(30)} fill={THEME.burgundy} opacity="0.28">
+                <animate attributeName="r" values={`${px(18)};${px(36)};${px(18)}`} dur="2.4s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.45;0;0.45" dur="2.4s" repeatCount="indefinite" />
+              </circle>
+              <circle cx={cc.x} cy={cc.y} r={px(19)} fill="#ffffff" opacity="0.8" />
+              <circle cx={cc.x} cy={cc.y} r={px(16)} fill={THEME.burgundy} stroke={THEME.gold} strokeWidth="1.6" vectorEffect="non-scaling-stroke" />
+              <text x={cc.x} y={cc.y + 0.5} textAnchor="middle" dominantBaseline="central" fontSize={px(14)} fontWeight="700" fill="#fbf7ed" fontFamily="Inter, sans-serif" pointerEvents="none">{CORDOBESES.length}</text>
+              <text x={cc.x + px(26)} y={cc.y - px(2)} fontSize={px(13.5)} fontWeight="600" fill="#fbf7ed" fontFamily="Inter, sans-serif"
+                    stroke="rgba(20,8,6,.9)" strokeWidth={px(4)} paintOrder="stroke" strokeLinejoin="round" pointerEvents="none">Córdoba</text>
+              <text x={cc.x + px(26)} y={cc.y + px(13)} fontSize={px(10.5)} fill="#e8c87a" fontFamily="Inter, sans-serif"
+                    stroke="rgba(20,8,6,.9)" strokeWidth={px(3.5)} paintOrder="stroke" strokeLinejoin="round" pointerEvents="none">Tocá para ver a todos</text>
+            </g>
+          )}
+
+          {/* Córdoba: abanico de egresados */}
+          {T > 0.02 && (
+            <g opacity={ease}>
+              {CORDOBESES.map((e, i) => {
+                const r0 = px(RING) * ease, a = angulos[i];
+                const x = cc.x + Math.cos(a) * r0, y = cc.y + Math.sin(a) * r0;
+                return <line key={"l" + e.id} x1={cc.x} y1={cc.y} x2={x} y2={y} stroke={THEME.gold} strokeWidth="1" strokeDasharray="2 4" vectorEffect="non-scaling-stroke" opacity="0.7" />;
+              })}
+              <circle cx={cc.x} cy={cc.y} r={px(5)} fill={THEME.gold} stroke="#fff" strokeWidth="1.2" vectorEffect="non-scaling-stroke" />
+              <text x={cc.x} y={cc.y + px(20)} textAnchor="middle" fontSize={px(10.5)} fill="#e8c87a" fontFamily="Inter, sans-serif" letterSpacing="1"
+                    stroke="rgba(20,8,6,.9)" strokeWidth={px(3.5)} paintOrder="stroke" pointerEvents="none">CÓRDOBA</text>
+              {CORDOBESES.map((e, i) => {
+                const r0 = px(RING) * ease, a = angulos[i];
+                const x = cc.x + Math.cos(a) * r0, y = cc.y + Math.sin(a) * r0;
+                const sel = e.id === selectedId, hov = e.id === hoveredId;
+                const rr = px(sel || hov ? AV * 1.18 : AV);
+                const ca = Math.cos(a);
+                const lx = x + ca * (rr + px(8)), ly = y + Math.sin(a) * (rr + px(8));
+                const anchor = Math.abs(ca) < 0.25 ? "middle" : ca > 0 ? "start" : "end";
+                return (
+                  <g key={e.id} style={{ cursor: "pointer" }}
+                     onClick={ev => { ev.stopPropagation(); onSelect(e.id); }}
+                     onPointerEnter={() => onHover(e.id)} onPointerLeave={() => onHover(null)}>
+                    <Avatar e={e} cx={x} cy={y} r={rr} sel={sel} hov={hov} uid={`c${e.id}`} />
+                    {(desktop || sel || hov) && (
+                      <text x={lx} y={ly + (Math.abs(ca) < 0.25 ? (Math.sin(a) > 0 ? px(10) : -px(2)) : px(4))} textAnchor={anchor}
+                            fontSize={px(11)} fontWeight={sel ? 700 : 500} fill={sel ? "#e8c87a" : "#fbf7ed"} fontFamily="Inter, sans-serif"
+                            stroke="rgba(20,8,6,.92)" strokeWidth={px(3.5)} paintOrder="stroke" strokeLinejoin="round" pointerEvents="none">{nombreCorto(e.nombre)}</text>
+                    )}
+                  </g>
+                );
+              })}
+            </g>
+          )}
+        </svg>
+      );
+    }
+
+    // ═══════════════════════════════════════════
+    // TARJETA DE PERFIL (acoplada al costado)
+    // ═══════════════════════════════════════════
+    function Seccion({ titulo, texto }) {
+      if (!texto) return null;
+      return (
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ fontSize: 10, letterSpacing: 1.6, textTransform: "uppercase", color: "#7a1f1a", fontWeight: 700, marginBottom: 6 }}>{titulo}</div>
+          <div style={{ fontSize: 13.5, lineHeight: 1.62, color: "rgba(42,17,8,0.86)", whiteSpace: "pre-line" }}>{texto}</div>
+        </div>
+      );
+    }
+
+    function ProfileCard({ e, onClose }) {
+      if (!e) return null;
+      const sinHistoria = !e.pres && !e.monse && !e.anec;
+      const lugar = [e.ciudad, e.provincia && e.provincia !== e.ciudad && e.provincia !== "CABA" ? e.provincia : null, e.pais].filter(Boolean).join(", ");
+      return (
+        <div className="mm-card" key={e.id} style={{
+          background: THEME.cardBg, color: THEME.cardText, borderRadius: 14, overflow: "hidden",
+          boxShadow: "0 20px 60px rgba(20,8,6,0.55), 0 0 0 1px rgba(201,163,90,0.35)",
+          display: "flex", flexDirection: "column", fontFamily: "Inter, sans-serif", animation: "cardIn 300ms cubic-bezier(.2,.7,.2,1)",
+        }}>
+          <div style={{ flexShrink: 0, height: 92, background: "linear-gradient(135deg,#7a1f1a 0%,#5a1612 100%)", position: "relative", borderBottom: "2px solid #c9a35a" }}>
+            <div style={{ position: "absolute", top: 14, left: 20, fontFamily: "'Fraunces', serif", fontSize: 11, color: "#c9a35a", letterSpacing: 1.8, textTransform: "uppercase", fontWeight: 600 }}>Promoción {e.promo}</div>
+            <button onClick={onClose} aria-label="Cerrar" style={{ position: "absolute", top: 10, right: 10, width: 30, height: 30, borderRadius: "50%", background: "rgba(42,17,8,0.55)", color: "#fbf7ed", border: "none", cursor: "pointer", fontSize: 17, lineHeight: 1 }}>×</button>
+            <div style={{ position: "absolute", left: 20, bottom: -34, width: 76, height: 76, borderRadius: "50%", border: `3px solid ${THEME.cardBg}`, background: "#fbf7ed", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 14px rgba(0,0,0,.25)" }}>
+              {e.foto
+                ? <img src={e.foto} alt={e.nombre} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                : <span style={{ fontFamily: "'Fraunces', serif", fontSize: 26, fontWeight: 600, color: "#7a1f1a" }}>{iniciales(e.nombre)}</span>}
+            </div>
+          </div>
+          <div style={{ overflowY: "auto", padding: "44px 20px 20px" }}>
+            <div style={{ fontFamily: "'Fraunces', serif", fontSize: 22, fontWeight: 500, lineHeight: 1.15, marginBottom: 6, letterSpacing: -0.3 }}>{e.nombre}</div>
+            <div style={{ fontSize: 12, color: "rgba(42,17,8,0.62)", marginBottom: 3, fontWeight: 600 }}>{e.profesion}</div>
+            <div style={{ fontSize: 11, color: "rgba(42,17,8,0.55)", letterSpacing: 0.8, textTransform: "uppercase", marginBottom: 18 }}>{lugar}</div>
+            <Seccion titulo="Presentación" texto={e.pres} />
+            <Seccion titulo="El Monse en mi vida" texto={e.monse} />
+            <Seccion titulo="Una anécdota" texto={e.anec} />
+            {sinHistoria && (
+              <div style={{ borderLeft: "2px solid #c9a35a", paddingLeft: 12, fontFamily: "'Fraunces', serif", fontStyle: "italic", fontSize: 14, lineHeight: 1.5, color: "rgba(42,17,8,0.75)" }}>
+                Todavía no compartió su historia con nosotros. ¡Pronto vamos a sumarla!
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════
+    // PANEL LATERAL
+    // ═══════════════════════════════════════════
+    function Stat({ n, label }) {
+      return (
+        <div>
+          <div style={{ fontFamily: "'Fraunces', serif", fontSize: 24, fontWeight: 500, color: "#c9a35a", lineHeight: 1 }}>{n}</div>
+          <div style={{ fontSize: 9, letterSpacing: 1.3, textTransform: "uppercase", color: "rgba(251,247,237,0.65)", marginTop: 4 }}>{label}</div>
+        </div>
+      );
+    }
+
+    function SidePanel({ selectedId, onSelect, onHover, query, setQuery }) {
+      const norm = s => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+      const filtrar = lista => {
+        const q = norm(query.trim()); if (!q) return lista;
+        return lista.filter(e => [e.nombre, e.ciudad, e.provincia, e.pais, e.profesion, String(e.promo)].some(x => norm(x).includes(q)));
+      };
+      const ext = filtrar(EXTERIOR).sort((a, b) => a.nombre.localeCompare(b.nombre));
+      const arg = filtrar(ARGENTINOS).sort((a, b) => a.nombre.localeCompare(b.nombre));
+      const Fila = ({ e }) => {
+        const selected = e.id === selectedId;
+        return (
+          <button onMouseEnter={() => onHover(e.id)} onMouseLeave={() => onHover(null)} onClick={() => onSelect(e.id)} onMouseDown={ev => ev.preventDefault()}
+            style={{ width: "100%", background: selected ? "rgba(201,163,90,0.10)" : "transparent", border: "none", borderLeft: `3px solid ${selected ? "#7a1f1a" : "transparent"}`,
+              padding: "8px 18px", textAlign: "left", cursor: "pointer", color: "#fbf7ed", fontFamily: "Inter, sans-serif", display: "flex", gap: 10, alignItems: "center" }}>
+            <span style={{ width: 30, height: 30, borderRadius: "50%", flexShrink: 0, overflow: "hidden", background: "#7a1f1a", color: "#e8c87a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 600, border: "1px solid rgba(201,163,90,.5)" }}>
+              {e.foto ? <img src={e.foto} alt="" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : iniciales(e.nombre)}
+            </span>
+            <span style={{ minWidth: 0 }}>
+              <span style={{ display: "block", fontSize: 13, fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{e.nombre}</span>
+              <span style={{ display: "block", fontSize: 11, color: "rgba(251,247,237,0.6)", marginTop: 1 }}>
+                {e.ciudad} <span style={{ color: "rgba(251,247,237,0.35)" }}>·</span> <span style={{ color: "#c9a35a", fontFamily: "'Fraunces', serif", fontStyle: "italic" }}>'{String(e.promo).slice(2)}</span>
+              </span>
+            </span>
+          </button>
+        );
+      };
+      const Grupo = ({ titulo, lista }) => lista.length === 0 ? null : (
+        <div>
+          <div style={{ padding: "10px 18px 4px", fontSize: 9.5, letterSpacing: 1.8, textTransform: "uppercase", color: "#c9a35a", fontWeight: 700 }}>{titulo} · {lista.length}</div>
+          {lista.map(e => <Fila key={e.id} e={e} />)}
+        </div>
+      );
+
+      return (
+        <div className="mm-panel" style={{ width: 310, height: "100%", background: "rgba(36,19,16,0.96)", borderRight: "1px solid rgba(201,163,90,0.22)", display: "flex", flexDirection: "column", color: "#fbf7ed", fontFamily: "Inter, sans-serif", flexShrink: 0 }}>
+          <div style={{ padding: "24px 20px 18px", borderBottom: "1px solid rgba(201,163,90,0.22)", position: "relative" }}>
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "linear-gradient(90deg,#7a1f1a 0%,#c9a35a 50%,#7a1f1a 100%)" }} />
+            <div style={{ fontSize: 9, letterSpacing: 2.4, textTransform: "uppercase", color: "#c9a35a", marginBottom: 6, fontWeight: 600 }}>Por el Mundo</div>
+            <div style={{ fontFamily: "'Fraunces', serif", fontSize: 24, fontWeight: 500, letterSpacing: -0.5, lineHeight: 1.05 }}>Monserratenses</div>
+            <div style={{ fontFamily: "'Fraunces', serif", fontSize: 12, fontStyle: "italic", color: "rgba(251,247,237,0.65)", marginTop: 4 }}>Asociación Civil Duarte y Quirós</div>
+            <div style={{ display: "flex", gap: 22, marginTop: 20, paddingTop: 14, borderTop: "1px dashed rgba(201,163,90,0.22)" }}>
+              <Stat n={EGRESADOS.length} label="Egresados" />
+              <Stat n={PAISES} label="Países" />
+              <Stat n={EXTERIOR.length} label="En el exterior" />
+            </div>
+          </div>
+          <div style={{ padding: "12px 16px", borderBottom: "1px solid rgba(201,163,90,0.22)" }}>
+            <div style={{ position: "relative" }}>
+              <input value={query} onChange={ev => setQuery(ev.target.value)} placeholder="Buscar nombre, ciudad, año…" aria-label="Buscar egresado"
+                style={{ width: "100%", boxSizing: "border-box", background: "transparent", border: "1px solid rgba(201,163,90,0.22)", borderRadius: 8, padding: "8px 12px 8px 32px", color: "#fbf7ed", fontSize: 13, fontFamily: "Inter, sans-serif", outline: "none" }} />
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(251,247,237,0.5)" strokeWidth="2" style={{ position: "absolute", left: 10, top: 11 }}><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg>
+            </div>
+          </div>
+          <div style={{ flex: 1, overflowY: "auto", padding: "2px 0 8px" }}>
+            <Grupo titulo="En el exterior" lista={ext} />
+            <Grupo titulo="En Argentina" lista={arg} />
+            {ext.length + arg.length === 0 && <div style={{ padding: "22px 18px", color: "rgba(251,247,237,0.5)", fontSize: 13, fontStyle: "italic" }}>Sin resultados.</div>}
+          </div>
+          <div style={{ padding: "14px 18px", borderTop: "1px solid rgba(201,163,90,0.22)", textAlign: "center", background: "rgba(122,31,26,0.06)" }}>
+            <a href="/contacto/" style={{ display: "inline-block", fontSize: 11.5, color: "#c9a35a", textDecoration: "none", fontWeight: 600, letterSpacing: 0.4 }}>¿Sos monserratense? Sumate al mapa →</a>
+            <div style={{ fontFamily: "'Fraunces', serif", fontStyle: "italic", fontSize: 10.5, color: "rgba(251,247,237,0.35)", marginTop: 6 }}>Siempre Monserratenses</div>
+          </div>
+        </div>
+      );
+    }
+
+    function StarField() {
+      const stars = useMemo(() => Array.from({ length: 80 }, () => ({ x: Math.random() * 100, y: Math.random() * 100, s: Math.random() * 1.2 + 0.3, o: Math.random() * 0.5 + 0.15 })), []);
+      return (
+        <svg style={{ position: "absolute", inset: 0, pointerEvents: "none" }} width="100%" height="100%">
+          {stars.map((s, i) => <circle key={i} cx={`${s.x}%`} cy={`${s.y}%`} r={s.s} fill="#f5f1e8" opacity={s.o} />)}
+        </svg>
+      );
+    }
+
+    function BotonVolver({ onClick, children }) {
+      return (
+        <button onClick={onClick} style={{ background: "rgba(36,19,16,0.9)", border: "1px solid rgba(201,163,90,0.5)", color: "#e8c87a", borderRadius: 999, padding: "8px 16px", fontSize: 12.5, fontWeight: 600, cursor: "pointer", fontFamily: "Inter, sans-serif", letterSpacing: 0.3, display: "inline-flex", alignItems: "center", gap: 8 }}>
+          {children}
+        </button>
+      );
+    }
+
+    // ═══════════════════════════════════════════
+    // APP
+    // ═══════════════════════════════════════════
+    function App() {
+      const [selectedId, setSelectedId] = useState(null);
+      const [hoveredId, setHoveredId] = useState(null);
+      const [argOn, setArgOn] = useState(false);              // vista ampliada de Argentina
+      const [cordobaOpen, setCordobaOpen] = useState(false);  // abanico de Córdoba
+      const [focus, setFocus] = useState({ lat: null, lon: null, zoom: 1, key: 0 });
+      const [query, setQuery] = useState("");
+      const [panelOpen, setPanelOpen] = useState(false);
+      const stageRef = useRef(null);
+      const timer = useRef(0);
+      const [size, setSize] = useState({ w: 1000, h: 700 });
+
+      useEffect(() => {
+        const update = () => { if (stageRef.current) { const r = stageRef.current.getBoundingClientRect(); setSize({ w: r.width, h: r.height }); } };
+        update();
+        window.addEventListener("resize", update);
+        return () => window.removeEventListener("resize", update);
+      }, []);
+
+      const selected = EGRESADOS.find(e => e.id === selectedId) || null;
+      const desktop = size.w > 720;
+      const cardOpen = !!selected;
+      const padRight = cardOpen && desktop ? 392 : 0;
+
+      const enterArgentina = () => {
+        setFocus(f => ({ lat: HUB.lat, lon: HUB.lon, zoom: 3.0, key: f.key + 1 }));
+        clearTimeout(timer.current);
+        timer.current = setTimeout(() => setArgOn(true), 900);
+      };
+      const exitArgentina = () => {
+        clearTimeout(timer.current);
+        setArgOn(false); setCordobaOpen(false); setSelectedId(null);
+        setFocus(f => ({ lat: null, lon: null, zoom: 1, key: f.key + 1 }));
+      };
+      const closeCard = () => {
+        setSelectedId(null);
+        if (!argOn) setFocus(f => ({ lat: null, lon: null, zoom: 1, key: f.key + 1 }));
+      };
+      const select = id => {
+        const e = EGRESADOS.find(x => x.id === id); if (!e) return;
+        setSelectedId(id); setPanelOpen(false);
+        if (esAR(e)) {
+          setCordobaOpen(enCordoba(e));
+          if (!argOn) enterArgentina();
+        } else {
+          clearTimeout(timer.current);
+          if (argOn) { setArgOn(false); setCordobaOpen(false); }
+          setFocus(f => ({ lat: e.lat, lon: e.lon, zoom: 2.1, key: f.key + 1 }));
+        }
+      };
+      const onPin = p => { if (p.kind === "hub") enterArgentina(); else select(p.id); };
+      const setCordoba = open => {
+        setCordobaOpen(open);
+        if (!open && selected && enCordoba(selected)) setSelectedId(null);
+      };
+
+      // Escape: va cerrando de a un nivel
+      useEffect(() => {
+        const onKey = ev => {
+          if (ev.key !== "Escape") return;
+          if (selectedId != null) closeCard();
+          else if (cordobaOpen) setCordobaOpen(false);
+          else if (argOn) exitArgentina();
+        };
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+      });
+
+      const pins = useMemo(() => [
+        ...EXTERIOR.map(e => ({ id: e.id, kind: "p", lat: e.lat, lon: e.lon, label: e.nombre, sub: `${e.ciudad}, ${e.pais}` })),
+        { id: "AR", kind: "hub", lat: HUB.lat, lon: HUB.lon, label: "Argentina", sub: `${ARGENTINOS.length} egresados`, count: ARGENTINOS.length },
+      ], []);
+
+      const globeBase = desktop ? Math.min(720, size.h - 60, size.w - 40) : Math.min(size.h - 120, size.w + 10);
+      const globeOffset = !argOn && cardOpen && desktop ? -(padRight / 2) : 0;
+
+      return (
+        <div style={{ width: "100%", height: "100%", display: "flex", background: THEME.bg, overflow: "hidden" }}>
+          <SidePanel selectedId={selectedId} onSelect={select} onHover={setHoveredId} query={query} setQuery={setQuery} />
+
+          <div ref={stageRef} style={{ flex: 1, position: "relative", overflow: "hidden", background: `radial-gradient(ellipse at center, ${THEME.bgSecondary} 0%, ${THEME.bg} 70%)` }}>
+            <StarField />
+
+            <Globe w={size.w} h={size.h} base={globeBase} focus={focus} offsetX={globeOffset}
+              autoRotate={!argOn && selectedId == null && focus.zoom === 1}
+              hoveredId={hoveredId} selectedId={selectedId} pins={pins} onPin={onPin} onHover={setHoveredId} />
+
+            {/* Vista ampliada de Argentina */}
+            <div style={{ position: "absolute", inset: 0, opacity: argOn ? 1 : 0, pointerEvents: argOn ? "auto" : "none", transition: "opacity 550ms ease",
+                          background: `radial-gradient(ellipse at center, ${THEME.bgSecondary} 0%, ${THEME.bg} 75%)` }}>
+              <ArgentinaMap visible={argOn} w={size.w} h={size.h} padRight={padRight} cordobaOpen={cordobaOpen}
+                selectedId={selectedId} hoveredId={hoveredId} onSelect={select} onHover={setHoveredId} onCordoba={setCordoba} />
+              <div style={{ position: "absolute", top: 16, left: 16, display: "flex", gap: 10, flexWrap: "wrap" }}>
+                <BotonVolver onClick={exitArgentina}>{desktop ? "← Volver al mundo" : "← Mundo"}</BotonVolver>
+                {cordobaOpen && <BotonVolver onClick={() => setCordoba(false)}>← Argentina</BotonVolver>}
+              </div>
+              <div style={{ position: "absolute", top: desktop ? 18 : 64, ...(desktop ? { right: padRight + 18, textAlign: "right" } : { left: 20, textAlign: "left" }), pointerEvents: "none" }}>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: 22, color: "#fbf7ed", fontWeight: 500, letterSpacing: -0.3 }}>{cordobaOpen ? "Córdoba" : "Argentina"}</div>
+                <div style={{ fontSize: 10.5, letterSpacing: 1.6, textTransform: "uppercase", color: "#c9a35a", marginTop: 2 }}>{cordobaOpen ? `${CORDOBESES.length} egresados` : `${ARGENTINOS.length} egresados`}</div>
+              </div>
+              {desktop && !cordobaOpen && !cardOpen && (
+                <div style={{ position: "absolute", bottom: 18, left: 20, maxWidth: desktop ? 230 : "70%", color: "rgba(251,247,237,0.5)", fontSize: 10.5, lineHeight: 1.6, letterSpacing: 1.5, textTransform: "uppercase", pointerEvents: "none" }}>
+                  Tocá Córdoba para ver a todos · o a cualquier egresado
+                </div>
+              )}
+            </div>
+
+            {/* Pistas del globo */}
+            {!argOn && selectedId == null && (
+              <div style={{ position: "absolute", top: 18, left: 20, display: "flex", alignItems: "center", gap: 10, pointerEvents: "none", maxWidth: "70%" }}>
+                <div style={{ width: 26, height: 26, flexShrink: 0, borderRadius: "50%", background: "#7a1f1a", color: "#fbf7ed", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Playfair Display', serif", fontSize: 13, fontWeight: 700, border: "1px solid #c9a35a" }}>M</div>
+                <div style={{ fontSize: 10, letterSpacing: 1.6, textTransform: "uppercase", color: "rgba(251,247,237,0.45)", lineHeight: 1.5 }}>
+                  Arrastrá para rotar · Tocá un punto para conocer al egresado
+                </div>
+              </div>
+            )}
+            {!argOn && selectedId != null && (
+              <div style={{ position: "absolute", top: 16, left: 16 }}>
+                <BotonVolver onClick={closeCard}>← Volver al mundo</BotonVolver>
+              </div>
+            )}
+            {!argOn && selectedId == null && (
+              <div style={{ position: "absolute", bottom: 20, right: 24, color: "rgba(251,247,237,0.5)", fontSize: 10, letterSpacing: 1.5, textTransform: "uppercase", display: "flex", alignItems: "center", gap: 8, pointerEvents: "none" }}>
+                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#c9a35a", boxShadow: "0 0 10px #c9a35a", animation: "pulseDot 2s ease-in-out infinite" }} />
+                <span>{EGRESADOS.length} egresados · {PAISES} países</span>
+              </div>
+            )}
+
+            {/* Botón mobile: abre la lista */}
+            <button className="mm-list-btn" onClick={() => setPanelOpen(v => !v)}
+              style={{ position: "absolute", top: 14, right: 14, zIndex: 30, background: "rgba(36,19,16,0.88)", border: "1px solid rgba(201,163,90,0.4)", borderRadius: 8, padding: "7px 14px", color: "#c9a35a", fontSize: 12, letterSpacing: 1, cursor: "pointer", fontFamily: "Inter, sans-serif" }}>☰ Lista</button>
+
+            {panelOpen && (
+              <div style={{ position: "absolute", inset: 0, zIndex: 60, background: "rgba(20,8,6,0.55)", display: "flex" }} onClick={() => setPanelOpen(false)}>
+                <div style={{ width: 310, maxWidth: "88%", height: "100%", background: "rgba(26,14,12,0.98)" }} onClick={ev => ev.stopPropagation()}>
+                  <SidePanel selectedId={selectedId} onSelect={select} onHover={setHoveredId} query={query} setQuery={setQuery} />
+                </div>
+              </div>
+            )}
+
+            {/* Tarjeta de perfil */}
+            {selected && (
+              <div className="mm-card-wrap" style={{ position: "absolute", zIndex: 50 }}>
+                <ProfileCard e={selected} onClose={closeCard} />
+              </div>
+            )}
+          </div>
+
+          <style>{`
+            @keyframes cardIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+            @keyframes pulseDot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: .5; } }
+            ::-webkit-scrollbar { width: 6px; }
+            ::-webkit-scrollbar-track { background: transparent; }
+            ::-webkit-scrollbar-thumb { background: rgba(201,163,90,0.30); border-radius: 4px; }
+            .mm-panel { display: flex !important; }
+            .mm-list-btn { display: none !important; }
+            .mm-card-wrap { top: 16px; right: 16px; bottom: 16px; width: 360px; display: flex; flex-direction: column; justify-content: flex-start; }
+            .mm-card { max-height: 100%; }
+            .mm-panel .mm-panel { display: flex !important; }
+            @media (max-width: 720px) {
+              .mm-panel { display: none !important; }
+              .mm-list-btn { display: block !important; }
+              div[style*="z-index: 60"] .mm-panel { display: flex !important; width: 100% !important; }
+              .mm-card-wrap { top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; max-height: 62%; }
+            }
+          `}</style>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+
+  <script src="/script.js"></script>
+</body>
+</html>

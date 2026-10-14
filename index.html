@@ -34,7 +34,7 @@
       <nav class="navbar__links">
         <a href="#" class="active">Inicio</a>
         <a href="servicios/">Servicios</a>
-        <a href="#mundo">Por el Mundo</a>
+        <a href="/mundo/">Por el Mundo</a>
         <a href="/noticias/">Noticias</a>
         <a href="/cultura/">Cultura</a>
         <a href="/archivo/">Archivo</a>
@@ -63,7 +63,7 @@
     <nav class="navbar__mobile" id="mobileMenu">
       <a href="#" onclick="toggleMenu()">Inicio</a>
       <a href="servicios/" onclick="toggleMenu()">Servicios</a>
-      <a href="#mundo" onclick="toggleMenu()">Por el Mundo</a>
+      <a href="/mundo/" onclick="toggleMenu()">Por el Mundo</a>
       <a href="/noticias/" onclick="toggleMenu()">Noticias</a>
       <a href="/cultura/" onclick="toggleMenu()">Cultura</a>
       <a href="/archivo/" onclick="toggleMenu()">Archivo</a>
@@ -669,15 +669,61 @@
   </section>
 
   <!-- ══════════════════════ POR EL MUNDO ══════════════════════ -->
-  <section id="mundo" style="background:var(--burgundy-dark); text-align:center; padding: 6rem 0;">
-    <div class="container">
-      <p style="font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:.75rem;">Presencia Global</p>
-      <h2 style="font-family:var(--ff-serif); font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; letter-spacing:-.02em; color:var(--ivory); margin-bottom:1rem; line-height:1.1;">
-        Por el <em style="font-style:italic; color:var(--gold);">Mundo</em>
-      </h2>
-      <p style="font-size:.97rem; color:rgba(245,240,232,.75); max-width:540px; margin:0 auto; line-height:1.7;">
-        Estamos trabajando en esta sección. Próximamente vas a poder explorar la red de monserratenses distribuidos por el mundo.
-      </p>
+  <section id="mundo" class="mundo-preview">
+    <style>
+      .mundo-preview { background: var(--burgundy-dark); padding: 5.5rem 0; overflow: hidden; }
+      .mundo-preview__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
+      .mundo-preview__eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
+      .mundo-preview__title { font-family: var(--ff-serif); font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; letter-spacing: -.02em; color: var(--ivory); margin: 0 0 1rem; line-height: 1.1; }
+      .mundo-preview__title em { font-style: italic; color: var(--gold); }
+      .mundo-preview__text { font-size: 1rem; color: rgba(245,240,232,.78); max-width: 34rem; line-height: 1.75; margin: 0 0 1.75rem; }
+      .mundo-preview__people { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+      .mundo-preview__faces { display: flex; }
+      .mundo-preview__faces img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--burgundy-dark); box-shadow: 0 0 0 1px rgba(201,168,76,.6); margin-left: -12px; background: var(--cream); }
+      .mundo-preview__faces img:first-child { margin-left: 0; }
+      .mundo-preview__stats { font-size: .82rem; color: rgba(245,240,232,.75); line-height: 1.5; }
+      .mundo-preview__stats strong { color: var(--gold-light); font-family: var(--ff-serif); font-size: 1.15rem; }
+      .mundo-preview__visual { display: flex; justify-content: center; }
+      .mundo-globe {
+        --d: clamp(230px, 32vw, 380px);
+        width: var(--d); height: var(--d); border-radius: 50%; position: relative;
+        background: #1c3d6e url('Public/Mundo/tierra.jpg') 0 0 / calc(var(--d) * 2) var(--d) repeat-x;
+        box-shadow: inset -34px -22px 60px rgba(0,0,0,.7), inset 12px 10px 30px rgba(255,255,255,.14), 0 0 70px rgba(90,150,230,.28);
+        animation: mundoGiro 70s linear infinite;
+      }
+      .mundo-globe::after { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(160,205,255,.25); }
+      @keyframes mundoGiro { to { background-position-x: calc(var(--d) * -2); } }
+      @media (prefers-reduced-motion: reduce) { .mundo-globe { animation: none; } }
+      @media (max-width: 860px) {
+        .mundo-preview { padding: 4rem 0; }
+        .mundo-preview__grid { grid-template-columns: 1fr; gap: 2.25rem; text-align: center; }
+        .mundo-preview__text { margin-inline: auto; }
+        .mundo-preview__people { justify-content: center; }
+        .mundo-preview__visual { order: -1; }
+      }
+    </style>
+    <div class="container mundo-preview__grid">
+      <div>
+        <p class="mundo-preview__eyebrow">Presencia Global</p>
+        <h2 class="mundo-preview__title">Monserratenses por el <em>Mundo</em></h2>
+        <p class="mundo-preview__text">
+          Egresados del Monserrat que viven y trabajan en distintas partes del mundo. Explorá el mapa, conocé sus historias y encontrá a tus compañeros de promoción.
+        </p>
+        <div class="mundo-preview__people">
+          <div class="mundo-preview__faces" aria-hidden="true">
+            <img src="Public/Egresados/estefano.jpg" alt="" loading="lazy" />
+            <img src="Public/Egresados/livio-ganzarolli.jpg" alt="" loading="lazy" />
+            <img src="Public/Egresados/luis-maria-caballero.jpg" alt="" loading="lazy" />
+            <img src="Public/Egresados/cristian-centurion.jpg" alt="" loading="lazy" />
+            <img src="Public/Egresados/jose-daniel-morlans.jpg" alt="" loading="lazy" />
+          </div>
+          <div class="mundo-preview__stats"><strong>18</strong> egresados<br /><strong>5</strong> países</div>
+        </div>
+        <a href="/mundo/" class="btn btn--gold">Explorar el mapa</a>
+      </div>
+      <div class="mundo-preview__visual">
+        <a href="/mundo/" aria-label="Explorar el mapa de monserratenses por el mundo"><div class="mundo-globe" role="img" aria-label="Globo terráqueo"></div></a>
+      </div>
     </div>
   </section>
 
