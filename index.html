@@ -276,6 +276,65 @@
   </section>
 
 
+  <!-- ══════════════════════ POR EL MUNDO ══════════════════════ -->
+  <section id="mundo" class="mundo-preview">
+    <style>
+      .mundo-preview { background: var(--burgundy-dark); padding: 5.5rem 0; overflow: hidden; }
+      .mundo-preview__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
+      .mundo-preview__eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
+      .mundo-preview__title { font-family: var(--ff-serif); font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; letter-spacing: -.02em; color: var(--ivory); margin: 0 0 1rem; line-height: 1.1; }
+      .mundo-preview__title em { font-style: italic; color: var(--gold); }
+      .mundo-preview__text { font-size: 1rem; color: rgba(245,240,232,.78); max-width: 34rem; line-height: 1.75; margin: 0 0 1.75rem; }
+      .mundo-preview__people { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+      .mundo-preview__faces { display: flex; }
+      .mundo-preview__faces img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--burgundy-dark); box-shadow: 0 0 0 1px rgba(201,168,76,.6); margin-left: -12px; background: var(--cream); }
+      .mundo-preview__faces img:first-child { margin-left: 0; }
+      .mundo-preview__stats { font-size: .82rem; color: rgba(245,240,232,.75); line-height: 1.5; }
+      .mundo-preview__stats strong { color: var(--gold-light); font-family: var(--ff-serif); font-size: 1.15rem; }
+      .mundo-preview__visual { display: flex; justify-content: center; }
+      .mundo-globe {
+        --d: clamp(230px, 32vw, 380px);
+        width: var(--d); height: var(--d); border-radius: 50%; position: relative;
+        background: #1c3d6e url('Public/Mundo/tierra.jpg') 0 0 / calc(var(--d) * 2) var(--d) repeat-x;
+        box-shadow: inset -34px -22px 60px rgba(0,0,0,.7), inset 12px 10px 30px rgba(255,255,255,.14), 0 0 70px rgba(90,150,230,.28);
+        animation: mundoGiro 70s linear infinite;
+      }
+      .mundo-globe::after { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(160,205,255,.25); }
+      @keyframes mundoGiro { to { background-position-x: calc(var(--d) * -2); } }
+      @media (prefers-reduced-motion: reduce) { .mundo-globe { animation: none; } }
+      @media (max-width: 860px) {
+        .mundo-preview { padding: 4rem 0; }
+        .mundo-preview__grid { grid-template-columns: 1fr; gap: 2.25rem; text-align: center; }
+        .mundo-preview__text { margin-inline: auto; }
+        .mundo-preview__people { justify-content: center; }
+        .mundo-preview__visual { order: -1; }
+      }
+    </style>
+    <div class="container mundo-preview__grid">
+      <div>
+        <p class="mundo-preview__eyebrow">Presencia Global</p>
+        <h2 class="mundo-preview__title">Monserratenses por el <em>Mundo</em></h2>
+        <p class="mundo-preview__text">
+          Egresados del Monserrat que viven y trabajan en distintas partes del mundo. Explorá el mapa, conocé sus historias y encontrá a tus compañeros de promoción.
+        </p>
+        <div class="mundo-preview__people">
+          <div class="mundo-preview__faces" aria-hidden="true">
+            <img src="Public/Egresados/estefano.jpg" alt="" loading="lazy" />
+            <img src="Public/Egresados/livio-ganzarolli.jpg" alt="" loading="lazy" />
+            <img src="Public/Egresados/luis-maria-caballero.jpg" alt="" loading="lazy" />
+            <img src="Public/Egresados/cristian-centurion.jpg" alt="" loading="lazy" />
+            <img src="Public/Egresados/jose-daniel-morlans.jpg" alt="" loading="lazy" />
+          </div>
+          <div class="mundo-preview__stats"><strong>18</strong> egresados<br /><strong>5</strong> países</div>
+        </div>
+        <a href="/mundo/" class="btn btn--gold">Explorar el mapa</a>
+      </div>
+      <div class="mundo-preview__visual">
+        <a href="/mundo/" aria-label="Explorar el mapa de monserratenses por el mundo"><div class="mundo-globe" role="img" aria-label="Globo terráqueo"></div></a>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════════════ NOTICIAS ══════════════════════ -->
   <section class="section section--ivory" id="noticias">
     <div class="container">
@@ -284,13 +343,45 @@
       <!-- DESKTOP: slider paginado (igual que antes) -->
       <div class="news-slider news--desktop fade-in" id="newsSlider">
         <div class="news-slider__track" id="newsTrack">
-          <!-- Página 1: Tarjeta Liber (más reciente) -->
           <div class="news-slider__page">
             <div class="news-grid news-grid--2x2">
+              <a class="news-card" href="/cultura/pensar-el-futuro-ii/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Cultura</span>
+                  <img src="/noticias/fotos/pensar-el-futuro-II-praxis-politica.jpg" alt="Pensar el Futuro II" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">Octubre de 2026</span>
+                  <h3 class="news-card__title">Pensar el Futuro II: Desde la Ética Hacia la Praxis Política</h3>
+                  <span class="news-card__link">Ver ciclo →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/decalogo-del-egresado/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Institucional</span>
+                  <img src="/Public/Og/decalogo-og.jpg" alt="Decálogo del Egresado Monserratense" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">8 de septiembre, 2026</span>
+                  <h3 class="news-card__title">Decálogo del Egresado Monserratense</h3>
+                  <span class="news-card__link">Leer más →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/noticias/sorteo-bono-2026/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Comunidad</span>
+                  <img src="/noticias/Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="Se sorteó el Bono Contribución 2026" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">Julio de 2026</span>
+                  <h3 class="news-card__title">Se sorteó el Bono Contribución 2026</h3>
+                  <span class="news-card__link">Leer más →</span>
+                </div>
+              </a>
               <a class="news-card" href="/noticias/tarjeta-liber/">
                 <div class="news-card__img">
                   <span class="news-card__tag">Comunidad</span>
-                  <img src="/Public/RedLiber/tarjetamano.png" alt="Información Tarjeta Liber" />
+                  <img src="/Public/RedLiber/tarjetamano.png" alt="Información Tarjeta Liber" loading="lazy" />
                 </div>
                 <div class="news-card__body">
                   <span class="news-card__date">Abril de 2026</span>
@@ -298,10 +389,14 @@
                   <span class="news-card__link">Leer más →</span>
                 </div>
               </a>
+            </div>
+          </div>
+          <div class="news-slider__page">
+            <div class="news-grid news-grid--2x2">
               <a class="news-card" href="/noticias/bono-contribucion-2026/">
                 <div class="news-card__img">
                   <span class="news-card__tag">Comunidad</span>
-                  <img src="/noticias/Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="Bono Contribución Anual 2026" />
+                  <img src="/noticias/Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="Bono Contribución Anual 2026" loading="lazy" />
                 </div>
                 <div class="news-card__body">
                   <span class="news-card__date">Abril de 2026</span>
@@ -309,10 +404,21 @@
                   <span class="news-card__link">Leer más →</span>
                 </div>
               </a>
+              <a class="news-card" href="/cultura/pensar-el-futuro/">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Cultura</span>
+                  <img src="/noticias/fotos/pensar-el-futuro-humanismo.jpg" alt="Pensar el Futuro" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">Septiembre de 2025</span>
+                  <h3 class="news-card__title">Pensar el Futuro: El Humanismo en el Siglo XXI</h3>
+                  <span class="news-card__link">Ver ciclo →</span>
+                </div>
+              </a>
               <a class="news-card" href="/noticias/335-aniversario/">
                 <div class="news-card__img">
                   <span class="news-card__tag">Institucional</span>
-                  <img src="/noticias/fotos/Flyer335A.jpg" alt="335° Aniversario" />
+                  <img src="/noticias/fotos/Flyer335A.jpg" alt="335° Aniversario" loading="lazy" />
                 </div>
                 <div class="news-card__body">
                   <span class="news-card__date">1 de agosto, 2022</span>
@@ -323,7 +429,7 @@
               <a class="news-card" href="/noticias/sede-virtual/">
                 <div class="news-card__img">
                   <span class="news-card__tag">Institucional</span>
-                  <img src="/noticias/fotos/Sede virtual.jpg" alt="Sede Virtual" />
+                  <img src="/noticias/fotos/Sede virtual.jpg" alt="Sede Virtual" loading="lazy" />
                 </div>
                 <div class="news-card__body">
                   <span class="news-card__date">15 de enero, 2022</span>
@@ -331,26 +437,14 @@
                   <span class="news-card__link">Leer más →</span>
                 </div>
               </a>
-              <a class="news-card" href="/noticias/reflexion/">
-                <div class="news-card__img">
-                  <span class="news-card__tag">Institucional</span>
-                  <img src="/noticias/fotos/Reflexion.jpg" alt="Reflexión" />
-                </div>
-                <div class="news-card__body">
-                  <span class="news-card__date">10 de enero, 2022</span>
-                  <h3 class="news-card__title">Reflexión sobre el legado monserratense</h3>
-                  <span class="news-card__link">Leer más →</span>
-                </div>
-              </a>
             </div>
           </div>
-          <!-- Página 2 -->
           <div class="news-slider__page">
             <div class="news-grid news-grid--2x2">
               <a class="news-card" href="/noticias/reflexion/">
                 <div class="news-card__img">
                   <span class="news-card__tag">Institucional</span>
-                  <img src="/noticias/fotos/Reflexion.jpg" alt="Reflexión" />
+                  <img src="/noticias/fotos/Reflexion.jpg" alt="Reflexión" loading="lazy" />
                 </div>
                 <div class="news-card__body">
                   <span class="news-card__date">10 de enero, 2022</span>
@@ -361,7 +455,7 @@
               <a class="news-card" href="/noticias/bienvenida/">
                 <div class="news-card__img">
                   <span class="news-card__tag">Institucional</span>
-                  <img src="/noticias/fotos/Bienvenida.jpg" alt="Bienvenida" />
+                  <img src="/noticias/fotos/Bienvenida.jpg" alt="Bienvenida" loading="lazy" />
                 </div>
                 <div class="news-card__body">
                   <span class="news-card__date">5 de enero, 2022</span>
@@ -386,10 +480,43 @@
       <!-- MOBILE: 1 fila × 2 col, scroll horizontal -->
       <div class="news-hscroll news--mobile fade-in">
         <div class="news-hscroll__track">
+          <a class="news-card" href="/cultura/pensar-el-futuro-ii/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Cultura</span>
+              <img src="/noticias/fotos/pensar-el-futuro-II-praxis-politica.jpg" alt="Pensar el Futuro II" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">Octubre de 2026</span>
+              <h3 class="news-card__title">Pensar el Futuro II: Desde la Ética Hacia la Praxis Política</h3>
+              <span class="news-card__link">Ver ciclo →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/decalogo-del-egresado/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Institucional</span>
+              <img src="/Public/Og/decalogo-og.jpg" alt="Decálogo del Egresado Monserratense" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">8 de septiembre, 2026</span>
+              <h3 class="news-card__title">Decálogo del Egresado Monserratense</h3>
+              <span class="news-card__link">Leer más →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/noticias/sorteo-bono-2026/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Comunidad</span>
+              <img src="/noticias/Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="Se sorteó el Bono Contribución 2026" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">Julio de 2026</span>
+              <h3 class="news-card__title">Se sorteó el Bono Contribución 2026</h3>
+              <span class="news-card__link">Leer más →</span>
+            </div>
+          </a>
           <a class="news-card" href="/noticias/tarjeta-liber/">
             <div class="news-card__img">
               <span class="news-card__tag">Comunidad</span>
-              <img src="/Public/RedLiber/tarjetamano.png" alt="Información Tarjeta Liber" />
+              <img src="/Public/RedLiber/tarjetamano.png" alt="Información Tarjeta Liber" loading="lazy" />
             </div>
             <div class="news-card__body">
               <span class="news-card__date">Abril de 2026</span>
@@ -400,7 +527,7 @@
           <a class="news-card" href="/noticias/bono-contribucion-2026/">
             <div class="news-card__img">
               <span class="news-card__tag">Comunidad</span>
-              <img src="/noticias/Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="Bono Contribución Anual 2026" />
+              <img src="/noticias/Bono/Primer Premio/pintura-la-visitante-1.jpg" alt="Bono Contribución Anual 2026" loading="lazy" />
             </div>
             <div class="news-card__body">
               <span class="news-card__date">Abril de 2026</span>
@@ -408,10 +535,21 @@
               <span class="news-card__link">Leer más →</span>
             </div>
           </a>
+          <a class="news-card" href="/cultura/pensar-el-futuro/">
+            <div class="news-card__img">
+              <span class="news-card__tag">Cultura</span>
+              <img src="/noticias/fotos/pensar-el-futuro-humanismo.jpg" alt="Pensar el Futuro" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">Septiembre de 2025</span>
+              <h3 class="news-card__title">Pensar el Futuro: El Humanismo en el Siglo XXI</h3>
+              <span class="news-card__link">Ver ciclo →</span>
+            </div>
+          </a>
           <a class="news-card" href="/noticias/335-aniversario/">
             <div class="news-card__img">
               <span class="news-card__tag">Institucional</span>
-              <img src="/noticias/fotos/Flyer335A.jpg" alt="335° Aniversario" />
+              <img src="/noticias/fotos/Flyer335A.jpg" alt="335° Aniversario" loading="lazy" />
             </div>
             <div class="news-card__body">
               <span class="news-card__date">1 de agosto, 2022</span>
@@ -422,7 +560,7 @@
           <a class="news-card" href="/noticias/sede-virtual/">
             <div class="news-card__img">
               <span class="news-card__tag">Institucional</span>
-              <img src="/noticias/fotos/Sede virtual.jpg" alt="Sede Virtual" />
+              <img src="/noticias/fotos/Sede virtual.jpg" alt="Sede Virtual" loading="lazy" />
             </div>
             <div class="news-card__body">
               <span class="news-card__date">15 de enero, 2022</span>
@@ -433,7 +571,7 @@
           <a class="news-card" href="/noticias/reflexion/">
             <div class="news-card__img">
               <span class="news-card__tag">Institucional</span>
-              <img src="/noticias/fotos/Reflexion.jpg" alt="Reflexión" />
+              <img src="/noticias/fotos/Reflexion.jpg" alt="Reflexión" loading="lazy" />
             </div>
             <div class="news-card__body">
               <span class="news-card__date">10 de enero, 2022</span>
@@ -444,7 +582,7 @@
           <a class="news-card" href="/noticias/bienvenida/">
             <div class="news-card__img">
               <span class="news-card__tag">Institucional</span>
-              <img src="/noticias/fotos/Bienvenida.jpg" alt="Bienvenida" />
+              <img src="/noticias/fotos/Bienvenida.jpg" alt="Bienvenida" loading="lazy" />
             </div>
             <div class="news-card__body">
               <span class="news-card__date">5 de enero, 2022</span>
@@ -471,10 +609,106 @@
         <div class="news-slider__track" id="confTrack">
           <div class="news-slider__page">
             <div class="news-grid news-grid--2x2">
+              <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-08">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Pensar el Futuro II</span>
+                  <img src="/noticias/fotos/pensar-el-futuro-ii/ep-08.jpg" alt="Carlos Presman — Pensar el Futuro II" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">17 de noviembre, 2026</span>
+                  <h3 class="news-card__title">Carlos Presman</h3>
+                  <span class="news-card__link">Ver entrevista →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-07">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Pensar el Futuro II</span>
+                  <img src="/noticias/fotos/pensar-el-futuro-ii/ep-07.jpg" alt="Sofía Germanier — Pensar el Futuro II" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">8 de noviembre, 2026</span>
+                  <h3 class="news-card__title">Sofía Germanier</h3>
+                  <span class="news-card__link">Ver entrevista →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-06">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Pensar el Futuro II</span>
+                  <img src="/noticias/fotos/pensar-el-futuro-ii/ep-06.jpg" alt="Miguel Hugo Vaca Narvaja — Pensar el Futuro II" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">30 de octubre, 2026</span>
+                  <h3 class="news-card__title">Miguel Hugo Vaca Narvaja</h3>
+                  <span class="news-card__link">Ver entrevista →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-05">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Pensar el Futuro II</span>
+                  <img src="/noticias/fotos/pensar-el-futuro-ii/ep-05.jpg" alt="Edgardo Dainotto — Pensar el Futuro II" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">26 de octubre, 2026</span>
+                  <h3 class="news-card__title">Edgardo Dainotto</h3>
+                  <span class="news-card__link">Ver entrevista →</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="news-slider__page">
+            <div class="news-grid news-grid--2x2">
+              <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-04">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Pensar el Futuro II</span>
+                  <img src="/noticias/fotos/pensar-el-futuro-ii/ep-04.jpg" alt="Diego Fonti — Pensar el Futuro II" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">22 de octubre, 2026</span>
+                  <h3 class="news-card__title">Diego Fonti</h3>
+                  <span class="news-card__link">Ver entrevista →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-03">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Pensar el Futuro II</span>
+                  <img src="/noticias/fotos/pensar-el-futuro-ii/ep-03.jpg" alt="Laura González — Pensar el Futuro II" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">12 de octubre, 2026</span>
+                  <h3 class="news-card__title">Laura González</h3>
+                  <span class="news-card__link">Ver entrevista →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-02">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Pensar el Futuro II</span>
+                  <img src="/noticias/fotos/pensar-el-futuro-ii/ep-02.jpg" alt="Enrique Orchansky — Pensar el Futuro II" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">9 de octubre, 2026</span>
+                  <h3 class="news-card__title">Enrique Orchansky</h3>
+                  <span class="news-card__link">Ver entrevista →</span>
+                </div>
+              </a>
+              <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-01">
+                <div class="news-card__img">
+                  <span class="news-card__tag">Pensar el Futuro II</span>
+                  <img src="/noticias/fotos/pensar-el-futuro-ii/ep-01.jpg" alt="Daniel Gattás — Pensar el Futuro II" loading="lazy" />
+                </div>
+                <div class="news-card__body">
+                  <span class="news-card__date">2 de octubre, 2026</span>
+                  <h3 class="news-card__title">Daniel Gattás</h3>
+                  <span class="news-card__link">Ver entrevista →</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="news-slider__page">
+            <div class="news-grid news-grid--2x2">
               <a class="news-card" href="/cultura/conferencias/tillard/">
                 <div class="news-card__img">
                   <span class="news-card__tag">Conferencia</span>
-                  <img src="/noticias/fotos/Foto-Tillard.jpeg" alt="Tillard" />
+                  <img src="/noticias/fotos/Foto-Tillard.jpeg" alt="Tillard" loading="lazy" />
                 </div>
                 <div class="news-card__body">
                   <span class="news-card__date">2024</span>
@@ -485,7 +719,7 @@
               <a class="news-card" href="/cultura/conferencias/yanzi-ferreira/">
                 <div class="news-card__img">
                   <span class="news-card__tag">Conferencia</span>
-                  <img src="/noticias/fotos/ramon-pedro-yanzi-ferreira.jpg" alt="Yanzi Ferreira" />
+                  <img src="/noticias/fotos/ramon-pedro-yanzi-ferreira.jpg" alt="Yanzi Ferreira" loading="lazy" />
                 </div>
                 <div class="news-card__body">
                   <span class="news-card__date">2022</span>
@@ -496,7 +730,7 @@
               <a class="news-card" href="/cultura/conferencias/bustos-arganaraz/">
                 <div class="news-card__img">
                   <span class="news-card__tag">Conferencia</span>
-                  <img src="/noticias/fotos/prudencio-bustos-arganaraz.jpg" alt="Bustos Argañaraz" />
+                  <img src="/noticias/fotos/prudencio-bustos-arganaraz.jpg" alt="Bustos Argañaraz" loading="lazy" />
                 </div>
                 <div class="news-card__body">
                   <span class="news-card__date">2022</span>
@@ -507,7 +741,7 @@
               <a class="news-card" href="/cultura/conferencias/domina/">
                 <div class="news-card__img">
                   <span class="news-card__tag">Conferencia</span>
-                  <img src="/noticias/fotos/esteban-domina.jpg" alt="Domina" />
+                  <img src="/noticias/fotos/esteban-domina.jpg" alt="Domina" loading="lazy" />
                 </div>
                 <div class="news-card__body">
                   <span class="news-card__date">2022</span>
@@ -532,10 +766,98 @@
       <!-- MOBILE: 1 fila × 2 col, scroll horizontal -->
       <div class="news-hscroll news--mobile fade-in">
         <div class="news-hscroll__track">
+          <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-08">
+            <div class="news-card__img">
+              <span class="news-card__tag">Pensar el Futuro II</span>
+              <img src="/noticias/fotos/pensar-el-futuro-ii/ep-08.jpg" alt="Carlos Presman — Pensar el Futuro II" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">17 de noviembre, 2026</span>
+              <h3 class="news-card__title">Carlos Presman</h3>
+              <span class="news-card__link">Ver entrevista →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-07">
+            <div class="news-card__img">
+              <span class="news-card__tag">Pensar el Futuro II</span>
+              <img src="/noticias/fotos/pensar-el-futuro-ii/ep-07.jpg" alt="Sofía Germanier — Pensar el Futuro II" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">8 de noviembre, 2026</span>
+              <h3 class="news-card__title">Sofía Germanier</h3>
+              <span class="news-card__link">Ver entrevista →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-06">
+            <div class="news-card__img">
+              <span class="news-card__tag">Pensar el Futuro II</span>
+              <img src="/noticias/fotos/pensar-el-futuro-ii/ep-06.jpg" alt="Miguel Hugo Vaca Narvaja — Pensar el Futuro II" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">30 de octubre, 2026</span>
+              <h3 class="news-card__title">Miguel Hugo Vaca Narvaja</h3>
+              <span class="news-card__link">Ver entrevista →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-05">
+            <div class="news-card__img">
+              <span class="news-card__tag">Pensar el Futuro II</span>
+              <img src="/noticias/fotos/pensar-el-futuro-ii/ep-05.jpg" alt="Edgardo Dainotto — Pensar el Futuro II" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">26 de octubre, 2026</span>
+              <h3 class="news-card__title">Edgardo Dainotto</h3>
+              <span class="news-card__link">Ver entrevista →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-04">
+            <div class="news-card__img">
+              <span class="news-card__tag">Pensar el Futuro II</span>
+              <img src="/noticias/fotos/pensar-el-futuro-ii/ep-04.jpg" alt="Diego Fonti — Pensar el Futuro II" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">22 de octubre, 2026</span>
+              <h3 class="news-card__title">Diego Fonti</h3>
+              <span class="news-card__link">Ver entrevista →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-03">
+            <div class="news-card__img">
+              <span class="news-card__tag">Pensar el Futuro II</span>
+              <img src="/noticias/fotos/pensar-el-futuro-ii/ep-03.jpg" alt="Laura González — Pensar el Futuro II" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">12 de octubre, 2026</span>
+              <h3 class="news-card__title">Laura González</h3>
+              <span class="news-card__link">Ver entrevista →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-02">
+            <div class="news-card__img">
+              <span class="news-card__tag">Pensar el Futuro II</span>
+              <img src="/noticias/fotos/pensar-el-futuro-ii/ep-02.jpg" alt="Enrique Orchansky — Pensar el Futuro II" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">9 de octubre, 2026</span>
+              <h3 class="news-card__title">Enrique Orchansky</h3>
+              <span class="news-card__link">Ver entrevista →</span>
+            </div>
+          </a>
+          <a class="news-card" href="/cultura/pensar-el-futuro-ii/#ep-01">
+            <div class="news-card__img">
+              <span class="news-card__tag">Pensar el Futuro II</span>
+              <img src="/noticias/fotos/pensar-el-futuro-ii/ep-01.jpg" alt="Daniel Gattás — Pensar el Futuro II" loading="lazy" />
+            </div>
+            <div class="news-card__body">
+              <span class="news-card__date">2 de octubre, 2026</span>
+              <h3 class="news-card__title">Daniel Gattás</h3>
+              <span class="news-card__link">Ver entrevista →</span>
+            </div>
+          </a>
           <a class="news-card" href="/cultura/conferencias/tillard/">
             <div class="news-card__img">
               <span class="news-card__tag">Conferencia</span>
-              <img src="/noticias/fotos/Foto-Tillard.jpeg" alt="Tillard" />
+              <img src="/noticias/fotos/Foto-Tillard.jpeg" alt="Tillard" loading="lazy" />
             </div>
             <div class="news-card__body">
               <span class="news-card__date">2024</span>
@@ -546,7 +868,7 @@
           <a class="news-card" href="/cultura/conferencias/yanzi-ferreira/">
             <div class="news-card__img">
               <span class="news-card__tag">Conferencia</span>
-              <img src="/noticias/fotos/ramon-pedro-yanzi-ferreira.jpg" alt="Yanzi Ferreira" />
+              <img src="/noticias/fotos/ramon-pedro-yanzi-ferreira.jpg" alt="Yanzi Ferreira" loading="lazy" />
             </div>
             <div class="news-card__body">
               <span class="news-card__date">2022</span>
@@ -557,7 +879,7 @@
           <a class="news-card" href="/cultura/conferencias/bustos-arganaraz/">
             <div class="news-card__img">
               <span class="news-card__tag">Conferencia</span>
-              <img src="/noticias/fotos/prudencio-bustos-arganaraz.jpg" alt="Bustos Argañaraz" />
+              <img src="/noticias/fotos/prudencio-bustos-arganaraz.jpg" alt="Bustos Argañaraz" loading="lazy" />
             </div>
             <div class="news-card__body">
               <span class="news-card__date">2022</span>
@@ -568,7 +890,7 @@
           <a class="news-card" href="/cultura/conferencias/domina/">
             <div class="news-card__img">
               <span class="news-card__tag">Conferencia</span>
-              <img src="/noticias/fotos/esteban-domina.jpg" alt="Domina" />
+              <img src="/noticias/fotos/esteban-domina.jpg" alt="Domina" loading="lazy" />
             </div>
             <div class="news-card__body">
               <span class="news-card__date">2022</span>
@@ -665,65 +987,6 @@
         </div>
       </div><!-- /mobile slider -->
 
-    </div>
-  </section>
-
-  <!-- ══════════════════════ POR EL MUNDO ══════════════════════ -->
-  <section id="mundo" class="mundo-preview">
-    <style>
-      .mundo-preview { background: var(--burgundy-dark); padding: 5.5rem 0; overflow: hidden; }
-      .mundo-preview__grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
-      .mundo-preview__eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
-      .mundo-preview__title { font-family: var(--ff-serif); font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; letter-spacing: -.02em; color: var(--ivory); margin: 0 0 1rem; line-height: 1.1; }
-      .mundo-preview__title em { font-style: italic; color: var(--gold); }
-      .mundo-preview__text { font-size: 1rem; color: rgba(245,240,232,.78); max-width: 34rem; line-height: 1.75; margin: 0 0 1.75rem; }
-      .mundo-preview__people { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
-      .mundo-preview__faces { display: flex; }
-      .mundo-preview__faces img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--burgundy-dark); box-shadow: 0 0 0 1px rgba(201,168,76,.6); margin-left: -12px; background: var(--cream); }
-      .mundo-preview__faces img:first-child { margin-left: 0; }
-      .mundo-preview__stats { font-size: .82rem; color: rgba(245,240,232,.75); line-height: 1.5; }
-      .mundo-preview__stats strong { color: var(--gold-light); font-family: var(--ff-serif); font-size: 1.15rem; }
-      .mundo-preview__visual { display: flex; justify-content: center; }
-      .mundo-globe {
-        --d: clamp(230px, 32vw, 380px);
-        width: var(--d); height: var(--d); border-radius: 50%; position: relative;
-        background: #1c3d6e url('Public/Mundo/tierra.jpg') 0 0 / calc(var(--d) * 2) var(--d) repeat-x;
-        box-shadow: inset -34px -22px 60px rgba(0,0,0,.7), inset 12px 10px 30px rgba(255,255,255,.14), 0 0 70px rgba(90,150,230,.28);
-        animation: mundoGiro 70s linear infinite;
-      }
-      .mundo-globe::after { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(160,205,255,.25); }
-      @keyframes mundoGiro { to { background-position-x: calc(var(--d) * -2); } }
-      @media (prefers-reduced-motion: reduce) { .mundo-globe { animation: none; } }
-      @media (max-width: 860px) {
-        .mundo-preview { padding: 4rem 0; }
-        .mundo-preview__grid { grid-template-columns: 1fr; gap: 2.25rem; text-align: center; }
-        .mundo-preview__text { margin-inline: auto; }
-        .mundo-preview__people { justify-content: center; }
-        .mundo-preview__visual { order: -1; }
-      }
-    </style>
-    <div class="container mundo-preview__grid">
-      <div>
-        <p class="mundo-preview__eyebrow">Presencia Global</p>
-        <h2 class="mundo-preview__title">Monserratenses por el <em>Mundo</em></h2>
-        <p class="mundo-preview__text">
-          Egresados del Monserrat que viven y trabajan en distintas partes del mundo. Explorá el mapa, conocé sus historias y encontrá a tus compañeros de promoción.
-        </p>
-        <div class="mundo-preview__people">
-          <div class="mundo-preview__faces" aria-hidden="true">
-            <img src="Public/Egresados/estefano.jpg" alt="" loading="lazy" />
-            <img src="Public/Egresados/livio-ganzarolli.jpg" alt="" loading="lazy" />
-            <img src="Public/Egresados/luis-maria-caballero.jpg" alt="" loading="lazy" />
-            <img src="Public/Egresados/cristian-centurion.jpg" alt="" loading="lazy" />
-            <img src="Public/Egresados/jose-daniel-morlans.jpg" alt="" loading="lazy" />
-          </div>
-          <div class="mundo-preview__stats"><strong>18</strong> egresados<br /><strong>5</strong> países</div>
-        </div>
-        <a href="/mundo/" class="btn btn--gold">Explorar el mapa</a>
-      </div>
-      <div class="mundo-preview__visual">
-        <a href="/mundo/" aria-label="Explorar el mapa de monserratenses por el mundo"><div class="mundo-globe" role="img" aria-label="Globo terráqueo"></div></a>
-      </div>
     </div>
   </section>
 
